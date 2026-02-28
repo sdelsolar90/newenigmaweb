@@ -29,7 +29,7 @@ export default function CookieConsent() {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="fixed bottom-0 left-0 right-0 z-40 bg-surface border-t border-border shadow-lg shadow-void/60"
         >
-          <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="max-w-5xl mx-auto px-6 pr-24 sm:pr-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <p className="font-body text-sm text-muted leading-relaxed flex-1">
               Utilizamos cookies esenciales y de analítica para mejorar tu experiencia.
               Consulta nuestra{" "}
