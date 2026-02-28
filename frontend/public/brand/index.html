@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enigma Developers — Brand Manual</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #07090f;
+  --surface:   #0c0f1a;
+  --surface2:  #111525;
+  --border:    rgba(255,255,255,0.07);
+  --text:      #e8eaf0;
+  --muted:     #6b7280;
+  --muted2:    #374151;
+  --indigo:    #6366f1;
+  --indigo2:   #818cf8;
+  --indigo3:   #a5b4fc;
+  --indigo-dk: #4f46e5;
+  --white:     #f4f5f9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  background: rgba(7,9,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 4rem;
+  gap: 2rem;
+  z-index: 100;
+  overflow-x: auto;
+}
+
+nav a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--indigo2); }
+nav .nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── COVER ── */
+#cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 5rem 5rem 5rem;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.cover-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(99,102,241,0.12) 0%, transparent 70%);
+}
+
+.cover-rings {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.15;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s ease both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.cover-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--indigo2);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.cover-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.cover-title span { color: var(--indigo2); }
+
+.cover-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cover-meta-item span {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.cover-meta-item p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ── SECTION TEMPLATE ── */
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--indigo);
+  letter-spacing: 0.1em;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.section-title span { color: var(--indigo2); }
+
+/* ── CARDS / GRID ── */
+.card-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .section-inner { padding: 4rem 2rem; }
+  #cover { padding: 0 0 4rem 0; }
+}
+
+.card {
+  background: var(--surface);
+  padding: 2.5rem;
+}
+
+.card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--indigo);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.card-body {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); }
+
+/* ── TYPOGRAPHY SHOWCASE ── */
+.type-row {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.type-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+/* ── COLOR SYSTEM ── */
+.color-block {
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  position: relative;
+}
+
+.color-info {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.color-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.color-hex {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+}
+
+/* ── LOGO VARIANTS SHOWCASE ── */
+.logo-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.logo-cell {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 200px;
+}
+
+.logo-cell-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--muted2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+/* ── DON'T DO ── */
+.dont-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+@media (max-width: 768px) { .dont-grid { grid-template-columns: 1fr; } }
+
+.dont-cell {
+  background: var(--surface);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dont-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.badge-no { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.badge-yes { background: rgba(99,102,241,0.1); color: var(--indigo2); border: 1px solid rgba(99,102,241,0.2); }
+
+.dont-preview {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+.dont-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── VOICE / TONE ── */
+.voice-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 1px;
+}
+
+.voice-cell {
+  background: var(--surface);
+  padding: 1.5rem 2rem;
+}
+
+.voice-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.voice-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* ── MOCKUPS ── */
+.mockup-phone {
+  background: #1a1d2e;
+  border-radius: 28px;
+  width: 200px;
+  height: 360px;
+  border: 3px solid #2a2d42;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.mockup-phone-notch {
+  height: 28px;
+  background: #0d0f1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-phone-notch-inner {
+  width: 60px; height: 10px;
+  background: #0a0b12;
+  border-radius: 10px;
+}
+
+.mockup-phone-content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mockup-card {
+  background: #111525;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid rgba(99,102,241,0.15);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.spin { animation: rotateSlow 12s linear infinite; transform-origin: center; }
+.spin-r { animation: rotateReverse 18s linear infinite; transform-origin: center; }
+
+/* ── PAGE BREAK HELPER ── */
+.page-marker {
+  padding: 1rem 4rem;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── QUOTE BLOCK ── */
+.quote-block {
+  border-left: 3px solid var(--indigo);
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  margin: 2rem 0;
+}
+
+.quote-text {
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--indigo3);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.quote-attr {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── VALUES PILLS ── */
+.values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.value-pill {
+  border: 1px solid var(--border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--indigo3);
+  text-transform: uppercase;
+}
+
+/* ── SPACING SCALE ── */
+.spacing-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.spacing-block {
+  background: rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.3);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.spacing-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--indigo2);
+  letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Enigma</span>
+  <a href="#cover">Portada</a>
+  <a href="#origen">Origen</a>
+  <a href="#mvv">Misión · Visión · Valores</a>
+  <a href="#isotipo">Isotipo</a>
+  <a href="#colores">Colores</a>
+  <a href="#tipografia">Tipografía</a>
+  <a href="#voz">Tono de Voz</a>
+  <a href="#usos">Usos</a>
+  <a href="#aplicaciones">Aplicaciones</a>
+  <a href="#web">Web</a>
+</nav>
+
+<!-- ══════════════════════════════════════
+     COVER
+══════════════════════════════════════ -->
+<section id="cover" style="padding-top: 52px;">
+  <div class="cover-bg"></div>
+
+  <!-- Decorative rings -->
+  <div class="cover-rings">
+    <svg width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="spin" cx="260" cy="260" r="240" stroke="rgba(99,102,241,0.2)" stroke-width="1.5" stroke-dasharray="14 8"/>
+      <circle class="spin-r" cx="260" cy="260" r="190" stroke="rgba(129,140,248,0.15)" stroke-width="1" stroke-dasharray="8 12"/>
+      <circle cx="260" cy="260" r="140" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+      <circle cx="260" cy="260" r="90" stroke="rgba(129,140,248,0.1)" stroke-width="1.5" stroke-dasharray="4 6"/>
+      <circle cx="260" cy="260" r="40" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="cover-content">
+    <p class="cover-label">Manual de Identidad de Marca · v1.0 · 2026</p>
+
+    <!-- LOGO LOCKUP -->
+    <div style="display:flex; align-items:center; gap:20px; margin-bottom:2rem; justify-content:center;">
+      <svg width="58" height="58" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="cov-g" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#a5b4fc"/>
+            <stop offset="100%" stop-color="#6366f1"/>
+          </linearGradient>
+        </defs>
+        <circle cx="34" cy="34" r="30" stroke="url(#cov-g)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+        <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/>
+        <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+      </svg>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.8rem,6vw,5.5rem); letter-spacing:-0.04em; line-height:0.9; color:var(--white);">ENIGMA</div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:8px; flex-wrap:wrap;">
+          <span style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.25em; color:var(--indigo2); text-transform:uppercase;">DEVELOPERS</span>
+          <span style="width:1px; height:12px; background:rgba(99,102,241,0.4); display:inline-block;"></span>
+          <span style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; color:var(--muted); text-transform:uppercase;">Beyond the obvious</span>
+        </div>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span>Documento</span>
+        <p>Brand Identity Manual</p>
+      </div>
+      <div class="cover-meta-item">
+        <span>Versión</span>
+        <p>1.0 — 2026</p>
+      </div>
+      <div class="cover-meta-item">
+        <span>Tagline</span>
+        <p>Beyond the obvious</p>
+      </div>
+      <div class="cover-meta-item">
+        <span>Origen</span>
+        <p>αἴνιγμα · Griego Antiguo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-marker">01 — Origen &amp; Historia</div>
+
+<!-- ══════════════════════════════════════
+     ORIGEN
+══════════════════════════════════════ -->
+<section id="origen">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">El Origen<br><span>del Nombre</span></h2>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">"A computer deserves to be called intelligent if it succeeds in making a person believe it is human."</p>
+      <p class="quote-attr">— Alan Turing · 1950 · El mismo hombre que descifró la Máquina Enigma</p>
+    </div>
+
+    <div class="card-grid grid-2" style="margin-top: 2rem;">
+      <div class="card">
+        <div class="card-label">Raíz Griega</div>
+        <div class="card-title">αἴνιγμα · aínigma</div>
+        <div class="card-body">
+          La palabra <strong style="color: var(--indigo2)">enigma</strong> proviene del griego antiguo <em>αἴνιγμα (aínigma)</em>, derivada del verbo <em>aínissesthai</em> — "hablar en términos velados, en adivinanzas". Su raíz más profunda es <em>ainos</em>: fábula, dicho oscuro, verdad oculta.<br><br>
+          Era el lenguaje de los oráculos y filósofos griegos: palabras que ocultaban una verdad para que solo quien tuviera el conocimiento pudiera descifrarla.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">La Conexión Turing</div>
+        <div class="card-title">El hombre que descifró el Enigma</div>
+        <div class="card-body">
+          Alan Turing fue el matemático que en 1941 logró descifrar la <strong style="color: var(--indigo2)">Máquina Enigma</strong> nazi — la máquina de cifrado más compleja de su época. Al hacerlo, acortó la Segunda Guerra Mundial en años.<br><br>
+          El mismo Turing luego definió los fundamentos de la inteligencia artificial. Nuestra marca conecta ambas ideas: <em>descifrar lo complejo y transformarlo en soluciones inteligentes.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 1px; background: var(--surface2);">
+      <div class="card-label">Universalidad del Nombre</div>
+      <div class="card-title">Una palabra que el mundo entero reconoce</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Español</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Enigma</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">English</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Enigma</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Français</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Énigme</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Italiano</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Enigma</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Português</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Enigma</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Deutsch</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Enigma</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">Русский</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">Энигма</div>
+        </div>
+        <div style="padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px;">
+          <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); margin-bottom: 4px;">日本語</div>
+          <div style="font-family: 'Syne', sans-serif; font-weight: 700; color: var(--indigo2);">エニグマ</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">02 — Misión · Visión · Valores</div>
+
+<!-- ══════════════════════════════════════
+     MISIÓN VISIÓN VALORES
+══════════════════════════════════════ -->
+<section id="mvv">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Misión · Visión<br><span>&amp; Valores</span></h2>
+    </div>
+
+    <div class="card-grid grid-3">
+      <div class="card">
+        <div class="card-label">Misión</div>
+        <div class="card-title">Por qué existimos</div>
+        <div class="card-body">
+          Transformar los procesos más complejos de las empresas en soluciones digitales claras, eficientes y escalables — descifrar el caos operativo y convertirlo en ventaja competitiva real.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Visión</div>
+        <div class="card-title">A dónde vamos</div>
+        <div class="card-body">
+          Ser el socio tecnológico de referencia para empresas en Latinoamérica que quieren ir más allá de lo obvio: automatizar, integrar e innovar en un mundo donde la tecnología es el diferenciador.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Propósito</div>
+        <div class="card-title">Lo que nos mueve</div>
+        <div class="card-body">
+          Creemos que toda empresa — sin importar su tamaño — merece tecnología que la haga más inteligente. El enigma no es la tecnología: el enigma es imaginar todo lo que puede lograr cuando la tiene.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 1px;">
+      <div class="card-label">Valores de Marca</div>
+      <div class="card-title">Los principios que guían cada decisión</div>
+      <div class="values-row">
+        <span class="value-pill">Claridad</span>
+        <span class="value-pill">Precisión</span>
+        <span class="value-pill">Innovación</span>
+        <span class="value-pill">Confianza</span>
+        <span class="value-pill">Impacto Real</span>
+        <span class="value-pill">Beyond the Obvious</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; margin-top: 2rem; background: var(--border);">
+        <div style="background: var(--surface2); padding: 1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.5rem;">Claridad</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">Hacemos lo complejo comprensible. Nuestras soluciones eliminan la fricción y hablan en el idioma del negocio.</div>
+        </div>
+        <div style="background: var(--surface2); padding: 1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.5rem;">Precisión</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">Como Turing con la Máquina Enigma, cada solución es el resultado de análisis meticuloso y ejecución exacta.</div>
+        </div>
+        <div style="background: var(--surface2); padding: 1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.5rem;">Innovación</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">No replicamos lo que ya existe. Buscamos la solución que todavía nadie ha visto — ir más allá de lo obvio.</div>
+        </div>
+        <div style="background: var(--surface2); padding: 1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.5rem;">Confianza</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">Somos el socio que entiende el negocio y cumple lo que promete. La confianza se gana con resultados, no con palabras.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">03 — Sistema de Identidad Visual</div>
+
+<!-- ══════════════════════════════════════
+     ISOTIPO
+══════════════════════════════════════ -->
+<section id="isotipo">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">El Isotipo<br><span>&amp; Logotipo</span></h2>
+    </div>
+
+    <!-- CONCEPTO -->
+    <div class="card" style="margin-bottom: 1px;">
+      <div class="card-label">Por qué este símbolo</div>
+      <div class="card-title">Tres capas de significado en un solo ícono</div>
+      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 1.5rem; background: var(--border);">
+        <div style="background:var(--surface2); padding:1.5rem;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.5rem;">CAPA 01</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.9rem; color:var(--white); margin-bottom:0.5rem;">Los Rotores</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">Dos anillos incompletos — referencia directa a los rotores de la Máquina Enigma histórica. El gap no es error: es el misterio que espera ser descifrado.</div>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.5rem;">CAPA 02</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.9rem; color:var(--white); margin-bottom:0.5rem;">La E Cifrada</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">Una "E" construida con trazos limpios dentro del anillo. El ojo la descifra en segundos. Eso es vivir el concepto: parece incompleto hasta que de repente lo ves todo.</div>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.5rem;">CAPA 03</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.9rem; color:var(--white); margin-bottom:0.5rem;">El Nodo</div>
+          <div style="font-size:0.78rem; color:var(--muted); line-height:1.6;">El pequeño círculo en el gap del anillo externo es el momento exacto del descubrimiento — el "aha" donde el enigma se revela.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIANTES -->
+    <div class="logo-showcase" style="background: var(--border);">
+
+      <!-- Dark full -->
+      <div class="logo-cell" style="background: #07090f; flex-direction: column; gap: 1.5rem;">
+        <span class="logo-cell-label">Versión Principal — Dark</span>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <svg width="56" height="56" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g-d1" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#818cf8"/>
+                <stop offset="100%" stop-color="#6366f1"/>
+              </linearGradient>
+            </defs>
+            <circle cx="34" cy="34" r="30" stroke="url(#g-d1)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.7rem; letter-spacing:-0.02em; color:#f0f2f8; line-height:1; text-transform:uppercase;">Enigma</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.22em; color:var(--indigo2); text-transform:uppercase; margin-top:3px;">Developers</div>
+          </div>
+        </div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.7rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase;">Beyond the obvious</div>
+      </div>
+
+      <!-- Light full -->
+      <div class="logo-cell" style="background: #f4f5f9; flex-direction: column; gap: 1.5rem;">
+        <span class="logo-cell-label" style="color:#9ca3af;">Versión Principal — Light</span>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <svg width="56" height="56" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g-l1" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#4f46e5"/>
+              </linearGradient>
+            </defs>
+            <circle cx="34" cy="34" r="30" stroke="url(#g-l1)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#6366f1"/>
+          </svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.7rem; letter-spacing:-0.02em; color:#0d0f18; line-height:1; text-transform:uppercase;">Enigma</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.22em; color:#6366f1; text-transform:uppercase; margin-top:3px;">Developers</div>
+          </div>
+        </div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.7rem; color:#9ca3af; letter-spacing:0.15em; text-transform:uppercase;">Beyond the obvious</div>
+      </div>
+
+      <!-- Isotipo solo dark -->
+      <div class="logo-cell" style="background: #07090f;">
+        <span class="logo-cell-label">Isotipo Solo — Dark</span>
+        <svg width="72" height="72" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g-ds2" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#818cf8"/>
+              <stop offset="100%" stop-color="#6366f1"/>
+            </linearGradient>
+          </defs>
+          <circle cx="34" cy="34" r="30" stroke="url(#g-ds2)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+          <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/>
+          <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+        </svg>
+      </div>
+
+      <!-- Isotipo solo light -->
+      <div class="logo-cell" style="background: #f4f5f9;">
+        <span class="logo-cell-label" style="color:#9ca3af;">Isotipo Solo — Light</span>
+        <svg width="72" height="72" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+          <circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/>
+          <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="58" cy="22" r="3" fill="#6366f1"/>
+        </svg>
+      </div>
+
+    </div>
+
+    <!-- DESCARGAS -->
+    <div class="card" style="margin-top: 1px;">
+      <div class="card-label">Archivos Descargables</div>
+      <div class="card-title">Assets del Logo</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:10px; margin-top:1.5rem;" id="download-grid">
+
+        <!-- Dark full SVG -->
+        <button onclick="downloadSVG('dark-full')" style="background:var(--surface2); border:1px solid var(--border); padding:1rem 1.2rem; border-radius:4px; cursor:pointer; display:flex; flex-direction:column; gap:0.6rem; align-items:flex-start; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/></svg>
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:#f0f2f8;">Logo Dark</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.08em;">SVG · COMPLETO</span>
+          <span style="font-family:'Space Mono',monospace; font-size:0.5rem; color:var(--muted2);">↓ Descargar</span>
+        </button>
+
+        <!-- Light full SVG -->
+        <button onclick="downloadSVG('light-full')" style="background:#f4f5f9; border:1px solid #d1d5db; padding:1rem 1.2rem; border-radius:4px; cursor:pointer; display:flex; flex-direction:column; gap:0.6rem; align-items:flex-start; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#d1d5db'">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/></svg>
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:#0d0f18;">Logo Light</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; letter-spacing:0.08em;">SVG · COMPLETO</span>
+          <span style="font-family:'Space Mono',monospace; font-size:0.5rem; color:#9ca3af;">↓ Descargar</span>
+        </button>
+
+        <!-- Isotipo solo dark -->
+        <button onclick="downloadSVG('isotipo-dark')" style="background:var(--surface2); border:1px solid var(--border); padding:1rem 1.2rem; border-radius:4px; cursor:pointer; display:flex; flex-direction:column; gap:0.6rem; align-items:flex-start; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/><line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#a5b4fc"/></svg>
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:#f0f2f8;">Isotipo Dark</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.08em;">SVG · SOLO</span>
+          <span style="font-family:'Space Mono',monospace; font-size:0.5rem; color:var(--muted2);">↓ Descargar</span>
+        </button>
+
+        <!-- Isotipo solo light -->
+        <button onclick="downloadSVG('isotipo-light')" style="background:#f4f5f9; border:1px solid #d1d5db; padding:1rem 1.2rem; border-radius:4px; cursor:pointer; display:flex; flex-direction:column; gap:0.6rem; align-items:flex-start; transition:border-color 0.2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#d1d5db'">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/><line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#6366f1"/></svg>
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:#0d0f18;">Isotipo Light</span>
+          </div>
+          <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; letter-spacing:0.08em;">SVG · SOLO</span>
+          <span style="font-family:'Space Mono',monospace; font-size:0.5rem; color:#9ca3af;">↓ Descargar</span>
+        </button>
+
+      </div>
+    </div>
+
+    <script>
+    const svgAssets = {
+      'dark-full': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 68" width="280" height="68">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- Isotipo -->
+  <circle cx="34" cy="34" r="30" stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5" fill="none"/>
+  <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55" fill="none"/>
+  <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+  <!-- Wordmark -->
+  <text x="82" y="44" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#f0f2f8" letter-spacing="-1">ENIGMA</text>
+  <text x="82" y="58" font-family="monospace" font-size="9" fill="#6366f1" letter-spacing="4">DEVELOPERS</text>
+</svg>`,
+      'light-full': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 68" width="280" height="68">
+  <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5" fill="none"/>
+  <circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4" fill="none"/>
+  <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="58" cy="22" r="3" fill="#6366f1"/>
+  <text x="82" y="44" font-family="Arial Black, sans-serif" font-weight="900" font-size="28" fill="#0d0f18" letter-spacing="-1">ENIGMA</text>
+  <text x="82" y="58" font-family="monospace" font-size="9" fill="#6366f1" letter-spacing="4">DEVELOPERS</text>
+</svg>`,
+      'isotipo-dark': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="34" cy="34" r="30" stroke="url(#g2)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5" fill="none"/>
+  <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55" fill="none"/>
+  <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+</svg>`,
+      'isotipo-light': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 68" width="68" height="68">
+  <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5" fill="none"/>
+  <circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4" fill="none"/>
+  <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="58" cy="22" r="3" fill="#6366f1"/>
+</svg>`
+    };
+
+    function downloadSVG(id) {
+      const svg = svgAssets[id];
+      const blob = new Blob([svg], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `enigma-${id}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    </script>
+
+    <!-- AREA DE RESPETO -->
+    <div class="card" style="margin-top: 1px;">
+      <div class="card-label">Área de Respeto</div>
+      <div class="card-title">Espacio mínimo alrededor del logo</div>
+      <div class="card-body" style="margin-top: 0.5rem;">
+        Siempre mantener un área libre equivalente a la <strong style="color:var(--indigo2)">altura de la "E"</strong> del isotipo en todos los lados. Nunca colocar elementos visuales, texto u otros logos dentro de esta zona.
+      </div>
+      <div style="margin-top:2rem; display:flex; align-items:center; justify-content:center; padding:2rem; background:var(--surface2); border:1px dashed rgba(99,102,241,0.2);">
+        <div style="position:relative; padding:24px; border:1px dashed rgba(99,102,241,0.4);">
+          <svg width="48" height="48" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+          <div style="position:absolute; top:4px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:0.5rem; color:rgba(99,102,241,0.6);">x</div>
+          <div style="position:absolute; left:4px; top:50%; transform:translateY(-50%); font-family:'Space Mono',monospace; font-size:0.5rem; color:rgba(99,102,241,0.6);">x</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">04 — Paleta de Colores</div>
+
+<!-- ══════════════════════════════════════
+     COLORES
+══════════════════════════════════════ -->
+<section id="colores">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Paleta de<br><span>Colores</span></h2>
+    </div>
+
+    <!-- PRIMARY -->
+    <div style="margin-bottom:1px;">
+      <div class="card-label" style="padding: 0 0 1rem 0;">Colores Primarios</div>
+      <div class="card-grid grid-3">
+        <div>
+          <div class="color-block" style="background:#6366f1;">
+            <div class="color-info">
+              <div class="color-name">Indigo Core</div>
+              <div class="color-hex">#6366F1 · RGB 99, 102, 241</div>
+            </div>
+          </div>
+          <div class="card" style="border-top:3px solid #6366f1;">
+            <div class="card-label">Color Principal</div>
+            <div class="card-body">El corazón de la marca. Usado en el isotipo, CTAs, elementos de énfasis y links. Transmite inteligencia y tecnología.</div>
+          </div>
+        </div>
+        <div>
+          <div class="color-block" style="background:#07090f;">
+            <div class="color-info">
+              <div class="color-name">Void Dark</div>
+              <div class="color-hex">#07090F · RGB 7, 9, 15</div>
+            </div>
+          </div>
+          <div class="card" style="border-top:3px solid #1a1d2e;">
+            <div class="card-label">Fondo Principal</div>
+            <div class="card-body">El negro profundo que da profundidad a la marca. No es negro puro — tiene un tono azul-índigo que conecta con la paleta.</div>
+          </div>
+        </div>
+        <div>
+          <div class="color-block" style="background:#f4f5f9; border:1px solid var(--border);">
+            <div class="color-info" style="background:rgba(0,0,0,0.06);">
+              <div class="color-name" style="color:#0d0f18;">Off White</div>
+              <div class="color-hex" style="color:rgba(0,0,0,0.4);">#F4F5F9 · RGB 244, 245, 249</div>
+            </div>
+          </div>
+          <div class="card" style="border-top:3px solid #e5e7f0;">
+            <div class="card-label">Fondo Light</div>
+            <div class="card-body">Blanco ligeramente frío. Úsalo en versiones light del logo y fondos de documentos. Nunca blanco puro (#ffffff).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECONDARY -->
+    <div style="margin-top: 2rem; margin-bottom:1px;">
+      <div class="card-label" style="padding: 0 0 1rem 0;">Colores Secundarios</div>
+      <div class="card-grid" style="grid-template-columns: repeat(4,1fr);">
+        <div>
+          <div class="color-block" style="background:#818cf8; height:100px;"></div>
+          <div class="card" style="padding:1rem;">
+            <div class="color-name" style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:var(--white);">Indigo Light</div>
+            <div class="color-hex" style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">#818CF8</div>
+          </div>
+        </div>
+        <div>
+          <div class="color-block" style="background:#a5b4fc; height:100px;"></div>
+          <div class="card" style="padding:1rem;">
+            <div class="color-name" style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:var(--white);">Indigo Soft</div>
+            <div class="color-hex" style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">#A5B4FC</div>
+          </div>
+        </div>
+        <div>
+          <div class="color-block" style="background:#4f46e5; height:100px;"></div>
+          <div class="card" style="padding:1rem;">
+            <div class="color-name" style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:var(--white);">Indigo Deep</div>
+            <div class="color-hex" style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">#4F46E5</div>
+          </div>
+        </div>
+        <div>
+          <div class="color-block" style="background:#0c0f1a; height:100px; border:1px solid var(--border);"></div>
+          <div class="card" style="padding:1rem;">
+            <div class="color-name" style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:var(--white);">Surface</div>
+            <div class="color-hex" style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">#0C0F1A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- USAGE RULES -->
+    <div class="card" style="margin-top:1px;">
+      <div class="card-label">Reglas de Uso de Color</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:1rem; background:var(--border);">
+        <div style="background:var(--surface2); padding:1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; color:var(--indigo2); margin-bottom:0.5rem; font-size:0.85rem;">✓ Correcto</div>
+          <ul style="font-size:0.8rem; color:var(--muted); line-height:2; list-style:none;">
+            <li>→ Indigo Core sobre Void Dark</li>
+            <li>→ Off White sobre Void Dark</li>
+            <li>→ Indigo Core sobre Off White</li>
+            <li>→ Gradiente Indigo Deep → Indigo Light para énfasis</li>
+          </ul>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; color:#f87171; margin-bottom:0.5rem; font-size:0.85rem;">✗ Incorrecto</div>
+          <ul style="font-size:0.8rem; color:var(--muted); line-height:2; list-style:none;">
+            <li>→ Nunca blanco puro #ffffff como fondo</li>
+            <li>→ Nunca negro puro #000000</li>
+            <li>→ Nunca mezclar con colores fuera de la paleta</li>
+            <li>→ Nunca Indigo Light sobre blanco (bajo contraste)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">05 — Sistema Tipográfico</div>
+
+<!-- ══════════════════════════════════════
+     TIPOGRAFÍA
+══════════════════════════════════════ -->
+<section id="tipografia">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Sistema<br><span>Tipográfico</span></h2>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        SYNE<br>Display · Bold<br>Títulos y Headlines<br>
+        <span style="color:var(--indigo); margin-top:4px; display:block;">google.com/fonts</span>
+      </div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.5rem,6vw,5rem); letter-spacing:-0.04em; color:var(--white); line-height:0.9;">Beyond<br>the Obvious</div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        SPACE MONO<br>Monospace · Regular<br>Labels, código, datos<br>
+        <span style="color:var(--indigo); margin-top:4px; display:block;">google.com/fonts</span>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace; font-size:1.2rem; color:var(--indigo2); letter-spacing:0.05em;">αἴνιγμα · 01 — Decode</div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--muted); letter-spacing:0.12em; margin-top:0.5rem;">ENIGMA DEVELOPERS · BEYOND THE OBVIOUS</div>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        DM SANS<br>Sans Serif · Regular<br>Body, UI, párrafos<br>
+        <span style="color:var(--indigo); margin-top:4px; display:block;">google.com/fonts</span>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:1.05rem; color:var(--text); line-height:1.7; max-width:500px;">Transformamos los procesos más complejos de tu empresa en soluciones digitales claras, eficientes y escalables. Descifrar el caos operativo y convertirlo en ventaja competitiva real.</div>
+      </div>
+    </div>
+
+    <!-- JERARQUÍA -->
+    <div class="card" style="margin-top:2rem;">
+      <div class="card-label">Jerarquía Tipográfica</div>
+      <div style="padding: 1.5rem 0; display:flex; flex-direction:column; gap:1.5rem;">
+        <div style="display:grid; grid-template-columns:120px 1fr; gap:1rem; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid var(--border);">
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">H1 · Syne 800<br>48–80px · -4%</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:2.5rem; letter-spacing:-0.04em; color:var(--white);">Headline</div>
+        </div>
+        <div style="display:grid; grid-template-columns:120px 1fr; gap:1rem; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid var(--border);">
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">H2 · Syne 700<br>28–40px · -2%</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.8rem; letter-spacing:-0.02em; color:var(--white);">Sección Title</div>
+        </div>
+        <div style="display:grid; grid-template-columns:120px 1fr; gap:1rem; align-items:center; padding-bottom:1.5rem; border-bottom:1px solid var(--border);">
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">Label · Mono<br>10–12px · +15%</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; color:var(--indigo2); text-transform:uppercase;">ETIQUETA DE SECCIÓN</div>
+        </div>
+        <div style="display:grid; grid-template-columns:120px 1fr; gap:1rem; align-items:center;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted);">Body · DM Sans<br>14–16px · normal</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--muted); line-height:1.7;">Texto de cuerpo para párrafos, descripciones y contenido largo. Legible y neutro, da descanso visual al sistema.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">06 — Tono de Voz &amp; Personalidad</div>
+
+<!-- ══════════════════════════════════════
+     TONO DE VOZ
+══════════════════════════════════════ -->
+<section id="voz">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Tono de Voz<br><span>&amp; Personalidad</span></h2>
+    </div>
+
+    <div class="card" style="margin-bottom:1px;">
+      <div class="card-label">Personalidad de Marca</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:1rem; background:var(--border);">
+        <div style="background:var(--surface2); padding:1.5rem; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">🧠</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.4rem;">Inteligente</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.5;">Habla con precisión. Sin relleno. Cada palabra tiene propósito.</div>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">⚡</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.4rem;">Directo</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.5;">Sin rodeos. Va al punto. Respeta el tiempo del interlocutor.</div>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">🔍</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.4rem;">Curioso</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.5;">Hace preguntas que nadie más hace. Busca el problema real, no el síntoma.</div>
+        </div>
+        <div style="background:var(--surface2); padding:1.5rem; text-align:center;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">🤝</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; color:var(--white); margin-bottom:0.4rem;">Confiable</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.5;">Promete lo que puede cumplir. La confianza se construye con hechos.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÍ / NO -->
+    <div class="card-label" style="padding: 2rem 0 1rem 0;">Cómo habla Enigma Developers</div>
+    <div class="voice-row">
+      <div class="voice-cell" style="background:#0a1a12;">
+        <div class="voice-tag" style="color:#4ade80;">✓ SÍ decimos</div>
+        <div class="voice-text" style="color:#d1fae5;">"Identificamos el problema real en tu operación y construimos la solución exacta."</div>
+      </div>
+      <div class="voice-cell" style="background:#1a0a0a;">
+        <div class="voice-tag" style="color:#f87171;">✗ NO decimos</div>
+        <div class="voice-text" style="color:#fecaca;">"Somos apasionados por la tecnología y ofrecemos soluciones innovadoras de vanguardia para potenciar tu empresa."</div>
+      </div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-cell" style="background:#0a1a12;">
+        <div class="voice-tag" style="color:#4ade80;">✓ SÍ decimos</div>
+        <div class="voice-text" style="color:#d1fae5;">"Tu ERP no está roto. Tu proceso sí. Lo mapeamos, lo rediseñamos y lo automatizamos."</div>
+      </div>
+      <div class="voice-cell" style="background:#1a0a0a;">
+        <div class="voice-tag" style="color:#f87171;">✗ NO decimos</div>
+        <div class="voice-text" style="color:#fecaca;">"¡Transformamos digitalmente tu negocio con las mejores prácticas del mercado y un equipo comprometido!"</div>
+      </div>
+    </div>
+    <div class="voice-row">
+      <div class="voice-cell" style="background:#0a1a12;">
+        <div class="voice-tag" style="color:#4ade80;">✓ SÍ decimos</div>
+        <div class="voice-text" style="color:#d1fae5;">"Beyond the obvious — encontramos lo que otros no ven."</div>
+      </div>
+      <div class="voice-cell" style="background:#1a0a0a;">
+        <div class="voice-tag" style="color:#f87171;">✗ NO decimos</div>
+        <div class="voice-text" style="color:#fecaca;">"¡Somos tu aliado estratégico en la era de la transformación digital 4.0!"</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">07 — Usos Correctos e Incorrectos</div>
+
+<!-- ══════════════════════════════════════
+     USOS
+══════════════════════════════════════ -->
+<section id="usos">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Usos<br><span>del Logo</span></h2>
+    </div>
+
+    <div class="dont-grid">
+      <!-- Don't 1 -->
+      <div class="dont-cell">
+        <span class="dont-badge badge-no">✗ No hacer</span>
+        <div class="dont-preview" style="background:#ff6b35; border-radius:8px;">
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:white;">ENIGMA</div>
+        </div>
+        <div class="dont-desc">Nunca usar el logo sobre fondos con colores fuera de la paleta de marca. Solo sobre Void Dark, Off White o Indigo Core.</div>
+      </div>
+      <!-- Don't 2 -->
+      <div class="dont-cell">
+        <span class="dont-badge badge-no">✗ No hacer</span>
+        <div class="dont-preview" style="background:var(--surface2);">
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:var(--text); transform:rotate(-15deg);">ENIGMA</div>
+        </div>
+        <div class="dont-desc">Nunca rotar, inclinar o distorsionar el logotipo. Siempre horizontal y en su proporción original.</div>
+      </div>
+      <!-- Don't 3 -->
+      <div class="dont-cell">
+        <span class="dont-badge badge-no">✗ No hacer</span>
+        <div class="dont-preview" style="background:var(--surface2);">
+          <div style="font-family:'Arial',sans-serif; font-weight:800; font-size:1.4rem; color:var(--indigo2);">ENIGMA</div>
+        </div>
+        <div class="dont-desc">Nunca reescribir el nombre en otra tipografía. El logotipo es un archivo gráfico, no texto editable.</div>
+      </div>
+      <!-- Don't 4 -->
+      <div class="dont-cell">
+        <span class="dont-badge badge-no">✗ No hacer</span>
+        <div class="dont-preview" style="background:var(--surface2);">
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; background:linear-gradient(90deg,#f59e0b,#ef4444); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">ENIGMA</div>
+        </div>
+        <div class="dont-desc">Nunca aplicar gradientes, sombras o efectos al logotipo fuera del sistema de color oficial.</div>
+      </div>
+      <!-- Don't 5 -->
+      <div class="dont-cell">
+        <span class="dont-badge badge-no">✗ No hacer</span>
+        <div class="dont-preview" style="background:var(--surface2);">
+          <div style="font-family:'Syne',sans-serif; font-weight:200; font-size:1.4rem; color:rgba(99,102,241,0.3);">ENIGMA</div>
+        </div>
+        <div class="dont-desc">Nunca usar el logo con opacidad reducida sobre fondos. Si necesitas jerarquía, usa tamaño, no transparencia.</div>
+      </div>
+      <!-- Do -->
+      <div class="dont-cell" style="background:#080f10;">
+        <span class="dont-badge badge-yes">✓ Correcto</span>
+        <div class="dont-preview" style="background:#07090f; border-radius:8px; border:1px solid rgba(99,102,241,0.2);">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="28" height="28" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+            </svg>
+            <span style="font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; color:#f0f2f8; text-transform:uppercase;">Enigma</span>
+          </div>
+        </div>
+        <div class="dont-desc" style="color:#6ee7b7;">Logo completo sobre fondo Void Dark con paleta oficial. Limpio, legible y correcto.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="page-marker">08 — Aplicaciones de Marca</div>
+
+<!-- ══════════════════════════════════════
+     APLICACIONES
+══════════════════════════════════════ -->
+<section id="aplicaciones">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Aplicaciones<br><span>de Marca</span></h2>
+    </div>
+
+    <!-- REDES SOCIALES -->
+    <div class="card-label" style="padding: 0 0 1.5rem 0;">Redes Sociales · Perfil &amp; Cover</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-bottom:1px;">
+
+      <!-- LinkedIn Profile -->
+      <div style="background:var(--surface2); padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+        <div class="card-label">LinkedIn · Foto de Perfil</div>
+        <div style="display:flex; justify-content:center;">
+          <div style="width:100px; height:100px; border-radius:50%; background:#07090f; border:3px solid #6366f1; display:flex; align-items:center; justify-content:center;">
+            <svg width="52" height="52" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+            </svg>
+          </div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted); text-align:center;">Isotipo centrado · fondo Void Dark<br>400×400px mínimo</div>
+      </div>
+
+      <!-- LinkedIn Cover -->
+      <div style="background:var(--surface2); padding:2rem; display:flex; flex-direction:column; gap:1rem; grid-column: span 2;">
+        <div class="card-label">LinkedIn · Portada / Cover</div>
+        <div style="width:100%; height:120px; background:linear-gradient(135deg, #07090f 0%, #0c0f1a 60%, #111525 100%); border-radius:6px; display:flex; align-items:center; justify-content:space-between; padding:1.5rem 2.5rem; position:relative; overflow:hidden; border:1px solid var(--border);">
+          <!-- Rings decoration -->
+          <div style="position:absolute; right:-20px; top:50%; transform:translateY(-50%); opacity:0.08;">
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+              <circle cx="100" cy="100" r="90" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="8 6"/>
+              <circle cx="100" cy="100" r="65" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8"/>
+              <circle cx="100" cy="100" r="40" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 6"/>
+            </svg>
+          </div>
+
+          <!-- LEFT: isotipo + wordmark con jerarquía correcta -->
+          <div style="display:flex; align-items:center; gap:16px;">
+            <svg width="44" height="44" viewBox="0 0 68 68" fill="none" style="flex-shrink:0;">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+            </svg>
+            <div>
+              <!-- ENIGMA: protagonista -->
+              <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.6rem; color:#f0f2f8; letter-spacing:-0.03em; line-height:1; text-transform:uppercase;">ENIGMA</div>
+              <!-- developers pequeño + separador + beyond the obvious -->
+              <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.2em; text-transform:uppercase;">DEVELOPERS</span>
+                <span style="width:1px; height:10px; background:rgba(99,102,241,0.35); display:inline-block;"></span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase;">Beyond the obvious</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: servicios -->
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted2); text-align:right; line-height:1.9; position:relative; z-index:1;">
+            Digital Transformation<br>ERP · Automation · AI
+          </div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted);">1584×396px · Fondo Void Dark con anillos decorativos</div>
+      </div>
+    </div>
+
+    <!-- LINKEDIN PERSONAL BANNER -->
+    <div class="card-label" style="padding: 2rem 0 1.5rem 0;">LinkedIn · Banner Personal — Colaboradores</div>
+    <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+
+      <!-- BANNER MOCKUP: solo marca, sin nombre -->
+      <div id="banner-marca" style="width:100%; height:150px; border-radius:6px; position:relative; overflow:hidden; border:1px solid var(--border);">
+        <!-- Fondo -->
+        <div style="position:absolute; inset:0; background:linear-gradient(135deg, #07090f 0%, #0c0f1a 45%, #101525 100%);"></div>
+
+        <!-- Anillos decorativos izquierda -->
+        <div style="position:absolute; left:-60px; top:50%; transform:translateY(-50%); opacity:0.06;">
+          <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
+            <circle cx="140" cy="140" r="128" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="10 7"/>
+            <circle cx="140" cy="140" r="96" stroke="#818cf8" stroke-width="1" stroke-dasharray="5 9"/>
+            <circle cx="140" cy="140" r="64" stroke="#6366f1" stroke-width="1" stroke-dasharray="3 6"/>
+            <circle cx="140" cy="140" r="32" stroke="#818cf8" stroke-width="1"/>
+          </svg>
+        </div>
+
+        <!-- Anillos decorativos derecha (espejo) -->
+        <div style="position:absolute; right:-60px; top:50%; transform:translateY(-50%); opacity:0.04;">
+          <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+            <circle cx="110" cy="110" r="100" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="8 6"/>
+            <circle cx="110" cy="110" r="70" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8"/>
+          </svg>
+        </div>
+
+        <!-- Línea accent superior -->
+        <div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent, #6366f1 20%, #818cf8 60%, transparent);"></div>
+        <!-- Línea accent inferior sutil -->
+        <div style="position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, rgba(99,102,241,0.3) 30%, transparent);"></div>
+
+        <!-- CONTENIDO: centrado y jerárquico -->
+        <div style="position:relative; z-index:1; height:100%; display:flex; align-items:center; justify-content:center; gap:28px;">
+
+          <!-- Isotipo grande -->
+          <svg width="52" height="52" viewBox="0 0 68 68" fill="none" style="flex-shrink:0;">
+            <defs>
+              <linearGradient id="bn-g" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#a5b4fc"/>
+                <stop offset="100%" stop-color="#6366f1"/>
+              </linearGradient>
+            </defs>
+            <circle cx="34" cy="34" r="30" stroke="url(#bn-g)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+
+          <!-- Separador vertical -->
+          <div style="width:1px; height:48px; background:rgba(99,102,241,0.3);"></div>
+
+          <!-- Wordmark jerárquico -->
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:2rem; color:#f0f2f8; letter-spacing:-0.03em; line-height:1; text-transform:uppercase;">ENIGMA</div>
+            <div style="display:flex; align-items:center; gap:8px; margin-top:5px;">
+              <span style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo2); letter-spacing:0.25em; text-transform:uppercase;">DEVELOPERS</span>
+              <span style="width:1px; height:10px; background:rgba(99,102,241,0.35); display:inline-block;"></span>
+              <span style="font-family:'Space Mono',monospace; font-size:0.58rem; color:#4b5563; letter-spacing:0.12em; text-transform:uppercase;">Beyond the obvious</span>
+            </div>
+            <div style="margin-top:8px; font-family:'Space Mono',monospace; font-size:0.5rem; color:#374151; letter-spacing:0.1em; text-transform:uppercase;">enigmasac.com</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;">
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;"><strong style="color:var(--indigo2);">Uso:</strong> Banner único para todos los colaboradores. Sin nombre personal — la marca es el protagonista.</div>
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;"><strong style="color:var(--indigo2);">Dimensiones:</strong> 1584×396px · Fondo oscuro obligatorio · No alterar jerarquía ni posición.</div>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <button onclick="downloadBanner('banner-marca', 'enigma-banner-marca.png')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:10px 20px; border-radius:2px; cursor:pointer;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar Banner — 1584×396px</button>
+      </div>
+    </div>
+
+
+    <!-- BANNER VARIANTE: FRASE INSPIRACIONAL -->
+    <div class="card-label" style="padding: 2rem 0 1.5rem 0;">LinkedIn · Banner Variante — Frase Inspiracional</div>
+    <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+
+      <div id="banner-frase" style="width:100%; aspect-ratio:4/1; border-radius:6px; position:relative; overflow:hidden; border:1px solid var(--border);">
+        <div style="position:absolute; inset:0; background:#13141a;"></div>
+        <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);"></div>
+
+        <!-- Dots top-right -->
+        <div style="position:absolute; top:12%; right:4%; display:grid; grid-template-columns:repeat(5,6px); gap:6px;">
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.5);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.5);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.5);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.5);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.5);display:block;"></span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.35);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.35);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.35);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.35);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.35);display:block;"></span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.2);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.2);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.2);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.2);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.2);display:block;"></span>
+          <span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.1);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.1);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.1);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.1);display:block;"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(99,102,241,0.1);display:block;"></span>
+        </div>
+
+        <!-- Contenido -->
+        <div style="position:relative; z-index:1; height:100%; display:flex; align-items:center; padding: 0 18% 0 18%;">
+          <div>
+            <div style="font-family:'DM Serif Display',serif; font-size:clamp(14px,2vw,26px); color:#6366f1; line-height:1; margin-bottom:0.2em;">"</div>
+            <div style="font-family:'DM Serif Display',serif; font-style:italic; font-size:clamp(10px,1.3vw,17px); color:#e8eaf2; line-height:1.55; margin-bottom:0.8em;">
+              A computer deserves to be called <span style="color:#818cf8; font-style:italic;">intelligent</span><br>
+              if it succeeds in making a person believe it is human.
+            </div>
+            <div style="width:24px; height:2px; background:#4338ca; border-radius:1px; margin-bottom:0.6em;"></div>
+            <div style="font-family:'Syne',sans-serif; font-size:clamp(8px,0.8vw,11px); color:#6b7280;">
+              — <strong style="color:#9ca3af; font-weight:600;">Alan Turing</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enigma mark -->
+        <div style="position:absolute; bottom:10%; right:3%; display:flex; align-items:center; gap:5px; opacity:0.45;">
+          <svg width="14" height="14" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(6px,0.65vw,9px); color:#818cf8; letter-spacing:0.1em; text-transform:uppercase;">Enigma Developers</span>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;">
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;"><strong style="color:var(--indigo2);">Uso:</strong> Banner opcional para colaboradores. La frase es del autor, el isotipo es la firma de la empresa. No incluir nombre personal.</div>
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;"><strong style="color:var(--indigo2);">Dimensiones:</strong> 1584×396px · Fondo oscuro obligatorio · El trabajador se identifica con su foto de perfil circular.</div>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <button onclick="downloadBanner('banner-frase', 'enigma-banner-frase-turing.png')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:10px 20px; border-radius:2px; cursor:pointer;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar Banner — 1584×396px</button>
+      </div>
+    </div>
+
+    <!-- FOTO DE PERFIL -->
+    <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Foto de Perfil — LinkedIn &amp; WhatsApp</div>
+    <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+      <div style="display:flex; gap:2.5rem; align-items:flex-start; flex-wrap:wrap;">
+
+        <!-- Variante 1: Ring Indigo -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+          <div style="width:110px; height:110px; border-radius:50%; background:linear-gradient(135deg,#0c0f1a,#111525); box-shadow:0 0 0 3px #6366f1, 0 0 0 6px rgba(99,102,241,0.15); flex-shrink:0; overflow:hidden;">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" width="110" height="110">
+              <!-- bg -->
+              <rect width="110" height="110" fill="#0c0f1a"/>
+              <!-- subtle grid -->
+              <line x1="0" y1="55" x2="110" y2="55" stroke="rgba(99,102,241,0.06)" stroke-width="1"/>
+              <line x1="55" y1="0" x2="55" y2="110" stroke="rgba(99,102,241,0.06)" stroke-width="1"/>
+              <!-- neck -->
+              <rect x="43" y="75" width="24" height="20" fill="#c9956a" rx="2"/>
+              <!-- shirt -->
+              <ellipse cx="55" cy="106" rx="40" ry="18" fill="#1a1e35"/>
+              <!-- collar -->
+              <polygon points="49,78 55,88 61,78" fill="#e8e4d0"/>
+              <polygon points="49,78 44,100 55,88" fill="#d8d4c0"/>
+              <polygon points="61,78 66,100 55,88" fill="#c8c4b0"/>
+              <!-- head -->
+              <ellipse cx="55" cy="52" rx="26" ry="28" fill="#d4956a"/>
+              <!-- side shadows -->
+              <ellipse cx="31" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.35"/>
+              <ellipse cx="79" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.35"/>
+              <!-- hair - dark, parted 1940s -->
+              <ellipse cx="55" cy="27" rx="26" ry="13" fill="#2e2010"/>
+              <path d="M29 33 Q34 22 55 20 Q76 22 81 33 Q72 17 55 16 Q38 17 29 33Z" fill="#1e1008"/>
+              <!-- ears -->
+              <ellipse cx="29" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="81" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="29" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <ellipse cx="81" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <!-- whites of eyes -->
+              <ellipse cx="44" cy="51" rx="5.5" ry="4" fill="white"/>
+              <ellipse cx="66" cy="51" rx="5.5" ry="4" fill="white"/>
+              <!-- irises -->
+              <circle cx="45" cy="51" r="3.2" fill="#5c3d1e"/>
+              <circle cx="67" cy="51" r="3.2" fill="#5c3d1e"/>
+              <!-- pupils -->
+              <circle cx="45.5" cy="50.5" r="1.8" fill="#150800"/>
+              <circle cx="67.5" cy="50.5" r="1.8" fill="#150800"/>
+              <!-- shine -->
+              <circle cx="46.5" cy="49.5" r="0.9" fill="white"/>
+              <circle cx="68.5" cy="49.5" r="0.9" fill="white"/>
+              <!-- eyebrows -->
+              <path d="M38 45 Q44 43 50 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M60 45 Q66 43 72 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <!-- nose -->
+              <path d="M55 57 Q52 62 50 64 Q55 66 60 64 Q58 62 55 57Z" fill="#b87848"/>
+              <!-- mouth - thoughtful slight smile -->
+              <path d="M48 70 Q55 74 62 70" stroke="#9a6040" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <!-- glasses - indigo tinted to match brand -->
+              <circle cx="44" cy="51" r="8" fill="none" stroke="#818cf8" stroke-width="1.4" opacity="0.9"/>
+              <circle cx="66" cy="51" r="8" fill="none" stroke="#818cf8" stroke-width="1.4" opacity="0.9"/>
+              <line x1="52" y1="51" x2="58" y2="51" stroke="#818cf8" stroke-width="1.2" opacity="0.9"/>
+              <line x1="36" y1="50" x2="29" y2="51" stroke="#818cf8" stroke-width="1.2" opacity="0.9"/>
+              <line x1="74" y1="50" x2="81" y2="51" stroke="#818cf8" stroke-width="1.2" opacity="0.9"/>
+              <!-- slight lens tint -->
+              <circle cx="44" cy="51" r="7" fill="rgba(99,102,241,0.06)"/>
+              <circle cx="66" cy="51" r="7" fill="rgba(99,102,241,0.06)"/>
+              <!-- name tag bottom -->
+              <rect x="0" y="95" width="110" height="15" fill="rgba(99,102,241,0.15)"/>
+              <text x="55" y="105" font-family="'Space Mono',monospace" font-size="7" fill="#818cf8" text-anchor="middle" letter-spacing="1">ALAN TURING</text>
+            </svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:var(--white);">Ring Indigo</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--indigo2); margin-top:2px;">RECOMENDADO</div>
+          </div>
+        </div>
+
+        <!-- Variante 2: Glow -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+          <div style="width:110px; height:110px; border-radius:50%; background:linear-gradient(135deg,#0c0f1a,#0e1128); box-shadow:0 0 0 3px #4f46e5, 0 0 24px rgba(99,102,241,0.4); flex-shrink:0; overflow:hidden;">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" width="110" height="110">
+              <rect width="110" height="110" fill="#0c0f1a"/>
+              <line x1="0" y1="55" x2="110" y2="55" stroke="rgba(99,102,241,0.06)" stroke-width="1"/>
+              <line x1="55" y1="0" x2="55" y2="110" stroke="rgba(99,102,241,0.06)" stroke-width="1"/>
+              <rect x="43" y="75" width="24" height="20" fill="#c9956a" rx="2"/>
+              <ellipse cx="55" cy="106" rx="40" ry="18" fill="#1a1e35"/>
+              <polygon points="49,78 55,88 61,78" fill="#e8e4d0"/>
+              <polygon points="49,78 44,100 55,88" fill="#d8d4c0"/>
+              <polygon points="61,78 66,100 55,88" fill="#c8c4b0"/>
+              <ellipse cx="55" cy="52" rx="26" ry="28" fill="#d4956a"/>
+              <ellipse cx="31" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.35"/>
+              <ellipse cx="79" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.35"/>
+              <ellipse cx="55" cy="27" rx="26" ry="13" fill="#2e2010"/>
+              <path d="M29 33 Q34 22 55 20 Q76 22 81 33 Q72 17 55 16 Q38 17 29 33Z" fill="#1e1008"/>
+              <ellipse cx="29" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="81" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="29" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <ellipse cx="81" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <ellipse cx="44" cy="51" rx="5.5" ry="4" fill="white"/>
+              <ellipse cx="66" cy="51" rx="5.5" ry="4" fill="white"/>
+              <circle cx="45" cy="51" r="3.2" fill="#5c3d1e"/>
+              <circle cx="67" cy="51" r="3.2" fill="#5c3d1e"/>
+              <circle cx="45.5" cy="50.5" r="1.8" fill="#150800"/>
+              <circle cx="67.5" cy="50.5" r="1.8" fill="#150800"/>
+              <circle cx="46.5" cy="49.5" r="0.9" fill="white"/>
+              <circle cx="68.5" cy="49.5" r="0.9" fill="white"/>
+              <path d="M38 45 Q44 43 50 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M60 45 Q66 43 72 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M55 57 Q52 62 50 64 Q55 66 60 64 Q58 62 55 57Z" fill="#b87848"/>
+              <path d="M48 70 Q55 74 62 70" stroke="#9a6040" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <circle cx="44" cy="51" r="8" fill="none" stroke="#a5b4fc" stroke-width="1.4" opacity="0.9"/>
+              <circle cx="66" cy="51" r="8" fill="none" stroke="#a5b4fc" stroke-width="1.4" opacity="0.9"/>
+              <line x1="52" y1="51" x2="58" y2="51" stroke="#a5b4fc" stroke-width="1.2" opacity="0.9"/>
+              <line x1="36" y1="50" x2="29" y2="51" stroke="#a5b4fc" stroke-width="1.2" opacity="0.9"/>
+              <line x1="74" y1="50" x2="81" y2="51" stroke="#a5b4fc" stroke-width="1.2" opacity="0.9"/>
+              <circle cx="44" cy="51" r="7" fill="rgba(99,102,241,0.08)"/>
+              <circle cx="66" cy="51" r="7" fill="rgba(99,102,241,0.08)"/>
+              <rect x="0" y="95" width="110" height="15" fill="rgba(99,102,241,0.15)"/>
+              <text x="55" y="105" font-family="'Space Mono',monospace" font-size="7" fill="#818cf8" text-anchor="middle" letter-spacing="1">ALAN TURING</text>
+            </svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:var(--white);">Glow Premium</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted); margin-top:2px;">ALTERNATIVO</div>
+          </div>
+        </div>
+
+        <!-- Variante 3: Light -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+          <div style="width:110px; height:110px; border-radius:50%; background:#f4f5f9; box-shadow:0 0 0 3px #6366f1, 0 0 0 6px rgba(99,102,241,0.1); flex-shrink:0; overflow:hidden;">
+            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" width="110" height="110">
+              <rect width="110" height="110" fill="#f4f5f9"/>
+              <rect x="43" y="75" width="24" height="20" fill="#c9956a" rx="2"/>
+              <ellipse cx="55" cy="106" rx="40" ry="18" fill="#e8eaf6"/>
+              <polygon points="49,78 55,88 61,78" fill="#f0ece0"/>
+              <polygon points="49,78 44,100 55,88" fill="#e0dcd0"/>
+              <polygon points="61,78 66,100 55,88" fill="#d0ccbc"/>
+              <ellipse cx="55" cy="52" rx="26" ry="28" fill="#d4956a"/>
+              <ellipse cx="31" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.3"/>
+              <ellipse cx="79" cy="54" rx="7" ry="13" fill="#b87848" opacity="0.3"/>
+              <ellipse cx="55" cy="27" rx="26" ry="13" fill="#2e2010"/>
+              <path d="M29 33 Q34 22 55 20 Q76 22 81 33 Q72 17 55 16 Q38 17 29 33Z" fill="#1e1008"/>
+              <ellipse cx="29" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="81" cy="53" rx="4.5" ry="6" fill="#c9906a"/>
+              <ellipse cx="29" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <ellipse cx="81" cy="53" rx="2.5" ry="4" fill="#b87858"/>
+              <ellipse cx="44" cy="51" rx="5.5" ry="4" fill="white"/>
+              <ellipse cx="66" cy="51" rx="5.5" ry="4" fill="white"/>
+              <circle cx="45" cy="51" r="3.2" fill="#5c3d1e"/>
+              <circle cx="67" cy="51" r="3.2" fill="#5c3d1e"/>
+              <circle cx="45.5" cy="50.5" r="1.8" fill="#150800"/>
+              <circle cx="67.5" cy="50.5" r="1.8" fill="#150800"/>
+              <circle cx="46.5" cy="49.5" r="0.9" fill="white"/>
+              <circle cx="68.5" cy="49.5" r="0.9" fill="white"/>
+              <path d="M38 45 Q44 43 50 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M60 45 Q66 43 72 45" stroke="#2a1508" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <path d="M55 57 Q52 62 50 64 Q55 66 60 64 Q58 62 55 57Z" fill="#b87848"/>
+              <path d="M48 70 Q55 74 62 70" stroke="#9a6040" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <circle cx="44" cy="51" r="8" fill="none" stroke="#6366f1" stroke-width="1.4" opacity="0.9"/>
+              <circle cx="66" cy="51" r="8" fill="none" stroke="#6366f1" stroke-width="1.4" opacity="0.9"/>
+              <line x1="52" y1="51" x2="58" y2="51" stroke="#6366f1" stroke-width="1.2" opacity="0.9"/>
+              <line x1="36" y1="50" x2="29" y2="51" stroke="#6366f1" stroke-width="1.2" opacity="0.9"/>
+              <line x1="74" y1="50" x2="81" y2="51" stroke="#6366f1" stroke-width="1.2" opacity="0.9"/>
+              <circle cx="44" cy="51" r="7" fill="rgba(99,102,241,0.05)"/>
+              <circle cx="66" cy="51" r="7" fill="rgba(99,102,241,0.05)"/>
+              <rect x="0" y="95" width="110" height="15" fill="rgba(99,102,241,0.12)"/>
+              <text x="55" y="105" font-family="'Space Mono',monospace" font-size="7" fill="#4f46e5" text-anchor="middle" letter-spacing="1">ALAN TURING</text>
+            </svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.75rem; color:var(--white);">Light</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted); margin-top:2px;">FONDO CLARO</div>
+          </div>
+        </div>
+
+        <!-- Regla -->
+        <div style="flex:1; min-width:200px; border-left:2px solid rgba(99,102,241,0.3); padding-left:1.5rem; align-self:center;">
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.75rem;">REGLA DE EQUIPO</div>
+          <div style="font-size:0.8rem; color:var(--muted); line-height:1.7;">Todos los colaboradores usan <strong style="color:var(--text);">borde indigo</strong> en su foto de perfil. Crea identidad cohesionada cuando el equipo aparece junto en búsquedas de LinkedIn.<br><br>Formato circular · 400×400px mínimo · Fondo neutro o de marca.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DESCARGA DE ASSETS -->
+    <div class="card-label" style="padding: 2rem 0 1.5rem 0;">↓ Descarga de Assets</div>
+    <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1px; background:var(--border);">
+
+        <!-- Isotipo Dark -->
+        <div style="background:var(--surface); padding:1.5rem; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+          <div style="width:72px; height:72px; background:#07090f; border-radius:6px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+            </svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white); margin-bottom:3px;">Isotipo Dark</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted);">SVG · transparente</div>
+          </div>
+          <button onclick="downloadSVG('dark')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:7px 14px; border-radius:2px; cursor:pointer; width:100%;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar</button>
+        </div>
+
+        <!-- Isotipo Light -->
+        <div style="background:var(--surface); padding:1.5rem; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+          <div style="width:72px; height:72px; background:#f4f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+            <svg width="44" height="44" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#6366f1"/>
+            </svg>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white); margin-bottom:3px;">Isotipo Light</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted);">SVG · transparente</div>
+          </div>
+          <button onclick="downloadSVG('light')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:7px 14px; border-radius:2px; cursor:pointer; width:100%;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar</button>
+        </div>
+
+        <!-- Logo Full Dark -->
+        <div style="background:var(--surface); padding:1.5rem; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+          <div style="width:72px; height:72px; background:#07090f; border-radius:6px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px;">
+            <svg width="24" height="24" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:0.5rem; color:#f0f2f8; letter-spacing:0.05em;">ENIGMA</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white); margin-bottom:3px;">Logo Completo Dark</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted);">SVG · horizontal</div>
+          </div>
+          <button onclick="downloadSVG('full-dark')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:7px 14px; border-radius:2px; cursor:pointer; width:100%;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar</button>
+        </div>
+
+        <!-- Logo Full Light -->
+        <div style="background:var(--surface); padding:1.5rem; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+          <div style="width:72px; height:72px; background:#f4f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:4px;">
+            <svg width="24" height="24" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:0.5rem; color:#0d0f18; letter-spacing:0.05em;">ENIGMA</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white); margin-bottom:3px;">Logo Completo Light</div>
+            <div style="font-family:'Space Mono',monospace; font-size:0.52rem; color:var(--muted);">SVG · horizontal</div>
+          </div>
+          <button onclick="downloadSVG('full-light')" style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; background:rgba(99,102,241,0.1); color:var(--indigo2); border:1px solid rgba(99,102,241,0.3); padding:7px 14px; border-radius:2px; cursor:pointer; width:100%;" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">↓ Descargar</button>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    function downloadSVG(type) {
+      const svgs = {
+        'dark': `<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#818cf8"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs><circle cx="34" cy="34" r="30" stroke="url(#g)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/><line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#a5b4fc"/></svg>`,
+        'light': `<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/><line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#6366f1"/></svg>`,
+        'full-dark': `<svg width="280" height="68" viewBox="0 0 280 68" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="68" y2="68" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#818cf8"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs><circle cx="34" cy="34" r="30" stroke="url(#g)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.55"/><line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#a5b4fc"/><text x="82" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-1" fill="#f0f2f8">ENIGMA</text><text x="83" y="56" font-family="Courier New,monospace" font-size="9" letter-spacing="3" fill="#6366f1">DEVELOPERS</text></svg>`,
+        'full-light': `<svg width="280" height="68" viewBox="0 0 280 68" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/><circle cx="34" cy="34" r="20" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.4"/><line x1="26" y1="22" x2="40" y2="22" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="34" x2="36" y2="34" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="46" x2="40" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><line x1="26" y1="22" x2="26" y2="46" stroke="#0d0f18" stroke-width="3.5" stroke-linecap="round"/><circle cx="58" cy="22" r="3" fill="#6366f1"/><text x="82" y="40" font-family="Arial Black,sans-serif" font-weight="900" font-size="28" letter-spacing="-1" fill="#0d0f18">ENIGMA</text><text x="83" y="56" font-family="Courier New,monospace" font-size="9" letter-spacing="3" fill="#6366f1">DEVELOPERS</text></svg>`
+      };
+      const names = { 'dark':'enigma-isotipo-dark.svg', 'light':'enigma-isotipo-light.svg', 'full-dark':'enigma-logo-dark.svg', 'full-light':'enigma-logo-light.svg' };
+      const blob = new Blob([svgs[type]], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = names[type]; a.click();
+      URL.revokeObjectURL(url);
+    }
+    </script>
+
+    <!-- EMAIL SIGNATURE -->
+    <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Firma de Email</div>
+    <div style="background:var(--surface); border:1px solid var(--border); padding:2rem; border-radius:4px; margin-bottom:2rem;">
+      <div style="display:flex; gap:1.5rem; align-items:flex-start; flex-wrap:wrap;">
+        <div style="width:2px; background:var(--indigo); align-self:stretch; flex-shrink:0;"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; color:var(--white);">Santiago [Apellido]</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:0.8rem; color:var(--indigo2); margin-top:2px;">IT Business Partner &amp; Founder</div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:8px;">
+            <svg width="22" height="22" viewBox="0 0 68 68" fill="none">
+              <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+              <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+              <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+            </svg>
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:0.9rem; color:var(--white); text-transform:uppercase; letter-spacing:-0.01em; line-height:1;">ENIGMA</div>
+              <div style="font-family:'Space Mono',monospace; font-size:0.5rem; color:var(--indigo2); letter-spacing:0.2em; text-transform:uppercase; margin-top:2px;">DEVELOPERS</div>
+            </div>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--muted); margin-top:4px; letter-spacing:0.05em;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfb7bab3b3b09fbab1b6b8b2beacbebcf1bcb0b2">[email&#160;protected]</a> · enigmasac.com</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE APP ICON -->
+    <div class="card-label" style="padding: 0 0 1.5rem 0;">App Icon &amp; Favicon</div>
+    <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:flex-end; margin-bottom:2rem;">
+      <div style="text-align:center;">
+        <div style="width:80px; height:80px; border-radius:18px; background:#07090f; border:2px solid rgba(99,102,241,0.3); display:flex; align-items:center; justify-content:center;">
+          <svg width="52" height="52" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); margin-top:8px;">1024×1024px</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:48px; height:48px; border-radius:10px; background:#07090f; border:1px solid rgba(99,102,241,0.3); display:flex; align-items:center; justify-content:center;">
+          <svg width="32" height="32" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+          </svg>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); margin-top:8px;">180×180px</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:32px; height:32px; border-radius:6px; background:#07090f; border:1px solid rgba(99,102,241,0.3); display:flex; align-items:center; justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="4" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+            <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="5" stroke-linecap="round"/>
+            <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="5" stroke-linecap="round"/>
+            <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="5" stroke-linecap="round"/>
+            <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); margin-top:8px;">Favicon 32px</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WEB — ARQUITECTURA DE SUPERFICIES
+══════════════════════════════════════ -->
+<section id="web">
+  <div class="section-inner">
+  <div class="section-label">07 — Arquitectura Web</div>
+  <div class="section-title">Diseño Web</div>
+  <div class="section-desc">La web de Enigma combina fondos oscuros para impacto con superficies claras con tinte indigo para legibilidad y confianza. El hero y CTA siempre oscuros — las secciones de contenido respiran con grises lila que conectan con la paleta de marca.</div>
+
+  <!-- PALETA DE SUPERFICIES -->
+  <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Escala de Superficies</div>
+  <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+    <!-- Label oscuro/claro -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); margin-bottom:1px;">
+      <div style="background:var(--surface2); padding:0.5rem 1rem; font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo); letter-spacing:0.12em; text-transform:uppercase;">◼ Fondos oscuros — Hero, CTA, estructura</div>
+      <div style="background:#e8eaf0; padding:0.5rem 1rem; font-family:'Space Mono',monospace; font-size:0.55rem; color:#4f46e5; letter-spacing:0.12em; text-transform:uppercase;">◻ Fondos claros — Contenido, servicios, legibilidad</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr) 4px repeat(4,1fr); gap:1px; background:var(--border); border-radius:3px; overflow:hidden; margin-bottom:1.5rem;">
+
+      <!-- Void -->
+      <div style="background:var(--surface2); padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#07090f; border:1px solid rgba(255,255,255,0.04);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white);">Void</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); margin-top:2px;">#07090F</div>
+          <div style="font-size:0.7rem; color:var(--muted); margin-top:6px; line-height:1.5;">Hero · Footer · CTA. Máximo impacto, mínimo uso.</div>
+        </div>
+      </div>
+
+      <!-- Base -->
+      <div style="background:var(--surface2); padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#0c0f1a; border:1px solid rgba(255,255,255,0.05);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white);">Base</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); margin-top:2px;">#0C0F1A</div>
+          <div style="font-size:0.7rem; color:var(--muted); margin-top:6px; line-height:1.5;">Fondo base del sitio. Nav y secciones de transición.</div>
+        </div>
+      </div>
+
+      <!-- Card dark -->
+      <div style="background:var(--surface2); padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#111525; border:1px solid rgba(99,102,241,0.12);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:var(--white);">Card Dark</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); margin-top:2px;">#111525</div>
+          <div style="font-size:0.7rem; color:var(--muted); margin-top:6px; line-height:1.5;">Cards y paneles sobre fondo oscuro.</div>
+        </div>
+      </div>
+
+      <!-- Separador visual -->
+      <div style="background:linear-gradient(180deg, rgba(99,102,241,0.0), rgba(99,102,241,0.4) 50%, rgba(99,102,241,0.0));"></div>
+
+      <!-- Stats Light -->
+      <div style="background:#f0f1f8; padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#EBEBF8; border:1px solid rgba(99,102,241,0.15);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:#1e1b4b;">Stats Lila</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; margin-top:2px;">#EBEBF8</div>
+          <div style="font-size:0.7rem; color:#6b7280; margin-top:6px; line-height:1.5;">Sección de métricas y números. Primer quiebre claro.</div>
+        </div>
+      </div>
+
+      <!-- Content Light -->
+      <div style="background:#f0f1f8; padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#F3F4FC; border:1px solid rgba(99,102,241,0.12);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:#1e1b4b;">Content</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; margin-top:2px;">#F3F4FC</div>
+          <div style="font-size:0.7rem; color:#6b7280; margin-top:6px; line-height:1.5;">Servicios, planes, testimonios. Máxima legibilidad.</div>
+        </div>
+      </div>
+
+      <!-- Card Light -->
+      <div style="background:#f0f1f8; padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#FAFAFF; border:1px solid rgba(99,102,241,0.15); box-shadow:0 2px 8px rgba(99,102,241,0.08);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:#1e1b4b;">Card Light</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; margin-top:2px;">#FAFAFF</div>
+          <div style="font-size:0.7rem; color:#6b7280; margin-top:6px; line-height:1.5;">Cards sobre fondo claro. Flotan con sombra sutil indigo.</div>
+        </div>
+      </div>
+
+      <!-- Texto oscuro sobre claro -->
+      <div style="background:#f0f1f8; padding:1.5rem 1rem; display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="width:100%; aspect-ratio:3/2; border-radius:3px; background:#0f0c29; border:1px solid rgba(99,102,241,0.2);"></div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; color:#1e1b4b;">Texto en claro</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1; margin-top:2px;">#0F0C29</div>
+          <div style="font-size:0.7rem; color:#6b7280; margin-top:6px; line-height:1.5;">Títulos H2 y H3 sobre fondos claros. Nunca negro puro.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Regla de uso -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border);">
+      <div style="background:var(--surface2); padding:1rem 1.25rem; border-left:2px solid rgba(99,102,241,0.4);">
+        <div style="font-size:0.72rem; color:var(--muted); line-height:1.7;"><strong style="color:var(--text);">Regla crítica:</strong> Nunca dos secciones con el mismo fondo seguidas. El ojo necesita puntos de referencia para separar bloques de contenido.</div>
+      </div>
+      <div style="background:#f0f1f8; padding:1rem 1.25rem; border-left:2px solid rgba(99,102,241,0.4);">
+        <div style="font-size:0.72rem; color:#6b7280; line-height:1.7;"><strong style="color:#1e1b4b;">En secciones claras:</strong> títulos en <span style="color:#0f0c29; font-weight:600;">#0F0C29</span>, body en <span style="color:#6b7280; font-weight:600;">#6B7280</span>, accents siempre en <span style="color:#6366f1; font-weight:600;">#6366f1</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGLA DE ALTERNANCIA -->
+  <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Regla de Alternancia — Estructura de Página</div>
+  <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+
+      <!-- Mapa visual de la alternancia -->
+      <div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:1rem;">ESTRUCTURA CORRECTA ✓</div>
+        <div style="display:flex; flex-direction:column; gap:2px; border-radius:4px; overflow:hidden; border:1px solid var(--border);">
+
+          <div style="background:#07090f; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#f0f2f8;">Hero / Navbar</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:rgba(99,102,241,0.6);">#07090F · Void ◼</span>
+          </div>
+
+          <div style="background:#EBEBF8; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#1e1b4b;">Stats / Métricas</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1;">#EBEBF8 · Stats Lila ◻</span>
+          </div>
+
+          <div style="background:#07090f; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#f0f2f8;">El Problema</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:rgba(99,102,241,0.6);">#07090F · Void ◼</span>
+          </div>
+
+          <div style="background:#F3F4FC; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#1e1b4b;">Servicios</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1;">#F3F4FC · Content ◻</span>
+          </div>
+
+          <div style="background:#07090f; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#f0f2f8;">Planes / Precios</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:rgba(99,102,241,0.6);">#07090F · Void ◼</span>
+          </div>
+
+          <div style="background:#F3F4FC; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#1e1b4b;">Testimonios</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:#6366f1;">#F3F4FC · Content ◻</span>
+          </div>
+
+          <div style="background:#07090f; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#f0f2f8;">CTA Final</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:rgba(99,102,241,0.6);">#07090F · Void ◼</span>
+          </div>
+
+          <div style="background:#070810; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; color:#6b7280;">Footer</span>
+            <span style="font-family:'Space Mono',monospace; font-size:0.55rem; color:rgba(99,102,241,0.4);">#070810 · Void+ ◼</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Reglas escritas -->
+      <div style="display:flex; flex-direction:column; gap:1.25rem;">
+
+        <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.25rem;">PRINCIPIOS</div>
+
+        <div style="border-left:2px solid rgba(99,102,241,0.4); padding-left:1rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem; color:var(--white); margin-bottom:4px;">01 · Nunca dos iguales seguidos</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">Dos secciones con el mismo fondo se fusionan visualmente. El usuario pierde la noción de dónde empieza y termina cada bloque de contenido.</div>
+        </div>
+
+        <div style="border-left:2px solid rgba(99,102,241,0.4); padding-left:1rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem; color:var(--white); margin-bottom:4px;">02 · Void solo para momentos de impacto</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">El negro más puro (#07090F) es para el hero, el CTA principal y el footer. Usarlo en secciones de contenido mata su poder.</div>
+        </div>
+
+        <div style="border-left:2px solid rgba(99,102,241,0.4); padding-left:1rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem; color:var(--white); margin-bottom:4px;">03 · Depth es el comodín</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">El azul muy oscuro (#0A0D1F) es el quiebre visual que le da personalidad tech a la marca. Úsalo cada 2-3 secciones para romper la monotonía sin salirte del mood oscuro.</div>
+        </div>
+
+        <div style="border-left:2px solid rgba(239,68,68,0.4); padding-left:1rem;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.82rem; color:#f87171; margin-bottom:4px;">✗ El error más común</div>
+          <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">Usar #07090F en todas las secciones. La web se siente como un bloque sólido negro sin respiro — el contenido se pierde y el usuario se cansa rápido.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SEPARADORES DE SECCIÓN -->
+  <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Separadores y Transiciones</div>
+  <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+
+      <!-- Línea accent -->
+      <div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo2); letter-spacing:0.1em; margin-bottom:0.75rem;">LÍNEA ACCENT</div>
+        <div style="background:#0c0f1a; padding:1.5rem; border-radius:3px; border:1px solid var(--border);">
+          <div style="height:1px; background:linear-gradient(90deg, transparent, #6366f1 30%, #818cf8 60%, transparent); margin-bottom:1.5rem;"></div>
+          <div style="font-size:0.7rem; color:var(--muted); line-height:1.6;">Separador entre secciones de alto contraste. Refuerza la identidad indigo sin ser intrusivo.</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo); margin-top:0.75rem;">background: linear-gradient(90deg, transparent, #6366f1, #818cf8, transparent)</div>
+        </div>
+      </div>
+
+      <!-- Glow sutil -->
+      <div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo2); letter-spacing:0.1em; margin-bottom:0.75rem;">GLOW DE SECCIÓN</div>
+        <div style="background:#0c0f1a; padding:1.5rem; border-radius:3px; border:1px solid var(--border); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:60%; height:80px; background:radial-gradient(ellipse at top, rgba(99,102,241,0.12), transparent); pointer-events:none;"></div>
+          <div style="position:relative; font-size:0.7rem; color:var(--muted); line-height:1.6; margin-top:2rem;">Efecto de luz cenital al inicio de secciones importantes. Suave, nunca dominante.</div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo); margin-top:0.75rem;">radial-gradient(ellipse at top, rgba(99,102,241,0.12), transparent)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ANATOMÍA DE CARD -->
+  <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Anatomía de Card Web</div>
+  <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+
+      <!-- Card ejemplo -->
+      <div style="background:#111525; border:1px solid rgba(99,102,241,0.12); border-radius:4px; padding:1.75rem; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, #6366f1, #818cf8, transparent);"></div>
+        <div style="width:40px; height:40px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:3px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#818cf8" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+        </div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; color:#f0f2f8; margin-bottom:0.5rem;">Desarrollo Web</div>
+        <div style="font-size:0.78rem; color:#6b7280; line-height:1.65; margin-bottom:1.25rem;">Sitios y aplicaciones a medida. Desde landing pages hasta sistemas complejos integrados con tus herramientas.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:#6366f1; letter-spacing:0.05em;">VER MÁS →</div>
+      </div>
+
+      <!-- Anotaciones -->
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.25rem;">ANATOMÍA</div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#6366f1; flex-shrink:0; margin-top:1px;">01</span>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:600; font-size:0.75rem; color:var(--white);">Línea accent superior</div>
+            <div style="font-size:0.7rem; color:var(--muted); line-height:1.5;">2px en degradado indigo. Identifica la tarjeta como elemento Enigma.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#6366f1; flex-shrink:0; margin-top:1px;">02</span>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:600; font-size:0.75rem; color:var(--white);">Ícono en caja</div>
+            <div style="font-size:0.7rem; color:var(--muted); line-height:1.5;">Fondo indigo al 10%, borde al 20%. Nunca ícono flotante sin contenedor.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#6366f1; flex-shrink:0; margin-top:1px;">03</span>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:600; font-size:0.75rem; color:var(--white);">Fondo #111525 · Surface</div>
+            <div style="font-size:0.7rem; color:var(--muted); line-height:1.5;">Las cards siempre deben verse elevadas sobre su sección contenedora.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#6366f1; flex-shrink:0; margin-top:1px;">04</span>
+          <div>
+            <div style="font-family:'Syne',sans-serif; font-weight:600; font-size:0.75rem; color:var(--white);">Borde rgba(99,102,241,0.12)</div>
+            <div style="font-size:0.7rem; color:var(--muted); line-height:1.5;">Visible pero nunca dominante. En hover sube a 0.3 de opacidad.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOGRAFÍA WEB -->
+  <div class="card-label" style="padding: 2rem 0 1.5rem 0;">Jerarquía Tipográfica en Web</div>
+  <div style="background:var(--surface2); padding:2rem; margin-bottom:1px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border);">
+
+      <div style="background:var(--surface); padding:1.5rem; border-radius:0;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.15em; margin-bottom:0.5rem;">EYEBROW — SYNE 700 · 0.65rem · TRACKING 0.2em · INDIGO</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.65rem; color:#6366f1; letter-spacing:0.2em; text-transform:uppercase;">SERVICIOS</div>
+      </div>
+
+      <div style="background:var(--surface); padding:1.5rem;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.15em; margin-bottom:0.5rem;">H1 HERO — SYNE 800 · 4–6rem · BLANCO</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:2rem; color:#f0f2f8; line-height:1.05; letter-spacing:-0.03em;">Todo lo que<br><span style="color:#818cf8;">necesitas</span></div>
+      </div>
+
+      <div style="background:var(--surface); padding:1.5rem;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.15em; margin-bottom:0.5rem;">H2 SECCIÓN — SYNE 700 · 2–3rem · BLANCO</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.4rem; color:#f0f2f8; line-height:1.15; letter-spacing:-0.02em;">El área IT completa<br>de tu empresa</div>
+      </div>
+
+      <div style="background:var(--surface); padding:1.5rem;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.15em; margin-bottom:0.5rem;">BODY — DM SANS 400 · 1rem · GRIS MEDIO</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.85rem; color:#9ca3af; line-height:1.7;">Desarrollo web, servidores, ciberseguridad, automatización e inteligencia artificial. Todo lo que necesitas para competir con tecnología.</div>
+      </div>
+
+    </div>
+    <div style="margin-top:1rem; border-left:2px solid rgba(99,102,241,0.3); padding-left:1rem; font-size:0.75rem; color:var(--muted); line-height:1.7;">
+      <strong style="color:var(--text);">El acento indigo en tipografía</strong> siempre recae sobre la palabra clave de la frase — nunca en más de 2-3 palabras seguidas. Demasiado acento = ningún acento.
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--surface); border-top:1px solid var(--border); padding:3rem 4rem; max-width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; position:relative; z-index:1;">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <svg width="28" height="28" viewBox="0 0 68 68" fill="none">
+      <circle cx="34" cy="34" r="30" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="170 20" stroke-dashoffset="-5"/>
+      <circle cx="34" cy="34" r="20" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="108 18" stroke-dashoffset="20" opacity="0.5"/>
+      <line x1="26" y1="22" x2="40" y2="22" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="26" y1="34" x2="36" y2="34" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="26" y1="46" x2="40" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="26" y1="22" x2="26" y2="46" stroke="#f0f2f8" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="58" cy="22" r="3" fill="#a5b4fc"/>
+    </svg>
+    <div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:0.9rem; color:var(--white); text-transform:uppercase;">Enigma Developers</div>
+      <div style="font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--indigo2); letter-spacing:0.15em;">BEYOND THE OBVIOUS</div>
+    </div>
+  </div>
+  <div style="font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--muted2); text-align:right; line-height:1.8;">
+    Brand Identity M
