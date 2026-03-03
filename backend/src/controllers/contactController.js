@@ -5,9 +5,9 @@ import { sendEmail } from "../mail.js";
 const contactSchema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email().max(200),
-  phone: z.string().max(30).optional().default(""),
+  phone: z.string().min(6).max(30),
   company: z.string().max(200).optional().default(""),
-  message: z.string().min(10).max(5000),
+  message: z.string().max(5000).optional().default(""),
 });
 
 export async function submitContact(req, res) {

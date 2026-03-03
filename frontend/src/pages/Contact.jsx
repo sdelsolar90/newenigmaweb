@@ -3,9 +3,16 @@ import { motion } from "motion/react";
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
 
+const PREFIXES = [
+  { code: "+51", country: "PE", flag: "🇵🇪" },
+  { code: "+34", country: "ES", flag: "🇪🇸" },
+  { code: "+1", country: "US", flag: "🇺🇸" },
+];
+
 const INITIAL_FORM = {
   name: "",
   email: "",
+  prefix: "+51",
   phone: "",
   company: "",
   message: "",
@@ -31,6 +38,39 @@ function InputField({ label, name, type = "text", required = false, value, onCha
   );
 }
 
+function PhoneField({ prefix, phone, onPrefixChange, onPhoneChange }) {
+  return (
+    <div>
+      <label htmlFor="phone" className="block font-body text-sm font-medium text-cream mb-1.5">
+        Teléfono <span className="text-red">*</span>
+      </label>
+      <div className="flex">
+        <select
+          value={prefix}
+          onChange={onPrefixChange}
+          className="shrink-0 w-[5.5rem] px-2 py-3 border border-line border-r-0 bg-carbon3 font-mono text-sm text-cream focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200 appearance-none cursor-pointer"
+        >
+          {PREFIXES.map((p) => (
+            <option key={p.code} value={p.code}>
+              {p.flag} {p.code}
+            </option>
+          ))}
+        </select>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={onPhoneChange}
+          required
+          placeholder="959 561 015"
+          className="flex-1 min-w-0 px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream placeholder:text-cream2/50 focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState("idle");
@@ -47,10 +87,17 @@ export default function Contact() {
 
     try {
       const endpoint = form.type === "diagnosis" ? "/leads" : "/contact";
+      const payload = {
+        name: form.name,
+        email: form.email,
+        phone: `${form.prefix} ${form.phone}`,
+        company: form.company,
+        message: form.message,
+      };
       const res = await fetch(`${API_URL}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
@@ -64,6 +111,8 @@ export default function Contact() {
       setErrorMsg(err.message || "Error de conexión");
     }
   }
+
+  const isDiagnosis = form.type === "diagnosis";
 
   return (
     <>
@@ -108,7 +157,7 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 onSubmit={handleSubmit}
-                className="bg-carbon2 border border-line p-8"
+                className="bg-carbon2 border border-line p-6 sm:p-8"
               >
                 <div className="flex gap-2 mb-8 p-1 bg-carbon3 border border-line">
                   <button
@@ -126,7 +175,7 @@ export default function Contact() {
                     type="button"
                     onClick={() => setForm((p) => ({ ...p, type: "diagnosis" }))}
                     className={`flex-1 py-2.5 font-body text-sm font-medium transition-all duration-200 ${
-                      form.type === "diagnosis"
+                      isDiagnosis
                         ? "bg-red text-cream"
                         : "text-cream2 hover:text-cream"
                     }`}
@@ -138,14 +187,19 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <InputField label="Nombre" name="name" required value={form.name} onChange={handleChange} />
                   <InputField label="Email" name="email" type="email" required value={form.email} onChange={handleChange} />
-                  <InputField label="Teléfono" name="phone" type="tel" value={form.phone} onChange={handleChange} />
+                  <PhoneField
+                    prefix={form.prefix}
+                    phone={form.phone}
+                    onPrefixChange={(e) => setForm((p) => ({ ...p, prefix: e.target.value }))}
+                    onPhoneChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
+                  />
                   <InputField label="Empresa" name="company" value={form.company} onChange={handleChange} />
                 </div>
 
                 <div className="mt-5">
                   <label htmlFor="message" className="block font-body text-sm font-medium text-cream mb-1.5">
-                    {form.type === "diagnosis" ? "Cuéntanos sobre tu empresa y qué necesitas" : "Mensaje"}{" "}
-                    <span className="text-red">*</span>
+                    {isDiagnosis ? "Cuéntanos sobre tu empresa y qué necesitas" : "Mensaje (opcional)"}
+                    {isDiagnosis && <span className="text-red"> *</span>}
                   </label>
                   <textarea
                     id="message"
@@ -153,9 +207,9 @@ export default function Contact() {
                     rows="5"
                     value={form.message}
                     onChange={handleChange}
-                    required
-                    minLength={10}
-                    placeholder="Mínimo 10 caracteres"
+                    required={isDiagnosis}
+                    minLength={isDiagnosis ? 10 : undefined}
+                    placeholder={isDiagnosis ? "Mínimo 10 caracteres" : "Escribe tu mensaje aquí..."}
                     className="w-full px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream placeholder:text-cream2/50 focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200 resize-none"
                   />
                 </div>
@@ -170,7 +224,7 @@ export default function Contact() {
                       <div className="w-5 h-5 border-2 border-cream/30 border-t-cream rounded-full animate-spin" />
                       Enviando...
                     </>
-                  ) : form.type === "diagnosis" ? (
+                  ) : isDiagnosis ? (
                     "Solicitar diagnóstico"
                   ) : (
                     "Enviar mensaje"
@@ -183,7 +237,9 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 p-3 sm:p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-body text-center"
                   >
-                    Mensaje enviado correctamente. Te responderemos en menos de 24 horas.
+                    {isDiagnosis
+                      ? "Recibimos tu solicitud. Te contactaremos en menos de 24 horas."
+                      : "Mensaje enviado correctamente. Te responderemos en menos de 24 horas."}
                   </motion.div>
                 )}
 
