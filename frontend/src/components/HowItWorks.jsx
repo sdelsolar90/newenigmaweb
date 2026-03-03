@@ -1,5 +1,6 @@
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent, useInView } from "motion/react";
+import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 const STEPS = [
   {
@@ -34,7 +35,122 @@ const STEPS = [
   },
 ];
 
-function StepCard({ step, index }) {
+function DesktopStep({ step, index, progress }) {
+  const stepCount = STEPS.length;
+  const start = index / stepCount;
+  const mid = (index + 0.3) / stepCount;
+  const end = (index + 1) / stepCount;
+
+  const opacity = useTransform(progress, [start, mid, end], [0, 1, index === stepCount - 1 ? 1 : 0]);
+  const y = useTransform(progress, [start, mid, end], [40, 0, index === stepCount - 1 ? 0 : -20]);
+
+  const [decryptTrigger, setDecryptTrigger] = useState(false);
+  const { displayText } = useTextDecrypt(step.number, decryptTrigger, { interval: 50, stagger: 40 });
+
+  useMotionValueEvent(progress, "change", (v) => {
+    if (v >= start + 0.05 && !decryptTrigger) setDecryptTrigger(true);
+  });
+
+  const markerFill = useTransform(progress, [start, mid], [0, 1]);
+
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="absolute inset-0 flex items-center"
+    >
+      <div className="max-w-5xl mx-auto px-6 w-full grid grid-cols-[120px_1fr] gap-12 items-center">
+        <div className="text-right">
+          <span className="font-mono text-6xl text-red/30 leading-none">
+            {decryptTrigger ? displayText : step.number}
+          </span>
+        </div>
+        <div>
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 bg-red/10 text-red flex items-center justify-center shrink-0">
+              {step.icon}
+            </div>
+            <div>
+              <h3 className="font-heading text-2xl text-cream mb-3">{step.title}</h3>
+              <p className="font-body text-sm text-cream2 leading-relaxed max-w-lg">{step.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function DesktopHowItWorks() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
+
+  return (
+    <div ref={containerRef} className="h-[300vh] relative">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+        <motion.div
+          ref={headerRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 px-6"
+        >
+          <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
+            Cómo funciona
+          </span>
+          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight tracking-tight">
+            De cero a equipo IT{" "}
+            <em className="italic">en tres pasos</em>
+          </h2>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto w-full px-6 mb-12 relative">
+          <div className="h-0.5 bg-line w-full rounded-full relative">
+            <motion.div
+              className="absolute inset-y-0 left-0 bg-red rounded-full"
+              style={{ scaleX, transformOrigin: "left" }}
+            />
+          </div>
+          <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-0">
+            {STEPS.map((_, i) => {
+              const pos = (i + 0.5) / STEPS.length;
+              return (
+                <StepMarker key={i} progress={scrollYProgress} threshold={pos} style={{ left: `${pos * 100}%`, position: "absolute" }} />
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="relative flex-1">
+          {STEPS.map((step, i) => (
+            <DesktopStep key={step.number} step={step} index={i} progress={scrollYProgress} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function StepMarker({ progress, threshold, style }) {
+  const scale = useTransform(progress, [threshold - 0.1, threshold], [0.5, 1]);
+  const bg = useTransform(progress, [threshold - 0.1, threshold], ["#2A2A2C", "#C44A20"]);
+
+  return (
+    <motion.div
+      className="w-3 h-3 rounded-full -translate-x-1/2 -translate-y-1/2"
+      style={{ ...style, scale, backgroundColor: bg }}
+    />
+  );
+}
+
+function MobileStepCard({ step, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -44,28 +160,28 @@ function StepCard({ step, index }) {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className="relative bg-card-light border border-border-light shadow-sm shadow-indigo/5 p-8 h-full hover:border-indigo/30 hover:shadow-md hover:shadow-indigo/8 transition-all duration-300 group"
+      className="relative bg-carbon3 border border-line p-8 hover:border-red/20 transition-all duration-300 group"
     >
       <div className="flex items-center justify-between mb-6">
-        <span className="font-mono text-4xl font-bold text-indigo/20">
+        <span className="font-mono text-4xl text-red/20">
           {step.number}
         </span>
-        <div className="w-12 h-12 rounded-sm bg-indigo/10 text-indigo-light flex items-center justify-center group-hover:bg-indigo group-hover:text-off-white transition-all duration-300">
+        <div className="w-12 h-12 bg-red/10 text-red flex items-center justify-center group-hover:bg-red group-hover:text-cream transition-all duration-300">
           {step.icon}
         </div>
       </div>
-      <h3 className="font-heading text-xl font-bold text-text-dark mb-3">{step.title}</h3>
-      <p className="font-body text-sm text-muted leading-relaxed">{step.description}</p>
+      <h3 className="font-heading text-xl text-cream mb-3">{step.title}</h3>
+      <p className="font-body text-sm text-cream2 leading-relaxed">{step.description}</p>
     </motion.div>
   );
 }
 
-export default function HowItWorks() {
+function MobileHowItWorks() {
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 lg:py-32 bg-content">
+    <div className="py-24 bg-carbon2">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}
@@ -74,24 +190,41 @@ export default function HowItWorks() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <span className="font-heading font-bold text-[0.65rem] tracking-[0.2em] text-indigo uppercase">
+          <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
             Cómo funciona
           </span>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-[800] text-text-dark leading-tight tracking-tight">
+          <h2 className="mt-4 font-heading text-3xl sm:text-4xl text-cream leading-tight tracking-tight">
             De cero a equipo IT{" "}
-            <span className="text-indigo">en tres pasos</span>
+            <em className="italic">en tres pasos</em>
           </h2>
-          <p className="mt-5 text-lg text-muted font-body leading-relaxed">
+          <p className="mt-5 text-base text-cream2 font-body leading-relaxed">
             Un proceso simple y transparente. Sin contratos de permanencia, sin sorpresas.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-px bg-border-light">
+        <div className="grid gap-6">
           {STEPS.map((step, index) => (
-            <StepCard key={step.number} step={step} index={index} />
+            <MobileStepCard key={step.number} step={step} index={index} />
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function HowItWorks() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return (
+    <section className="bg-carbon2">
+      {isMobile ? <MobileHowItWorks /> : <DesktopHowItWorks />}
     </section>
   );
 }

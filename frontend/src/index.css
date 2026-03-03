@@ -1,31 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #07090f;
-  --color-surface: #0c0f1a;
-  --color-surface2: #111525;
-  --color-border: rgba(255, 255, 255, 0.07);
-  --color-text: #e8eaf0;
-  --color-muted: #6b7280;
-  --color-muted2: #374151;
-  --color-indigo: #6366f1;
-  --color-indigo-light: #818cf8;
-  --color-indigo-soft: #a5b4fc;
-  --color-indigo-deep: #4f46e5;
-  --color-off-white: #f4f5f9;
+  --color-carbon: #1C1C1E;
+  --color-carbon2: #242426;
+  --color-carbon3: #2C2C2E;
+  --color-cream: #F0EDE6;
+  --color-cream2: #B8B4AC;
+  --color-red: #C44A20;
+  --color-red2: #9A3A18;
+  --color-metal: #B8B0A4;
+  --color-line: #2A2A2C;
+  --color-nav: #141416;
 
-  --color-stats-lila: #ebebf8;
-  --color-content: #f3f4fc;
-  --color-card-light: #fafaff;
-  --color-text-dark: #0f0c29;
-  --color-border-light: rgba(99, 102, 241, 0.12);
-
-  --font-heading: "Syne", sans-serif;
+  --font-heading: "Playfair Display", serif;
   --font-body: "DM Sans", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-mono: "DM Mono", monospace;
 
   --animate-marquee-left: marquee-left 40s linear infinite;
   --animate-marquee-right: marquee-right 40s linear infinite;
+  --animate-rotor-spin: rotor-spin 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-rotor-idle: rotor-idle 20s linear infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
 }
 
 @keyframes marquee-left {
@@ -38,6 +33,21 @@
   to { transform: translateX(0); }
 }
 
+@keyframes rotor-spin {
+  from { transform: rotate(-180deg); opacity: 0; }
+  to { transform: rotate(0deg); opacity: 1; }
+}
+
+@keyframes rotor-idle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(196,74,32,0.2); }
+  50% { box-shadow: 0 0 40px rgba(196,74,32,0.4); }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -47,8 +57,9 @@
 
   body {
     font-family: var(--font-body);
-    color: var(--color-text);
-    background-color: var(--color-void);
+    font-weight: 300;
+    color: var(--color-cream);
+    background-color: var(--color-carbon);
   }
 
   h1,
@@ -58,5 +69,11 @@
   h5,
   h6 {
     font-family: var(--font-heading);
+    font-weight: 400;
   }
+}
+
+.group:hover .animate-marquee-left,
+.group:hover .animate-marquee-right {
+  animation-play-state: paused;
 }

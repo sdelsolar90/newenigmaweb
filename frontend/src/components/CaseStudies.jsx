@@ -1,5 +1,6 @@
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence, useInView } from "motion/react";
+import useCountUp from "../hooks/useCountUp.js";
 
 const TESTIMONIALS = [
   {
@@ -7,7 +8,8 @@ const TESTIMONIALS = [
     name: "Carlos Mendoza",
     role: "Director General",
     company: "Importaciones del Pacífico",
-    metric: "40%",
+    metricValue: 40,
+    metricSuffix: "%",
     metricLabel: "reducción en costos IT",
   },
   {
@@ -15,7 +17,8 @@ const TESTIMONIALS = [
     name: "María Elena Torres",
     role: "Gerente Comercial",
     company: "Clínica Dental Sonrisa",
-    metric: "70%",
+    metricValue: 70,
+    metricSuffix: "%",
     metricLabel: "consultas automatizadas",
   },
   {
@@ -23,56 +26,75 @@ const TESTIMONIALS = [
     name: "Roberto Álvarez",
     role: "CEO",
     company: "LegalTech Solutions",
-    metric: "12",
+    metricValue: 12,
+    metricSuffix: "",
     metricLabel: "vulnerabilidades corregidas",
   },
 ];
 
-function TestimonialCard({ testimonial, index }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-
+function MetricCounter({ value, suffix }) {
+  const countRef = useCountUp(value, { duration: 1500, suffix });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="relative bg-surface border border-border hover:border-indigo/20 hover:shadow-lg hover:shadow-indigo/5 transition-all duration-300 flex flex-col p-8"
+    <span
+      ref={countRef}
+      className="font-heading text-5xl md:text-7xl text-red tracking-tight"
     >
-      <div className="mb-6 flex items-center gap-4">
-        <div className="w-16 h-16 bg-indigo/10 border border-indigo/20 flex items-center justify-center">
-          <span className="font-heading text-2xl font-[800] tracking-tight text-indigo-light">{testimonial.metric}</span>
-        </div>
-        <div>
-          <span className="block font-mono text-[0.65rem] tracking-[0.15em] text-indigo uppercase">{testimonial.metricLabel}</span>
-        </div>
-      </div>
+      0
+    </span>
+  );
+}
 
-      <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-4 text-indigo/20">
-        <path d="M0 24V14.4C0 6.4 5.6 1.6 12.8 0l1.6 3.2C8.8 5.6 7.2 9.6 6.4 12H12v12H0zm18.4 0V14.4c0-8 5.6-12.8 12.8-14.4l1.6 3.2c-5.6 2.4-7.2 6.4-8 8.8h5.6v12H18.4z" fill="currentColor" />
+function ArrowButton({ direction, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="w-10 h-10 border border-line hover:border-red/40 flex items-center justify-center text-cream2 hover:text-red transition-all duration-200"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        {direction === "left" ? (
+          <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        ) : (
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        )}
       </svg>
-
-      <p className="font-body text-sm text-text leading-relaxed flex-1 mb-6">
-        {testimonial.quote}
-      </p>
-
-      <div className="pt-5 border-t border-border">
-        <span className="block font-heading text-sm font-[800] tracking-tight text-off-white">{testimonial.name}</span>
-        <span className="block font-body text-xs text-muted mt-0.5">
-          {testimonial.role} · {testimonial.company}
-        </span>
-      </div>
-    </motion.div>
+    </button>
   );
 }
 
 export default function CaseStudies() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isPaused = useRef(false);
+  const timerRef = useRef(null);
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
+  const current = TESTIMONIALS[activeIndex];
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      if (!isPaused.current) {
+        setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+      }
+    }, 6000);
+  }, []);
+
+  useEffect(() => {
+    resetTimer();
+    return () => clearInterval(timerRef.current);
+  }, [resetTimer]);
+
+  function goTo(i) {
+    setActiveIndex(i);
+    resetTimer();
+  }
+
   return (
-    <section className="py-24 lg:py-32 bg-void">
+    <section
+      className="py-24 lg:py-32 bg-carbon"
+      onMouseEnter={() => { isPaused.current = true; }}
+      onMouseLeave={() => { isPaused.current = false; }}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}
@@ -81,22 +103,72 @@ export default function CaseStudies() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-sm bg-indigo/10 font-heading font-bold text-[0.65rem] tracking-[0.2em] text-indigo uppercase mb-4">
+          <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
             Casos de éxito
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-[800] tracking-tight text-off-white leading-tight">
+          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl tracking-tight text-cream leading-tight">
             Empresas que ya tienen{" "}
-            <span className="text-indigo-light">su equipo IT con Enigma</span>
+            <em className="italic">su equipo IT con Enigma</em>
           </h2>
-          <p className="mt-5 text-lg text-muted font-body leading-relaxed">
-            Resultados reales de empresas que dejaron de improvisar con su tecnología.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-          {TESTIMONIALS.map((testimonial, index) => (
-            <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
-          ))}
+        <div className="max-w-5xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center bg-carbon2 border border-line p-8 md:p-12"
+            >
+              <div className="text-center md:text-left">
+                <MetricCounter key={`m-${activeIndex}`} value={current.metricValue} suffix={current.metricSuffix} />
+                <span className="block font-mono text-xs tracking-[0.15em] text-red uppercase mt-2">
+                  {current.metricLabel}
+                </span>
+              </div>
+
+              <div>
+                <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-4 text-red/10">
+                  <path d="M0 24V14.4C0 6.4 5.6 1.6 12.8 0l1.6 3.2C8.8 5.6 7.2 9.6 6.4 12H12v12H0zm18.4 0V14.4c0-8 5.6-12.8 12.8-14.4l1.6 3.2c-5.6 2.4-7.2 6.4-8 8.8h5.6v12H18.4z" fill="currentColor" />
+                </svg>
+                <p className="font-body text-base text-cream leading-relaxed mb-6">
+                  {current.quote}
+                </p>
+                <div className="pt-5 border-t border-line">
+                  <span className="block font-heading text-sm tracking-tight text-cream">{current.name}</span>
+                  <span className="block font-body text-xs text-cream2 mt-0.5">
+                    {current.role} · {current.company}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex items-center justify-between mt-8">
+            <div className="flex items-center gap-2">
+              {TESTIMONIALS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === activeIndex ? "bg-red w-6" : "bg-line hover:bg-cream2/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <ArrowButton
+                direction="left"
+                onClick={() => goTo((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+              />
+              <ArrowButton
+                direction="right"
+                onClick={() => goTo((activeIndex + 1) % TESTIMONIALS.length)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

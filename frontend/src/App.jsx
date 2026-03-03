@@ -18,7 +18,7 @@ const ComplaintBook = lazy(() => import("./pages/ComplaintBook.jsx"));
 function LoadingFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-10 h-10 border-3 border-enigma-lilac border-t-enigma-violet rounded-full animate-spin" />
+      <div className="w-10 h-10 border-3 border-line border-t-red rounded-full animate-spin" />
     </div>
   );
 }

@@ -1,13 +1,20 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import InteractiveRotor from "./InteractiveRotor.jsx";
+import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
-function GridBackground() {
+function DotGrid() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-indigo/8 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-indigo-light/6 rounded-full blur-[150px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo/4 rounded-full blur-[180px]" />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #F0EDE6 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-carbon2/60 rounded-full blur-[180px]" />
     </div>
   );
 }
@@ -20,85 +27,123 @@ function StatItem({ value, label, delay }) {
       transition={{ duration: 0.5, delay }}
       className="text-center"
     >
-      <span className="block font-heading text-3xl md:text-4xl font-[800] text-off-white tracking-tight">{value}</span>
-      <span className="block font-mono text-[0.6rem] text-muted uppercase tracking-[0.1em] mt-1">{label}</span>
+      <span className="block font-heading text-3xl md:text-4xl text-cream tracking-tight">{value}</span>
+      <span className="block font-mono text-[0.6rem] text-cream2 uppercase tracking-[0.1em] mt-1">{label}</span>
     </motion.div>
   );
 }
 
 export default function Hero() {
+  const [stage, setStage] = useState(0);
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setStage(1), 300);
+    const t2 = setTimeout(() => setStage(2), 800);
+    const t3 = setTimeout(() => setStage(3), 1200);
+    const t4 = setTimeout(() => setStage(4), 2500);
+    const t5 = setTimeout(() => setStage(5), 3000);
+    const t6 = setTimeout(() => setStage(6), 3500);
+    return () => [t1, t2, t3, t4, t5, t6].forEach(clearTimeout);
+  }, []);
+
+  const headline = "Transformamos la complejidad de tu negocio en sistemas que simplemente funcionan.";
+  const { displayText } = useTextDecrypt(headline, stage >= 3);
+
   return (
-    <section className="relative min-h-screen flex flex-col justify-center bg-void overflow-hidden">
-      <GridBackground />
+    <section className="relative min-h-screen flex flex-col justify-center bg-carbon overflow-hidden">
+      <DotGrid />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="font-heading font-bold text-[0.65rem] tracking-[0.2em] text-indigo-light uppercase">
-              Beyond the obvious · Lima — Barcelona
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-6 font-heading text-4xl sm:text-5xl lg:text-7xl font-[800] text-off-white leading-[0.95] tracking-tight"
-          >
-            El área IT completa de tu empresa,{" "}
-            <span className="bg-gradient-to-r from-indigo-soft to-indigo-light bg-clip-text text-transparent">
-              sin los costos de tenerla interna
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 text-lg sm:text-xl text-muted max-w-2xl mx-auto leading-relaxed font-body"
-          >
-            Desarrollo web, servidores, ciberseguridad, automatización e inteligencia artificial.
-            Todo lo que necesitas para competir con tecnología, en un solo equipo dedicado a tu negocio.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
-          >
-            <Link
-              to="/contacto"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-sm font-mono text-[0.7rem] uppercase tracking-[0.1em] text-off-white bg-indigo hover:bg-indigo-deep transition-all duration-300"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-40 lg:pb-28 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 2 ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
             >
-              Agenda tu diagnóstico gratuito
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-            <Link
-              to="/planes"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-sm font-mono text-[0.7rem] uppercase tracking-[0.1em] text-muted border border-border hover:border-indigo/40 hover:text-indigo-light transition-all duration-300"
+              <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
+                Beyond the obvious
+              </span>
+            </motion.div>
+
+            <div className="mt-6">
+              <h1
+                className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight"
+                style={{ minHeight: "3.5em" }}
+              >
+                {stage >= 3 ? (
+                  <>
+                    {displayText.split("simplemente").map((part, i) =>
+                      i === 0 ? (
+                        <span key={i}>{part}</span>
+                      ) : (
+                        <span key={i}>
+                          <em className="italic">simplemente</em>
+                          {part}
+                        </span>
+                      )
+                    )}
+                  </>
+                ) : (
+                  <span className="opacity-0">{headline}</span>
+                )}
+              </h1>
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 4 ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="mt-6 text-base sm:text-lg text-cream2 max-w-xl leading-relaxed font-body mx-auto lg:mx-0"
             >
-              Conoce nuestros planes
-            </Link>
+              Desarrollo web, servidores, ciberseguridad, automatización e inteligencia artificial.
+              Todo lo que necesitas para competir con tecnología, en un solo equipo dedicado a tu negocio.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 5 ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
+            >
+              <Link
+                to="/contacto"
+                className="inline-flex items-center gap-2 px-7 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream bg-red hover:bg-red2 transition-all duration-300"
+              >
+                Agenda tu diagnóstico gratuito
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <Link
+                to="/planes"
+                className="inline-flex items-center gap-2 px-7 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream2 border border-line hover:border-red/40 hover:text-red transition-all duration-300"
+              >
+                Conoce nuestros planes
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={stage >= 1 ? { opacity: 1 } : {}}
+            transition={{ duration: 0.3 }}
+            className="order-1 lg:order-2 flex items-center justify-center"
+          >
+            <InteractiveRotor size={400} mobileSize={250} />
           </motion.div>
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto border-t border-border pt-10"
+          animate={stage >= 6 ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto border-t border-line pt-10"
         >
-          <StatItem value="+5" label="Años de experiencia" delay={0.8} />
-          <StatItem value="+50" label="Proyectos entregados" delay={0.9} />
-          <StatItem value="2" label="Países operando" delay={1.0} />
-          <StatItem value="24/7" label="Soporte disponible" delay={1.1} />
+          <StatItem value="+5" label="Años de experiencia" delay={3.6} />
+          <StatItem value="+50" label="Proyectos entregados" delay={3.7} />
+          <StatItem value="2" label="Países operando" delay={3.8} />
+          <StatItem value="24/7" label="Soporte disponible" delay={3.9} />
         </motion.div>
       </div>
     </section>

@@ -27,13 +27,13 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "100%", opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-surface border-t border-border shadow-lg shadow-void/60"
+          className="fixed bottom-0 left-0 right-0 z-[60] bg-carbon2 border-t border-line shadow-lg shadow-carbon/60"
         >
           <div className="max-w-5xl mx-auto px-6 pr-24 sm:pr-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <p className="font-body text-sm text-muted leading-relaxed flex-1">
+            <p className="font-body text-sm text-cream2 leading-relaxed flex-1">
               Utilizamos cookies esenciales y de analítica para mejorar tu experiencia.
               Consulta nuestra{" "}
-              <Link to="/cookies" className="text-indigo-light hover:text-indigo-soft transition-colors underline underline-offset-2">
+              <Link to="/cookies" className="text-red hover:text-cream transition-colors underline underline-offset-2">
                 política de cookies
               </Link>{" "}
               para más información.
@@ -41,13 +41,13 @@ export default function CookieConsent() {
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => handleChoice("rejected")}
-                className="font-body text-sm text-muted hover:text-text border border-border hover:border-indigo/30 px-4 py-2 transition-all duration-200 cursor-pointer"
+                className="font-body text-sm text-cream2 hover:text-cream border border-line hover:border-red/30 px-4 py-2 transition-all duration-200 cursor-pointer"
               >
                 Rechazar
               </button>
               <button
                 onClick={() => handleChoice("accepted")}
-                className="font-body text-sm text-off-white bg-indigo hover:bg-indigo-deep px-4 py-2 transition-all duration-200 cursor-pointer"
+                className="font-body text-sm text-cream bg-red hover:bg-red2 px-4 py-2 transition-all duration-200 cursor-pointer"
               >
                 Aceptar
               </button>

@@ -1,9 +1,12 @@
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
+import { EnigmaIsotipo } from "./EnigmaLogo.jsx";
+import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 const SERVICES = [
   {
+    id: "desarrollo-web",
     title: "Desarrollo Web",
     description: "WordPress, WooCommerce y aplicaciones web a medida con código. Desde landing pages hasta plataformas completas, rápidas, seguras y hechas para convertir.",
     icon: (
@@ -13,6 +16,7 @@ const SERVICES = [
     ),
   },
   {
+    id: "servidores-cloud",
     title: "Servidores & Cloud",
     description: "AWS, cPanel, CloudPanel y administración Linux. Tu infraestructura siempre disponible, rápida y escalable.",
     icon: (
@@ -22,7 +26,8 @@ const SERVICES = [
     ),
   },
   {
-    title: "Correo & Google Workspace",
+    id: "correo",
+    title: "Correo & Workspace",
     description: "Implementación y migración de correo corporativo. Gmail empresarial, Drive, Calendar y todas las herramientas de Google.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -31,6 +36,7 @@ const SERVICES = [
     ),
   },
   {
+    id: "ciberseguridad",
     title: "Ciberseguridad",
     description: "Auditorías, firewalls, análisis de vulnerabilidades y protección continua. Protege tus datos, los de tus clientes y tu reputación.",
     icon: (
@@ -40,7 +46,8 @@ const SERVICES = [
     ),
   },
   {
-    title: "Automatización & APIs",
+    id: "automatizacion",
+    title: "Automatización",
     description: "CRM, ERP, webhooks, Zapier, Make y n8n. Conectamos tus herramientas y automatizamos procesos que hoy te roban horas.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -49,6 +56,7 @@ const SERVICES = [
     ),
   },
   {
+    id: "agentes-ia",
     title: "Agentes de IA",
     description: "Chatbots y agentes entrenados con los datos de tu negocio. Atienden clientes, procesan ventas y automatizan tareas internas.",
     icon: (
@@ -58,6 +66,7 @@ const SERVICES = [
     ),
   },
   {
+    id: "consultoria",
     title: "Consultoría 360°",
     description: "Diagnóstico integral de tu ecosistema digital. Identificamos oportunidades, diseñamos la estrategia y te acompañamos en la ejecución.",
     icon: (
@@ -68,24 +77,44 @@ const SERVICES = [
   },
 ];
 
-function ServiceCard({ service, index }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+const COUNT = SERVICES.length;
+const STEP = 360 / COUNT;
+
+function RotorIcon({ service, index, springRotation, radius, isActive, onSelect, iconSize }) {
+  const angle = index * STEP;
+  const counterRotation = useTransform(springRotation, (r) => -r - angle);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="group p-6 bg-surface border border-border hover:border-indigo/20 transition-all duration-300"
+    <div
+      style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        width: 0,
+        height: 0,
+        transform: `rotate(${angle}deg) translateY(-${radius}px)`,
+      }}
     >
-      <div className="w-12 h-12 rounded-sm bg-indigo/10 text-indigo-light flex items-center justify-center mb-5 group-hover:bg-indigo group-hover:text-off-white transition-all duration-300">
+      <motion.button
+        onClick={() => onSelect(index)}
+        style={{
+          rotate: counterRotation,
+          width: iconSize,
+          height: iconSize,
+          x: "-50%",
+          y: "-50%",
+        }}
+        animate={{ scale: isActive ? 1.15 : 1 }}
+        transition={{ type: "spring", damping: 20, stiffness: 200 }}
+        className={`flex items-center justify-center rounded-full cursor-pointer transition-colors duration-200 ${
+          isActive
+            ? "bg-red text-cream shadow-lg shadow-red/30"
+            : "bg-carbon3 border border-line text-cream2 hover:border-red/30 hover:text-red"
+        }`}
+      >
         {service.icon}
-      </div>
-      <h3 className="font-heading text-lg font-bold text-off-white mb-2">{service.title}</h3>
-      <p className="font-body text-sm text-muted leading-relaxed">{service.description}</p>
-    </motion.div>
+      </motion.button>
+    </div>
   );
 }
 
@@ -93,33 +122,139 @@ export default function Services() {
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
+  const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const prevActive = useRef(0);
+
+  const ringRotation = useMotionValue(0);
+  const springRotation = useSpring(ringRotation, { damping: 25, stiffness: 150 });
+
+  const headlineText = "Todo lo que tu empresa necesita, en un solo equipo";
+  const { displayText } = useTextDecrypt(headlineText, isHeaderInView);
+
+  const activeService = SERVICES[active];
+  const { displayText: decryptedTitle } = useTextDecrypt(activeService.title, true, { interval: 30, stagger: 20 });
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  function selectService(newIndex) {
+    let delta = newIndex - prevActive.current;
+    if (delta > COUNT / 2) delta -= COUNT;
+    if (delta < -COUNT / 2) delta += COUNT;
+    ringRotation.set(ringRotation.get() - delta * STEP);
+    prevActive.current = newIndex;
+    setActive(newIndex);
+  }
+
+  const containerSize = isMobile ? 290 : 420;
+  const iconRadius = isMobile ? 115 : 165;
+  const iconSize = isMobile ? 40 : 48;
+  const isotipoSize = isMobile ? 100 : 140;
+  const innerInset = isMobile ? 75 : 110;
+
   return (
-    <section className="py-24 lg:py-32 bg-void border-t border-border">
+    <section className="py-24 lg:py-32 bg-carbon border-t border-line">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <span className="font-heading font-bold text-[0.65rem] tracking-[0.2em] text-indigo uppercase">
+        <div ref={headerRef} className="max-w-3xl mx-auto text-center mb-16">
+          <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
             Servicios
           </span>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-[800] text-off-white leading-tight tracking-tight">
-            Todo lo que tu empresa necesita,{" "}
-            <span className="text-indigo-light">en un solo equipo</span>
+          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight tracking-tight">
+            {isHeaderInView ? displayText : headlineText}
           </h2>
-          <p className="mt-5 text-lg text-muted font-body leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-5 text-base text-cream2 font-body leading-relaxed"
+          >
             Cada servicio puede contratarse por separado o como parte de un plan integral.
             Adaptamos la solución a tu realidad.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-border">
-          {SERVICES.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index} />
-          ))}
+        <div className="flex flex-col items-center">
+          <div className="relative" style={{ width: containerSize, height: containerSize }}>
+            <div className="absolute inset-0 rounded-full border border-line/40" />
+
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M8 12L1 0h14L8 12z" fill="#C44A20" />
+              </svg>
+            </div>
+
+            <motion.div className="absolute inset-0" style={{ rotate: springRotation }}>
+              {SERVICES.map((service, index) => (
+                <RotorIcon
+                  key={service.id}
+                  service={service}
+                  index={index}
+                  springRotation={springRotation}
+                  radius={iconRadius}
+                  isActive={index === active}
+                  onSelect={selectService}
+                  iconSize={iconSize}
+                />
+              ))}
+            </motion.div>
+
+            <div
+              className="absolute rounded-full border border-line/20 flex items-center justify-center overflow-hidden"
+              style={{ top: innerInset, left: innerInset, right: innerInset, bottom: innerInset }}
+            >
+              <div className="absolute animate-rotor-idle opacity-[0.04]">
+                <EnigmaIsotipo size={isotipoSize} variant="dark" />
+              </div>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.25 }}
+                  className="relative z-10 flex flex-col items-center gap-2"
+                >
+                  <div className="w-14 h-14 bg-red/10 text-red flex items-center justify-center rounded-lg">
+                    {activeService.icon}
+                  </div>
+                  <span className="font-heading text-sm md:text-base text-cream text-center px-2 leading-tight">
+                    {decryptedTitle}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <div className="w-full max-w-md mt-8 border border-line/30 p-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="text-sm text-cream2 font-body leading-relaxed mb-4">
+                  {activeService.description}
+                </p>
+                <Link
+                  to={`/servicios#${activeService.id}`}
+                  className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
+                >
+                  Ver detalle completo
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         <motion.div
@@ -131,7 +266,7 @@ export default function Services() {
         >
           <Link
             to="/servicios"
-            className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.1em] text-indigo-light hover:text-indigo-soft transition-colors duration-200"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
           >
             Ver todos los servicios en detalle
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">

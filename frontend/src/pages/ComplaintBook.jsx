@@ -22,8 +22,8 @@ const INITIAL_FORM = {
 function InputField({ label, name, type = "text", required = false, value, onChange, ...props }) {
   return (
     <div>
-      <label htmlFor={name} className="block font-body text-sm font-medium text-text mb-1.5">
-        {label} {required && <span className="text-indigo-light">*</span>}
+      <label htmlFor={name} className="block font-body text-sm font-medium text-cream mb-1.5">
+        {label} {required && <span className="text-red">*</span>}
       </label>
       <input
         type={type}
@@ -32,7 +32,7 @@ function InputField({ label, name, type = "text", required = false, value, onCha
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-3 border border-border bg-surface2 font-body text-sm text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo transition-all duration-200"
+        className="w-full px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream placeholder:text-cream2/50 focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200"
         {...props}
       />
     </div>
@@ -42,8 +42,8 @@ function InputField({ label, name, type = "text", required = false, value, onCha
 function SelectField({ label, name, required = false, value, onChange, children }) {
   return (
     <div>
-      <label htmlFor={name} className="block font-body text-sm font-medium text-text mb-1.5">
-        {label} {required && <span className="text-indigo-light">*</span>}
+      <label htmlFor={name} className="block font-body text-sm font-medium text-cream mb-1.5">
+        {label} {required && <span className="text-red">*</span>}
       </label>
       <select
         id={name}
@@ -51,7 +51,7 @@ function SelectField({ label, name, required = false, value, onChange, children 
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-3 border border-border bg-surface2 font-body text-sm text-text focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo transition-all duration-200"
+        className="w-full px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200"
       >
         {children}
       </select>
@@ -62,8 +62,8 @@ function SelectField({ label, name, required = false, value, onChange, children 
 function TextAreaField({ label, name, required = false, value, onChange, rows = 4 }) {
   return (
     <div>
-      <label htmlFor={name} className="block font-body text-sm font-medium text-text mb-1.5">
-        {label} {required && <span className="text-indigo-light">*</span>}
+      <label htmlFor={name} className="block font-body text-sm font-medium text-cream mb-1.5">
+        {label} {required && <span className="text-red">*</span>}
       </label>
       <textarea
         id={name}
@@ -72,7 +72,7 @@ function TextAreaField({ label, name, required = false, value, onChange, rows = 
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-3 border border-border bg-surface2 font-body text-sm text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-indigo/30 focus:border-indigo transition-all duration-200 resize-none"
+        className="w-full px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream placeholder:text-cream2/50 focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200 resize-none"
       />
     </div>
   );
@@ -125,20 +125,20 @@ export default function ComplaintBook() {
       <meta property="og:description" content="Registra tu reclamo o queja. Enigma Developers S.A.C., RUC 20605632875." />
       <link rel="canonical" href="https://enigmasac.com/libro-reclamaciones" />
 
-      <section className="pt-32 pb-16 bg-void relative overflow-hidden">
+      <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-indigo/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-indigo-deep/8 rounded-full blur-[120px]" />
+          <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-red/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-red2/8 rounded-full blur-[120px]" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-heading text-4xl sm:text-5xl lg:text-6xl font-[800] tracking-tight text-off-white leading-tight"
+            className="font-heading text-4xl sm:text-5xl lg:text-6xl tracking-tight text-cream leading-tight"
           >
             Libro de{" "}
-            <span className="bg-gradient-to-r from-indigo-light to-indigo-soft bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red to-red bg-clip-text text-transparent">
               Reclamaciones
             </span>
           </motion.h1>
@@ -146,14 +146,14 @@ export default function ComplaintBook() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-6 text-lg text-muted font-body max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 text-lg text-cream2 font-body max-w-2xl mx-auto leading-relaxed"
           >
             Conforme al Artículo 150° de la Ley N° 29571, Código de Protección y Defensa del Consumidor.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-20 bg-void">
+      <section className="py-20 bg-carbon">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             <div className="lg:col-span-3">
@@ -162,9 +162,9 @@ export default function ComplaintBook() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 onSubmit={handleSubmit}
-                className="bg-surface border border-border p-8"
+                className="bg-carbon2 border border-line p-8"
               >
-                <h2 className="font-heading text-lg font-semibold text-off-white mb-6">Datos del consumidor</h2>
+                <h2 className="font-heading text-lg font-semibold text-cream mb-6">Datos del consumidor</h2>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="sm:col-span-2">
@@ -190,9 +190,9 @@ export default function ComplaintBook() {
                       name="isMinor"
                       checked={form.isMinor}
                       onChange={handleChange}
-                      className="w-4 h-4 border-border bg-surface2 text-indigo focus:ring-indigo/30 accent-indigo"
+                      className="w-4 h-4 border-line bg-carbon3 text-red focus:ring-red/30 accent-red"
                     />
-                    <span className="font-body text-sm text-text">Soy menor de edad</span>
+                    <span className="font-body text-sm text-cream">Soy menor de edad</span>
                   </label>
                 </div>
 
@@ -206,17 +206,17 @@ export default function ComplaintBook() {
                   </motion.div>
                 )}
 
-                <hr className="my-8 border-border" />
+                <hr className="my-8 border-line" />
 
-                <h2 className="font-heading text-lg font-semibold text-off-white mb-4">Tipo de registro</h2>
-                <div className="flex gap-2 mb-8 p-1 bg-surface2 border border-border">
+                <h2 className="font-heading text-lg font-semibold text-cream mb-4">Tipo de registro</h2>
+                <div className="flex gap-2 mb-8 p-1 bg-carbon3 border border-line">
                   <button
                     type="button"
                     onClick={() => setForm((p) => ({ ...p, type: "reclamo" }))}
                     className={`flex-1 py-2.5 font-body text-sm font-medium transition-all duration-200 ${
                       form.type === "reclamo"
-                        ? "bg-indigo text-off-white"
-                        : "text-muted hover:text-text"
+                        ? "bg-red text-cream"
+                        : "text-cream2 hover:text-cream"
                     }`}
                   >
                     Reclamo
@@ -226,30 +226,30 @@ export default function ComplaintBook() {
                     onClick={() => setForm((p) => ({ ...p, type: "queja" }))}
                     className={`flex-1 py-2.5 font-body text-sm font-medium transition-all duration-200 ${
                       form.type === "queja"
-                        ? "bg-indigo text-off-white"
-                        : "text-muted hover:text-text"
+                        ? "bg-red text-cream"
+                        : "text-cream2 hover:text-cream"
                     }`}
                   >
                     Queja
                   </button>
                 </div>
 
-                <p className="font-body text-xs text-muted mb-6">
+                <p className="font-body text-xs text-cream2 mb-6">
                   {form.type === "reclamo"
                     ? "Reclamo: disconformidad relacionada con los productos o servicios."
                     : "Queja: disconformidad con la atención recibida, no relacionada con el producto o servicio."}
                 </p>
 
-                <h2 className="font-heading text-lg font-semibold text-off-white mb-6">Detalle del bien o servicio contratado</h2>
+                <h2 className="font-heading text-lg font-semibold text-cream mb-6">Detalle del bien o servicio contratado</h2>
 
                 <div className="space-y-5">
                   <TextAreaField label="Descripción del producto o servicio" name="serviceDescription" required value={form.serviceDescription} onChange={handleChange} />
                   <InputField label="Monto reclamado (S/)" name="amountClaimed" type="number" value={form.amountClaimed} onChange={handleChange} min="0" step="0.01" />
                 </div>
 
-                <hr className="my-8 border-border" />
+                <hr className="my-8 border-line" />
 
-                <h2 className="font-heading text-lg font-semibold text-off-white mb-6">
+                <h2 className="font-heading text-lg font-semibold text-cream mb-6">
                   Detalle del {typeLabel}
                 </h2>
 
@@ -261,11 +261,11 @@ export default function ComplaintBook() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 py-4 rounded-sm font-body text-base font-semibold text-off-white bg-indigo hover:bg-indigo-deep hover:shadow-lg hover:shadow-indigo/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 py-4 rounded-sm font-body text-base font-semibold text-cream bg-red hover:bg-red2 hover:shadow-lg hover:shadow-red/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-off-white/30 border-t-off-white rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-cream/30 border-t-cream rounded-full animate-spin" />
                       Enviando...
                     </>
                   ) : (
@@ -306,32 +306,32 @@ export default function ComplaintBook() {
                 transition={{ duration: 0.5, delay: 0.15 }}
                 className="space-y-6"
               >
-                <div className="p-6 bg-surface border border-border">
-                  <h3 className="font-heading text-lg font-semibold text-off-white mb-4">Datos del proveedor</h3>
-                  <ul className="space-y-3 font-body text-sm text-muted">
-                    <li><strong className="text-text">Razón social:</strong> Enigma Developers S.A.C.</li>
-                    <li><strong className="text-text">RUC:</strong> 20605632875</li>
-                    <li><strong className="text-text">Domicilio:</strong> Lima, Perú</li>
-                    <li><strong className="text-text">Email:</strong> hello@enigmasac.com</li>
-                    <li><strong className="text-text">Web:</strong> enigmasac.com</li>
+                <div className="p-6 bg-carbon2 border border-line">
+                  <h3 className="font-heading text-lg font-semibold text-cream mb-4">Datos del proveedor</h3>
+                  <ul className="space-y-3 font-body text-sm text-cream2">
+                    <li><strong className="text-cream">Razón social:</strong> Enigma Developers S.A.C.</li>
+                    <li><strong className="text-cream">RUC:</strong> 20605632875</li>
+                    <li><strong className="text-cream">Domicilio:</strong> Lima, Perú</li>
+                    <li><strong className="text-cream">Email:</strong> hello@enigmasac.com</li>
+                    <li><strong className="text-cream">Web:</strong> enigmasac.com</li>
                   </ul>
                 </div>
 
-                <div className="p-6 bg-surface border border-border">
-                  <h3 className="font-heading text-lg font-semibold text-off-white mb-4">Plazo de respuesta</h3>
-                  <p className="font-body text-sm text-muted leading-relaxed">
-                    De acuerdo con el Artículo 24° del D.S. N° 011-2011-PCM, el proveedor dará respuesta al reclamo o queja en un plazo máximo de <strong className="text-text">30 días calendario</strong>, contados desde la fecha de registro.
+                <div className="p-6 bg-carbon2 border border-line">
+                  <h3 className="font-heading text-lg font-semibold text-cream mb-4">Plazo de respuesta</h3>
+                  <p className="font-body text-sm text-cream2 leading-relaxed">
+                    De acuerdo con el Artículo 24° del D.S. N° 011-2011-PCM, el proveedor dará respuesta al reclamo o queja en un plazo máximo de <strong className="text-cream">30 días calendario</strong>, contados desde la fecha de registro.
                   </p>
                 </div>
 
-                <div className="p-6 bg-surface2 border border-border">
-                  <h3 className="font-heading text-lg font-semibold text-off-white mb-4">Reclamo vs. Queja</h3>
-                  <div className="space-y-4 font-body text-sm text-muted leading-relaxed">
+                <div className="p-6 bg-carbon3 border border-line">
+                  <h3 className="font-heading text-lg font-semibold text-cream mb-4">Reclamo vs. Queja</h3>
+                  <div className="space-y-4 font-body text-sm text-cream2 leading-relaxed">
                     <div>
-                      <strong className="text-text">Reclamo:</strong> Disconformidad relacionada con los productos o servicios adquiridos o contratados con el proveedor.
+                      <strong className="text-cream">Reclamo:</strong> Disconformidad relacionada con los productos o servicios adquiridos o contratados con el proveedor.
                     </div>
                     <div>
-                      <strong className="text-text">Queja:</strong> Disconformidad no relacionada con el producto o servicio, sino con la atención al público por parte del proveedor.
+                      <strong className="text-cream">Queja:</strong> Disconformidad no relacionada con el producto o servicio, sino con la atención al público por parte del proveedor.
                     </div>
                   </div>
                 </div>
