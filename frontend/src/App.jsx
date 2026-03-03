@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppBubble from "./components/WhatsAppBubble.jsx";
 import CookieConsent from "./components/CookieConsent.jsx";
+import MobileBottomNav from "./components/MobileBottomNav.jsx";
 import Home from "./pages/Home.jsx";
 
 const ServicesPage = lazy(() => import("./pages/ServicesPage.jsx"));
@@ -52,6 +53,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppBubble />
+      <MobileBottomNav />
       <CookieConsent />
     </div>
   );

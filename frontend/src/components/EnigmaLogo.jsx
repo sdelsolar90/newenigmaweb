@@ -44,13 +44,13 @@ export function EnigmaIsotipo({ size = 40, variant = "dark", className = "" }) {
 export function EnigmaLogotype({ variant = "dark", className = "" }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <EnigmaIsotipo size={36} variant={variant} />
-      <span className="w-px h-8 bg-line" />
+      <EnigmaIsotipo size={42} variant={variant} />
+      <span className="w-px h-9 bg-line" />
       <div className="flex flex-col gap-0.5">
-        <span className="font-body font-light text-sm tracking-[0.42em] uppercase text-cream leading-none">
+        <span className="font-body font-light text-base tracking-[0.42em] uppercase text-cream leading-none">
           Enigma
         </span>
-        <span className="font-mono text-[0.4rem] tracking-[0.48em] uppercase text-cream2 opacity-40 leading-none">
+        <span className="font-mono text-[0.5rem] tracking-[0.48em] uppercase text-cream2 opacity-40 leading-none">
           Developers
         </span>
       </div>
