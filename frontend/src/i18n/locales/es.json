@@ -149,7 +149,7 @@
     "badge": "M\u00e1s popular",
     "items": [
       {
-        "name": "Esencial",
+        "name": "Plan Esencial",
         "tagline": "Para empresas que necesitan una base tecnol\u00f3gica s\u00f3lida",
         "cta": "Empezar con Esencial",
         "features": [
@@ -162,7 +162,7 @@
         ]
       },
       {
-        "name": "Pro",
+        "name": "Plan Pro",
         "tagline": "Para empresas que quieren automatizar y escalar",
         "cta": "Empezar con Pro",
         "features": [
@@ -174,7 +174,7 @@
         ]
       },
       {
-        "name": "IA",
+        "name": "Plan IA",
         "tagline": "Para empresas que quieren liderar con inteligencia artificial",
         "cta": "Empezar con IA",
         "features": [
@@ -416,16 +416,16 @@
     "faqTitle": "Preguntas frecuentes",
     "plans": [
       {
-        "name": "Esencial",
+        "name": "Plan Esencial",
         "tagline": "La base tecnol\u00f3gica que toda empresa necesita"
       },
       {
-        "name": "Pro",
+        "name": "Plan Pro",
         "tagline": "Automatiza, protege y escala tu operaci\u00f3n",
         "badge": "M\u00e1s popular"
       },
       {
-        "name": "IA",
+        "name": "Plan IA",
         "tagline": "Lidera tu industria con inteligencia artificial"
       }
     ],

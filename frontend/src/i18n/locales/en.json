@@ -108,19 +108,19 @@
     "badge": "Most popular",
     "items": [
       {
-        "name": "Essential",
+        "name": "Essential Plan",
         "tagline": "For companies that need a solid tech foundation",
         "cta": "Start with Essential",
         "features": ["Managed website", "Servers & cloud", "Corporate email", "Basic cybersecurity", "1h monthly consulting", "Ticket support"]
       },
       {
-        "name": "Pro",
+        "name": "Pro Plan",
         "tagline": "For companies that want to automate and scale",
         "cta": "Start with Pro",
         "features": ["Everything in Essential", "Advanced cybersecurity", "Automations (Zapier, Make, n8n)", "2h monthly consulting", "Priority support"]
       },
       {
-        "name": "AI",
+        "name": "AI Plan",
         "tagline": "For companies that want to lead with artificial intelligence",
         "cta": "Start with AI",
         "features": ["Everything in Pro", "Custom AI agent included", "Real-time data dashboard", "4h monthly consulting", "Dedicated support"]
@@ -305,9 +305,9 @@
     "startWith": "Start with",
     "faqTitle": "Frequently asked questions",
     "plans": [
-      { "name": "Essential", "tagline": "The tech foundation every company needs" },
-      { "name": "Pro", "tagline": "Automate, protect, and scale your operations", "badge": "Most popular" },
-      { "name": "AI", "tagline": "Lead your industry with artificial intelligence" }
+      { "name": "Essential Plan", "tagline": "The tech foundation every company needs" },
+      { "name": "Pro Plan", "tagline": "Automate, protect, and scale your operations", "badge": "Most popular" },
+      { "name": "AI Plan", "tagline": "Lead your industry with artificial intelligence" }
     ],
     "featureKeys": ["Managed website", "Servers & cloud", "Corporate email", "Basic cybersecurity", "Advanced cybersecurity", "Automations", "Custom AI agent", "Real-time dashboard", "Monthly consulting", "Support"],
     "featureValues": {

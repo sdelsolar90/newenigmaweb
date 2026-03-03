@@ -123,19 +123,19 @@
     "popularBadge": "Más popular",
     "items": {
       "0": {
-        "name": "Esencial",
+        "name": "Plan Esencial",
         "tagline": "Para empresas que necesitan una base tecnológica sólida",
         "features": ["Web gestionada", "Servidores & cloud", "Correo corporativo", "Ciberseguridad básica", "1h consultoría mensual", "Soporte por tickets"],
         "cta": "Empezar con Esencial"
       },
       "1": {
-        "name": "Pro",
+        "name": "Plan Pro",
         "tagline": "Para empresas que quieren automatizar y escalar",
         "features": ["Todo lo del plan Esencial", "Ciberseguridad avanzada", "Automatizaciones (Zapier, Make, n8n)", "2h consultoría mensual", "Soporte prioritario"],
         "cta": "Empezar con Pro"
       },
       "2": {
-        "name": "IA",
+        "name": "Plan IA",
         "tagline": "Para empresas que quieren liderar con inteligencia artificial",
         "features": ["Todo lo del plan Pro", "Agente de IA personalizado incluido", "Dashboard con datos en tiempo real", "4h consultoría mensual", "Soporte dedicado"],
         "cta": "Empezar con IA"
@@ -283,16 +283,16 @@
       "startWith": "Empezar con",
       "detail": {
         "0": {
-          "name": "Esencial",
+          "name": "Plan Esencial",
           "tagline": "La base tecnológica que toda empresa necesita"
         },
         "1": {
-          "name": "Pro",
+          "name": "Plan Pro",
           "tagline": "Automatiza, protege y escala tu operación",
           "badge": "Más popular"
         },
         "2": {
-          "name": "IA",
+          "name": "Plan IA",
           "tagline": "Lidera tu industria con inteligencia artificial"
         }
       },
