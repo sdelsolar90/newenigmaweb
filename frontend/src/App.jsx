@@ -79,6 +79,7 @@ const JSONLD_GRAPH = [
     sameAs: [
       "https://www.facebook.com/enigmadevsac",
       "https://instagram.com/enigmasac",
+      "https://github.com/enigmasac",
     ],
     email: "hello@enigmasac.com",
     hasOfferCatalog: {
