@@ -3,71 +3,50 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-      - VITE_API_URL=${VITE_API_URL}
-    depends_on:
-      - backend
+    container_name: enigmasac-frontend
+    restart: unless-stopped
+    ports:
+      - "4051:80"
     networks:
-      - enigma-network
+      - enigmasac-net
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - PORT=${BACKEND_PORT}
-      - DATABASE_URL=${DATABASE_URL}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASS=${SMTP_PASS}
-      - SMTP_FROM=${SMTP_FROM}
-      - CONTACT_EMAIL=${CONTACT_EMAIL}
-      - CORS_ORIGIN=${CORS_ORIGIN}
+    container_name: enigmasac-backend
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "4050:4000"
     depends_on:
       db:
         condition: service_healthy
     networks:
-      - enigma-network
+      - enigmasac-net
 
   db:
     image: postgres:16-alpine
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    container_name: enigmasac-db
+    restart: unless-stopped
+    env_file: .env
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
-      - enigma-network
-
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    ports:
-      - "${NGINX_PORT:-80}:80"
-    depends_on:
-      - frontend
-      - backend
-    networks:
-      - enigma-network
+      - enigmasac-net
 
 volumes:
   pgdata:
 
 networks:
-  enigma-network:
+  enigmasac-net:
     driver: bridge
