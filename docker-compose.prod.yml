@@ -46,6 +46,8 @@ services:
 
 volumes:
   pgdata:
+    external: true
+    name: app_pgdata
 
 networks:
   enigmasac-net:
