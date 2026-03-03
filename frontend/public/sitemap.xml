@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://enigmasac.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/servicios" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/servicios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/servicios" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/planes</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/planes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/plans" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/planes" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/plans</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/planes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/plans" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/planes" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/clientes</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/clientes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/clients" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/clientes" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/clients</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/clientes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/clients" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/clientes" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/nosotros" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/nosotros" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/contacto" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/contacto" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/privacidad" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/privacidad" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/privacidad" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/privacidad" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/terminos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/terminos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/terminos" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/terminos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/terminos" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/cookies</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/cookies" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/cookies" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/cookies" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/en/cookies</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://enigmasac.com/cookies" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://enigmasac.com/en/cookies" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://enigmasac.com/cookies" />
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://enigmasac.com/libro-reclamaciones</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>

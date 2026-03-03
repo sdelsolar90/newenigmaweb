@@ -37,6 +37,72 @@ function ScrollToTop() {
 
 const BASE = "https://enigmasac.com";
 
+const JSONLD_ORG = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Enigma Developers",
+  legalName: "Enigma Developers S.A.C.",
+  url: "https://enigmasac.com",
+  logo: "https://enigmasac.com/brand/enigma-logotype-dark.svg",
+  image: "https://enigmasac.com/og-image.png",
+  description: "Soluciones tecnológicas integrales para PYMEs. Desarrollo web, cloud, ciberseguridad, automatización e inteligencia artificial.",
+  foundingDate: "2020",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+51-959-561-015",
+      contactType: "sales",
+      availableLanguage: ["Spanish", "English"],
+      areaServed: ["PE", "ES"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+34-656-663-992",
+      contactType: "sales",
+      availableLanguage: ["Spanish", "English"],
+      areaServed: ["ES"],
+    },
+  ],
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Lima",
+      addressCountry: "PE",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Barcelona",
+      addressCountry: "ES",
+    },
+  ],
+  sameAs: [
+    "https://www.facebook.com/enigmadevsac",
+    "https://instagram.com/enigmasac",
+  ],
+  email: "hello@enigmasac.com",
+};
+
+function StructuredData() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD_ORG) }}
+    />
+  );
+}
+
+function OgImage() {
+  return (
+    <>
+      <meta property="og:image" content="https://enigmasac.com/og-image.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content="https://enigmasac.com/og-image.png" />
+    </>
+  );
+}
+
 function HreflangTags() {
   const { pathname } = useLocation();
   const { lang } = useT();
@@ -102,6 +168,8 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <ScrollToTop />
         <HreflangTags />
+        <OgImage />
+        <StructuredData />
         <Navbar />
         <main className="flex-1">
           <Suspense fallback={<LoadingFallback />}>
