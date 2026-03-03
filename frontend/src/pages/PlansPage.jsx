@@ -71,6 +71,18 @@ export default function PlansPage() {
       <meta property="og:description" content={t("meta.plans.ogDescription")} />
       <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
       <link rel="canonical" href={canonical} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }) }}
+      />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">

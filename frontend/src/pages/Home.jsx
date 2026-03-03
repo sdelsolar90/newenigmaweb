@@ -59,6 +59,22 @@ export default function Home() {
       <meta property="og:url" content={canonical} />
       <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
       <link rel="canonical" href={canonical} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Enigma Developers",
+          url: canonical,
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "5", bestRating: "5", ratingCount: "20" },
+          review: t("caseStudies.items").map((item) => ({
+            "@type": "Review",
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            author: { "@type": "Person", name: item.name },
+            reviewBody: item.quote,
+          })),
+        }) }}
+      />
       <ScrollRotor />
       <Hero />
       <Partners />
