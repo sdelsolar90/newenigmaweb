@@ -93,14 +93,14 @@ function DesktopHowItWorks() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <div ref={containerRef} className="h-[300vh] relative">
+    <div ref={containerRef} className="h-[200vh] relative">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 px-6"
+          className="text-center mb-6 px-6"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
             Cómo funciona
@@ -111,7 +111,7 @@ function DesktopHowItWorks() {
           </h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto w-full px-6 mb-12 relative">
+        <div className="max-w-3xl mx-auto w-full px-6 mb-8 relative">
           <div className="h-0.5 bg-line w-full rounded-full relative">
             <motion.div
               className="absolute inset-y-0 left-0 bg-red rounded-full"
@@ -160,9 +160,9 @@ function MobileStepCard({ step, index }) {
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className="relative bg-carbon3 border border-line p-8 hover:border-red/20 transition-all duration-300 group"
+      className="relative bg-carbon3 border border-line p-6 hover:border-red/20 transition-all duration-300 group"
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <span className="font-mono text-4xl text-red/20">
           {step.number}
         </span>
@@ -181,14 +181,14 @@ function MobileHowItWorks() {
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <div className="py-24 bg-carbon2">
+    <div className="py-16 bg-carbon2">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mx-auto text-center mb-10"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
             Cómo funciona
