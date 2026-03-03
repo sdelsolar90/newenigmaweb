@@ -7,6 +7,7 @@ const PREFIXES = [
   { code: "+51", country: "PE", flag: "🇵🇪" },
   { code: "+34", country: "ES", flag: "🇪🇸" },
   { code: "+1", country: "US", flag: "🇺🇸" },
+  { code: "", country: "Otro", flag: "🌐" },
 ];
 
 const INITIAL_FORM = {
@@ -90,7 +91,7 @@ export default function Contact() {
       const payload = {
         name: form.name,
         email: form.email,
-        phone: `${form.prefix} ${form.phone}`,
+        phone: form.prefix ? `${form.prefix} ${form.phone}` : form.phone,
         company: form.company,
         message: form.message,
       };
