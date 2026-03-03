@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppBubble from "./components/WhatsAppBubble.jsx";
@@ -26,16 +26,17 @@ function LoadingFallback() {
 }
 
 function ScrollToTop() {
-  const { pathname } = window.location;
-  if (typeof window !== "undefined") {
+  const { pathname } = useLocation();
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }
+  }, [pathname]);
   return null;
 }
 
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Suspense fallback={<LoadingFallback />}>

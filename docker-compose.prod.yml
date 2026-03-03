@@ -1,0 +1,52 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: enigmasac-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4051:80"
+    networks:
+      - enigmasac-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: enigmasac-backend
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:4050:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - enigmasac-net
+
+  db:
+    image: postgres:16-alpine
+    container_name: enigmasac-db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - enigmasac-net
+
+volumes:
+  pgdata:
+
+networks:
+  enigmasac-net:
+    driver: bridge
