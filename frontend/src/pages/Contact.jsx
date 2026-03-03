@@ -62,9 +62,9 @@ export default function Contact() {
   return (
     <>
       <title>Contacto | Enigma Developers</title>
-      <meta name="description" content="Contacta con Enigma Developers. Agenda tu diagnóstico digital gratuito o envíanos tu consulta. Respondemos en menos de 24 horas." />
+      <meta name="description" content="Contacta con Enigma Developers. Agenda tu diagnóstico digital o envíanos tu consulta. Respondemos en menos de 24 horas." />
       <meta property="og:title" content="Contacto | Enigma Developers" />
-      <meta property="og:description" content="Agenda un diagnóstico gratuito o envíanos tu consulta. Lima, Perú y Barcelona, España." />
+      <meta property="og:description" content="Agenda un diagnóstico o envíanos tu consulta. Lima, Perú y Barcelona, España." />
       <link rel="canonical" href="https://enigmasac.com/contacto" />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
@@ -125,7 +125,7 @@ export default function Contact() {
                         : "text-cream2 hover:text-cream"
                     }`}
                   >
-                    Diagnóstico gratuito
+                    Diagnóstico
                   </button>
                 </div>
 
@@ -163,7 +163,7 @@ export default function Contact() {
                       Enviando...
                     </>
                   ) : form.type === "diagnosis" ? (
-                    "Solicitar diagnóstico gratuito"
+                    "Solicitar diagnóstico"
                   ) : (
                     "Enviar mensaje"
                   )}
@@ -250,7 +250,7 @@ export default function Contact() {
                 <div className="p-6 bg-carbon3 border border-line">
                   <h3 className="font-heading text-lg text-cream mb-2">¿Prefieres que te llamemos?</h3>
                   <p className="font-body text-sm text-cream2 leading-relaxed">
-                    Déjanos tus datos en el formulario y selecciona "Diagnóstico gratuito". Te contactamos nosotros en menos de 24 horas.
+                    Déjanos tus datos en el formulario y selecciona "Diagnóstico". Te contactamos nosotros en menos de 24 horas.
                   </p>
                 </div>
               </motion.div>

@@ -5,7 +5,7 @@ import { EnigmaIsotipo } from "./EnigmaLogo.jsx";
 const STEPS = [
   {
     number: "01",
-    title: "Diagnóstico gratuito",
+    title: "Diagnóstico inicial",
     description: "Analizamos tu ecosistema digital actual: web, servidores, correo, seguridad, procesos y herramientas. Identificamos vulnerabilidades y oportunidades de mejora.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

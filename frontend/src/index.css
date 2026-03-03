@@ -21,6 +21,8 @@
   --animate-rotor-spin: rotor-spin 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   --animate-rotor-idle: rotor-idle 20s linear infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-gear-cw: gear-cw 18s linear infinite;
+  --animate-gear-ccw: gear-ccw 18s linear infinite;
 }
 
 @keyframes marquee-left {
@@ -46,6 +48,23 @@
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 20px rgba(196,74,32,0.2); }
   50% { box-shadow: 0 0 40px rgba(196,74,32,0.4); }
+}
+
+@keyframes gear-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gear-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.gear-spin { animation: gear-cw 18s linear infinite; }
+.gear-spin-reverse { animation: gear-ccw 18s linear infinite; }
+.gear-wrapper:hover .gear-spin,
+.gear-wrapper:hover .gear-spin-reverse {
+  animation-play-state: paused;
 }
 
 @layer base {
@@ -76,4 +95,37 @@
 .group:hover .animate-marquee-left,
 .group:hover .animate-marquee-right {
   animation-play-state: paused;
+}
+
+.client-logo-wrap {
+  position: relative;
+}
+
+.client-logo-wrap img {
+  filter: grayscale(1) brightness(2);
+  opacity: 0.45;
+  transition: opacity 300ms;
+}
+
+.client-logo-color {
+  position: absolute;
+  inset: 0;
+  background-color: #C44A20;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  opacity: 0;
+  transition: opacity 300ms;
+  pointer-events: none;
+}
+
+a:hover .client-logo-wrap img {
+  opacity: 0;
+}
+
+a:hover .client-logo-color {
+  opacity: 1;
 }

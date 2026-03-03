@@ -5,7 +5,7 @@ import Problem from "../components/Problem.jsx";
 import HowItWorks from "../components/HowItWorks.jsx";
 import Services from "../components/Services.jsx";
 
-import CaseStudies from "../components/CaseStudies.jsx";
+import Clients from "../components/Clients.jsx";
 import CTAFinal from "../components/CTAFinal.jsx";
 import { EnigmaIsotipo } from "../components/EnigmaLogo.jsx";
 
@@ -60,7 +60,7 @@ export default function Home() {
       <Problem />
       <HowItWorks />
       <Services />
-      <CaseStudies />
+      <Clients />
       <CTAFinal />
     </>
   );

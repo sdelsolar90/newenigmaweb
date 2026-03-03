@@ -14,6 +14,7 @@ const Contact = lazy(() => import("./pages/Contact.jsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService.jsx"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy.jsx"));
+const ClientsPage = lazy(() => import("./pages/ClientsPage.jsx"));
 const ComplaintBook = lazy(() => import("./pages/ComplaintBook.jsx"));
 
 function LoadingFallback() {
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<ServicesPage />} />
             <Route path="/planes" element={<PlansPage />} />
+            <Route path="/clientes" element={<ClientsPage />} />
             <Route path="/nosotros" element={<About />} />
             <Route path="/contacto" element={<Contact />} />
             <Route path="/privacidad" element={<PrivacyPolicy />} />

@@ -13,6 +13,7 @@ const FOOTER_LINKS = {
   ],
   empresa: [
     { label: "Nosotros", to: "/nosotros" },
+    { label: "Clientes", to: "/clientes" },
     { label: "Planes", to: "/planes" },
     { label: "Contacto", to: "/contacto" },
   ],

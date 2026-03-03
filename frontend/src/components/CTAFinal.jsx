@@ -27,7 +27,7 @@ export default function CTAFinal() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 border border-red/30 bg-red/5 mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono text-xs tracking-[0.2em] text-red uppercase">Diagnóstico gratuito y sin compromiso</span>
+          <span className="font-mono text-xs tracking-[0.2em] text-red uppercase">Diagnóstico sin compromiso</span>
         </div>
 
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl tracking-tight text-cream leading-tight">
@@ -43,7 +43,7 @@ export default function CTAFinal() {
           transition={{ duration: 0.5 }}
           className="mt-6 text-base text-cream2 font-body leading-relaxed max-w-2xl mx-auto"
         >
-          Agenda una sesión de diagnóstico gratuita con nuestro equipo. Analizamos tu situación actual,
+          Agenda una sesión de diagnóstico con nuestro equipo. Analizamos tu situación actual,
           identificamos oportunidades y te proponemos un plan concreto. Sin compromisos, sin letra pequeña.
         </motion.p>
 
@@ -57,7 +57,7 @@ export default function CTAFinal() {
               to="/contacto"
               className="inline-flex items-center gap-2 px-8 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream bg-red hover:bg-red2 transition-all duration-300"
             >
-              Agenda tu diagnóstico gratuito
+              Agenda tu diagnóstico
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -69,7 +69,7 @@ export default function CTAFinal() {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <a
-              href="https://wa.me/51959561015?text=Hola%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico%20gratuito"
+              href="https://wa.me/51959561015?text=Hola%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream2 border border-line hover:border-red/30 transition-all duration-300"

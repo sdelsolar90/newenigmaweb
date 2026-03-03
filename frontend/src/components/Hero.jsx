@@ -110,7 +110,7 @@ export default function Hero() {
                 to="/contacto"
                 className="inline-flex items-center gap-2 px-7 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream bg-red hover:bg-red2 transition-all duration-300"
               >
-                Agenda tu diagnóstico gratuito
+                Agenda tu diagnóstico
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

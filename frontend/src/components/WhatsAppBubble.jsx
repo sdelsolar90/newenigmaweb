@@ -51,7 +51,7 @@ export default function WhatsAppBubble() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contáctanos por WhatsApp"
-            className="group relative w-14 h-14 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300"
+            className="group relative w-14 h-14 rounded-full bg-red shadow-lg shadow-red/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-red/40 transition-all duration-300"
             onMouseEnter={() => setShowTooltip(true)}
           >
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white">

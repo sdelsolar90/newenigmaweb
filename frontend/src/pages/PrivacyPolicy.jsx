@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
               <p className="mb-3">Los datos recopilados se utilizan exclusivamente para:</p>
               <ul className="space-y-1.5 list-disc list-inside">
                 <li>Responder a consultas y solicitudes de contacto</li>
-                <li>Gestionar solicitudes de diagnóstico digital gratuito</li>
+                <li>Gestionar solicitudes de diagnóstico digital</li>
                 <li>Enviar propuestas comerciales relacionadas con nuestros servicios</li>
                 <li>Mejorar la experiencia de navegación en nuestro sitio web</li>
                 <li>Cumplir con obligaciones legales aplicables</li>

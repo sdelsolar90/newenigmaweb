@@ -223,7 +223,7 @@ export default function About() {
             to="/contacto"
             className="inline-flex items-center gap-2 mt-8 px-8 py-4 font-mono text-xs uppercase tracking-[0.25em] text-red bg-cream hover:bg-white transition-all duration-300"
           >
-            Agenda tu diagnóstico gratuito
+            Agenda tu diagnóstico
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
