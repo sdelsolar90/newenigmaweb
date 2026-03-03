@@ -34,6 +34,7 @@ function InputField({ label, name, type = "text", required = false, value, onCha
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -42,6 +43,7 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg("");
 
     try {
       const endpoint = form.type === "diagnosis" ? "/leads" : "/contact";
@@ -51,11 +53,15 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      if (!res.ok) throw new Error("Error al enviar");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Error al enviar");
+      }
       setStatus("sent");
       setForm(INITIAL_FORM);
-    } catch {
+    } catch (err) {
       setStatus("error");
+      setErrorMsg(err.message || "Error de conexión");
     }
   }
 
@@ -148,6 +154,8 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange}
                     required
+                    minLength={10}
+                    placeholder="Mínimo 10 caracteres"
                     className="w-full px-4 py-3 border border-line bg-carbon3 font-body text-sm text-cream placeholder:text-cream2/50 focus:outline-none focus:ring-2 focus:ring-red/30 focus:border-red transition-all duration-200 resize-none"
                   />
                 </div>
@@ -173,11 +181,9 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-body text-center"
+                    className="mt-4 p-3 sm:p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-body text-center"
                   >
-                    {form.type === "diagnosis"
-                      ? "Recibimos tu solicitud. Te contactaremos en menos de 24 horas para agendar tu diagnóstico."
-                      : "Mensaje enviado correctamente. Te responderemos en menos de 24 horas."}
+                    Mensaje enviado correctamente. Te responderemos en menos de 24 horas.
                   </motion.div>
                 )}
 
@@ -185,9 +191,12 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-body text-center"
+                    className="mt-4 p-3 sm:p-4 bg-red/10 border border-red/20 text-red text-xs sm:text-sm font-body text-center"
                   >
-                    Hubo un error al enviar. Intenta de nuevo o contáctanos directamente por WhatsApp.
+                    {errorMsg || "Hubo un error al enviar."} Intenta de nuevo o contáctanos por{" "}
+                    <a href="https://wa.me/51959561015" target="_blank" rel="noopener noreferrer" className="underline font-semibold">
+                      WhatsApp
+                    </a>.
                   </motion.div>
                 )}
               </motion.form>
