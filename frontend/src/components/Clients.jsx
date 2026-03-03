@@ -17,7 +17,7 @@ export default function Clients() {
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-16 lg:py-20 bg-carbon">
+    <section className="py-12 lg:py-16 bg-carbon">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={headerRef}
