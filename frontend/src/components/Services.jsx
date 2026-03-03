@@ -147,7 +147,7 @@ export default function Services() {
   const innerInset = isMobile ? 75 : 110;
 
   return (
-    <section className="py-24 lg:py-32 bg-carbon border-t border-line">
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-carbon border-t border-line">
       <div className="max-w-7xl mx-auto px-6">
         <div ref={headerRef} className="max-w-3xl mx-auto text-center mb-16">
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
