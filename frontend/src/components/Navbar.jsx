@@ -57,6 +57,15 @@ export default function Navbar() {
           })}
         </div>
 
+        <button
+          onClick={() => setLang(otherLang)}
+          className="lg:hidden font-mono text-xs uppercase tracking-[0.1em] text-cream2 hover:text-red transition-colors duration-200 flex items-center gap-1.5 absolute right-6"
+        >
+          <span className={lang === "es" ? "text-red" : ""}>ES</span>
+          <span className="text-line">/</span>
+          <span className={lang === "en" ? "text-red" : ""}>EN</span>
+        </button>
+
         <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={() => setLang(otherLang)}
