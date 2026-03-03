@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Link } from "react-router-dom";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 
 const STORAGE_KEY = "enigma-cookie-consent";
 
 export default function CookieConsent() {
+  const { t } = useT();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -31,25 +33,25 @@ export default function CookieConsent() {
         >
           <div className="max-w-5xl mx-auto px-6 pr-24 sm:pr-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <p className="font-body text-sm text-cream2 leading-relaxed flex-1">
-              Utilizamos cookies esenciales y de analítica para mejorar tu experiencia.
-              Consulta nuestra{" "}
-              <Link to="/cookies" className="text-red hover:text-cream transition-colors underline underline-offset-2">
-                política de cookies
-              </Link>{" "}
-              para más información.
+              {t("cookieConsent.message")}{" "}
+              {t("cookieConsent.learnMore")}{" "}
+              <LocaleLink to="/cookies" className="text-red hover:text-cream transition-colors underline underline-offset-2">
+                {t("cookieConsent.policyLink")}
+              </LocaleLink>{" "}
+              {t("cookieConsent.moreInfo")}
             </p>
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => handleChoice("rejected")}
                 className="font-body text-sm text-cream2 hover:text-cream border border-line hover:border-red/30 px-4 py-2 transition-all duration-200 cursor-pointer"
               >
-                Rechazar
+                {t("cookieConsent.reject")}
               </button>
               <button
                 onClick={() => handleChoice("accepted")}
                 className="font-body text-sm text-cream bg-red hover:bg-red2 px-4 py-2 transition-all duration-200 cursor-pointer"
               >
-                Aceptar
+                {t("cookieConsent.accept")}
               </button>
             </div>
           </div>

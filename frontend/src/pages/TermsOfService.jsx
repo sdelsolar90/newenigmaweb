@@ -1,13 +1,61 @@
 import { motion } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
 
-const LAST_UPDATED = "28 de febrero de 2026";
+function renderSection(section, index, sections, info) {
+  const isLast = index === sections.length - 1;
+
+  return (
+    <div key={index}>
+      <h2 className="font-heading text-lg font-semibold text-cream mb-4">{section.title}</h2>
+
+      {section.type === "info" && (
+        <ul className="space-y-2">
+          <li><span className="text-cream">{info.labelRazon}</span> {info.razonSocial}</li>
+          <li><span className="text-cream">{info.labelRuc}</span> {info.ruc}</li>
+          <li><span className="text-cream">{info.labelDomicilio}</span> {info.domicilio}</li>
+          <li><span className="text-cream">{info.labelEmail}</span> {info.email}</li>
+          <li><span className="text-cream">{info.labelWeb}</span> {info.web}</li>
+        </ul>
+      )}
+
+      {section.text && <p>{section.text}</p>}
+
+      {section.paragraphs && section.paragraphs.map((p, i) => (
+        <p key={i} className={i > 0 ? "mt-3" : ""}>{p}</p>
+      ))}
+
+      {section.intro && <p className={section.items ? "mb-3" : ""}>{section.intro}</p>}
+
+      {section.items && (
+        <ul className={`space-y-${section.intro ? "1.5" : "3"} list-disc list-inside`}>
+          {section.items.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+      )}
+
+      {section.outro && <p className="mt-3">{section.outro}</p>}
+
+      {isLast && !section.type && (
+        <ul className="mt-3 space-y-2">
+          <li><span className="text-cream">{info.labelEmailShort}</span> <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a></li>
+          <li><span className="text-cream">{info.labelPhonePeru}</span> +51 959 561 015</li>
+          <li><span className="text-cream">{info.labelPhoneSpain}</span> +34 656 663 992</li>
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function TermsOfService() {
+  const { lang, t } = useT();
+  const page = t("termsPage");
+  const info = t("companyInfo");
+  const meta = t("meta.terms");
+
   return (
     <>
-      <title>Términos de Servicio | Enigma Developers</title>
-      <meta name="description" content="Términos y condiciones de uso de los servicios de Enigma Developers S.A.C. Conoce las reglas que rigen nuestra relación comercial." />
-      <link rel="canonical" href="https://enigmasac.com/terminos" />
+      <title>{meta.title}</title>
+      <meta name="description" content={meta.description} />
+      <link rel="canonical" href={`https://enigmasac.com${lang === "es" ? "/terminos" : "/en/terms"}`} />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">
@@ -21,7 +69,7 @@ export default function TermsOfService() {
             transition={{ duration: 0.6 }}
             className="font-heading text-4xl sm:text-5xl tracking-tight text-cream leading-tight"
           >
-            Términos de Servicio
+            {page.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -29,7 +77,7 @@ export default function TermsOfService() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-4 text-sm text-cream2 font-body"
           >
-            Última actualización: {LAST_UPDATED}
+            {page.lastUpdatedPrefix || "Last updated:"} {page.lastUpdated}
           </motion.p>
         </div>
       </section>
@@ -37,117 +85,7 @@ export default function TermsOfService() {
       <section className="py-20 bg-carbon">
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-carbon2 border border-line p-8 sm:p-12 space-y-10 font-body text-sm text-cream2 leading-relaxed">
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">1. Identificación</h2>
-              <ul className="space-y-2">
-                <li><span className="text-cream">Razón social:</span> Enigma Developers S.A.C.</li>
-                <li><span className="text-cream">RUC:</span> 20605632875</li>
-                <li><span className="text-cream">Domicilio fiscal:</span> Lima, Perú</li>
-                <li><span className="text-cream">Correo electrónico:</span> hello@enigmasac.com</li>
-                <li><span className="text-cream">Sitio web:</span> https://enigmasac.com</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">2. Objeto</h2>
-              <p>Los presentes términos regulan el uso del sitio web enigmasac.com y la contratación de los servicios ofrecidos por Enigma Developers S.A.C., incluyendo desarrollo web, administración de servidores y cloud, correo corporativo, ciberseguridad, automatización, agentes de inteligencia artificial y consultoría tecnológica.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">3. Aceptación</h2>
-              <p>El acceso y uso de este sitio web, así como la contratación de cualquiera de nuestros servicios, implica la aceptación plena de estos términos y condiciones. Si no estás de acuerdo con alguno de ellos, te recomendamos no utilizar este sitio ni contratar nuestros servicios.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">4. Servicios</h2>
-              <p className="mb-3">Enigma Developers S.A.C. ofrece servicios tecnológicos que pueden contratarse de forma individual o mediante planes de suscripción mensual. Los servicios incluyen, entre otros:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Diseño y desarrollo de sitios web y aplicaciones</li>
-                <li>Administración de servidores e infraestructura cloud</li>
-                <li>Implementación y gestión de correo corporativo (Google Workspace)</li>
-                <li>Auditorías y protección de ciberseguridad</li>
-                <li>Automatización de procesos e integración de APIs</li>
-                <li>Desarrollo de agentes de inteligencia artificial personalizados</li>
-                <li>Consultoría tecnológica integral</li>
-              </ul>
-              <p className="mt-3">El alcance específico de cada servicio se detalla en la propuesta comercial o acuerdo de servicio correspondiente.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">5. Precios y pagos</h2>
-              <ul className="space-y-3 list-disc list-inside">
-                <li>Los precios de nuestros servicios son personalizados según las necesidades de cada cliente y se comunican de forma clara en la propuesta comercial.</li>
-                <li>Los planes de suscripción se facturan mensualmente. El pago debe realizarse dentro de los primeros 5 días del ciclo de facturación.</li>
-                <li>Aceptamos transferencias bancarias, pagos con tarjeta y otros medios según la ubicación del cliente.</li>
-                <li>Los precios no incluyen impuestos, salvo que se indique expresamente.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">6. Duración y cancelación</h2>
-              <ul className="space-y-3 list-disc list-inside">
-                <li>Los planes de suscripción son mensuales y pueden cancelarse en cualquier momento sin penalización.</li>
-                <li>La cancelación debe comunicarse con al menos 10 días de anticipación al siguiente ciclo de facturación.</li>
-                <li>Los servicios contratados de forma individual se rigen por los plazos establecidos en el acuerdo correspondiente.</li>
-                <li>En caso de cancelación, el cliente mantiene acceso a su web, datos, servidores, correo y cualquier desarrollo realizado.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">7. Propiedad intelectual</h2>
-              <p className="mb-3">La propiedad intelectual se rige por las siguientes reglas:</p>
-              <ul className="space-y-3 list-disc list-inside">
-                <li>El código fuente, diseños y desarrollos realizados para el cliente son propiedad del cliente una vez completado el pago correspondiente.</li>
-                <li>La marca, logotipo, diseño y contenido del sitio web enigmasac.com son propiedad exclusiva de Enigma Developers S.A.C.</li>
-                <li>Las herramientas, frameworks y componentes reutilizables desarrollados por Enigma Developers S.A.C. de forma genérica pueden ser utilizados en otros proyectos.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">8. Obligaciones del cliente</h2>
-              <p className="mb-3">El cliente se compromete a:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Proporcionar información veraz y actualizada</li>
-                <li>Facilitar los accesos y credenciales necesarios para la prestación de los servicios</li>
-                <li>Realizar los pagos en los plazos acordados</li>
-                <li>No utilizar los servicios contratados para actividades ilícitas</li>
-                <li>Respetar la propiedad intelectual de terceros</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">9. Limitación de responsabilidad</h2>
-              <ul className="space-y-3 list-disc list-inside">
-                <li>Enigma Developers S.A.C. no se hace responsable de interrupciones en los servicios causadas por terceros, fuerza mayor o circunstancias fuera de su control.</li>
-                <li>La responsabilidad máxima de Enigma Developers S.A.C. se limita al monto total pagado por el cliente en los últimos 3 meses por los servicios afectados.</li>
-                <li>No nos hacemos responsables del contenido publicado por el cliente en su sitio web o plataformas.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">10. Confidencialidad</h2>
-              <p>Ambas partes se comprometen a mantener la confidencialidad de la información sensible compartida durante la relación comercial. Esta obligación se mantiene vigente incluso después de la finalización de los servicios.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">11. Modificaciones</h2>
-              <p>Enigma Developers S.A.C. se reserva el derecho de modificar estos términos en cualquier momento. Las modificaciones se publicarán en esta página y, en caso de cambios significativos, se notificará a los clientes activos por correo electrónico.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">12. Legislación aplicable</h2>
-              <p>Estos términos se rigen por las leyes de la República del Perú. Para clientes ubicados en la Unión Europea, se aplicarán adicionalmente las disposiciones de protección al consumidor del país de residencia del cliente. Cualquier controversia se resolverá ante los tribunales competentes de Lima, Perú, salvo acuerdo distinto entre las partes.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">13. Contacto</h2>
-              <p>Para consultas sobre estos términos de servicio, puedes contactarnos en:</p>
-              <ul className="mt-3 space-y-2">
-                <li><span className="text-cream">Email:</span> <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a></li>
-                <li><span className="text-cream">Teléfono (Perú):</span> +51 959 561 015</li>
-                <li><span className="text-cream">Teléfono (España):</span> +34 656 663 992</li>
-              </ul>
-            </div>
+            {page.sections.map((section, i) => renderSection(section, i, page.sections, info))}
           </div>
         </div>
       </section>

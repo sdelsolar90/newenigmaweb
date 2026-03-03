@@ -1,37 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { Link } from "react-router-dom";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 
-const PLANS = [
-  {
-    name: "Esencial",
-    tagline: "La base tecnológica que toda empresa necesita",
-    features: { "Web gestionada": true, "Servidores & cloud": true, "Correo corporativo": true, "Ciberseguridad básica": true, "Ciberseguridad avanzada": false, "Automatizaciones": false, "Agente de IA personalizado": false, "Dashboard en tiempo real": false, "Consultoría mensual": "1 hora", "Soporte": "Por tickets" },
-    highlighted: false,
-  },
-  {
-    name: "Pro",
-    tagline: "Automatiza, protege y escala tu operación",
-    badge: "Más popular",
-    features: { "Web gestionada": true, "Servidores & cloud": true, "Correo corporativo": true, "Ciberseguridad básica": true, "Ciberseguridad avanzada": true, "Automatizaciones": true, "Agente de IA personalizado": false, "Dashboard en tiempo real": false, "Consultoría mensual": "2 horas", "Soporte": "Prioritario" },
-    highlighted: true,
-  },
-  {
-    name: "IA",
-    tagline: "Lidera tu industria con inteligencia artificial",
-    features: { "Web gestionada": true, "Servidores & cloud": true, "Correo corporativo": true, "Ciberseguridad básica": true, "Ciberseguridad avanzada": true, "Automatizaciones": true, "Agente de IA personalizado": true, "Dashboard en tiempo real": true, "Consultoría mensual": "4 horas", "Soporte": "Dedicado" },
-    highlighted: false,
-  },
-];
-
-const FEATURE_KEYS = ["Web gestionada", "Servidores & cloud", "Correo corporativo", "Ciberseguridad básica", "Ciberseguridad avanzada", "Automatizaciones", "Agente de IA personalizado", "Dashboard en tiempo real", "Consultoría mensual", "Soporte"];
-
-const FAQ = [
-  { question: "¿Hay contratos de permanencia?", answer: "No. Todos nuestros planes son mensuales y puedes cancelar en cualquier momento. Creemos que la mejor forma de retenerte es dándote un servicio excelente, no atándote con contratos." },
-  { question: "¿Puedo cambiar de plan después?", answer: "Sí, puedes escalar o reducir tu plan en cualquier momento. Los cambios se aplican en el siguiente ciclo de facturación." },
-  { question: "¿Qué pasa con mi web y datos si cancelo?", answer: "Todo es tuyo. Te entregamos acceso completo a tu web, servidores, correo y cualquier desarrollo que hayamos hecho. No retenemos nada." },
-  { question: "¿Los precios son iguales para Perú y España?", answer: "Los precios se adaptan al mercado local. Agenda un diagnóstico y te enviamos una propuesta personalizada según tu ubicación y necesidades." },
-  { question: "¿Puedo contratar servicios sueltos sin un plan?", answer: "Sí. Todos nuestros servicios pueden contratarse de forma independiente. Los planes son la opción más conveniente si necesitas varios servicios, pero no es obligatorio." },
+const PLAN_META = [
+  { highlighted: false, features: [true, true, true, true, false, false, false, false, "1hora", "tickets"] },
+  { highlighted: true, features: [true, true, true, true, true, true, false, false, "2horas", "prioritario"] },
+  { highlighted: false, features: [true, true, true, true, true, true, true, true, "4horas", "dedicado"] },
 ];
 
 function FeatureCell({ value }) {
@@ -78,16 +53,24 @@ function FAQItem({ item, index }) {
 }
 
 export default function PlansPage() {
+  const { lang, t } = useT();
   const tableRef = useRef(null);
   const isTableInView = useInView(tableRef, { once: true, margin: "-80px" });
+  const canonical = lang === "es" ? "https://enigmasac.com/planes" : "https://enigmasac.com/en/plans";
+
+  const plans = t("plansPage.plans");
+  const featureKeys = t("plansPage.featureKeys");
+  const featureValues = t("plansPage.featureValues");
+  const faq = t("plansPage.faq");
 
   return (
     <>
-      <title>Planes y Precios | Enigma Developers</title>
-      <meta name="description" content="Planes de suscripción mensual para tener tu equipo IT completo: Esencial, Pro e IA. Sin contratos de permanencia, sin letra pequeña." />
-      <meta property="og:title" content="Planes y Precios | Enigma Developers" />
-      <meta property="og:description" content="Elige el plan que mejor se adapta a tu empresa. Desde la base tecnológica hasta inteligencia artificial personalizada." />
-      <link rel="canonical" href="https://enigmasac.com/planes" />
+      <title>{t("meta.plans.title")}</title>
+      <meta name="description" content={t("meta.plans.description")} />
+      <meta property="og:title" content={t("meta.plans.ogTitle")} />
+      <meta property="og:description" content={t("meta.plans.ogDescription")} />
+      <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+      <link rel="canonical" href={canonical} />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">
@@ -101,8 +84,8 @@ export default function PlansPage() {
             transition={{ duration: 0.6 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl tracking-tight text-cream leading-tight"
           >
-            Un plan para cada{" "}
-            <em className="italic text-red">etapa de tu empresa</em>
+            {t("plansPage.heroTitle")}{" "}
+            <em className="italic text-red">{t("plansPage.heroTitleItalic")}</em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -110,7 +93,7 @@ export default function PlansPage() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-6 text-base text-cream2 font-body max-w-2xl mx-auto leading-relaxed"
           >
-            Contrata servicios puntuales o elige un plan mensual con todo incluido. Sin contratos de permanencia, sin letra pequeña.
+            {t("plansPage.heroDescription")}
           </motion.p>
         </div>
       </section>
@@ -126,23 +109,23 @@ export default function PlansPage() {
               className="p-6 bg-carbon border border-line"
             >
               <span className="font-mono text-xs tracking-[0.3em] text-red uppercase">
-                Servicio puntual
+                {t("plansPage.punctualTag")}
               </span>
               <h3 className="mt-3 font-heading text-xl text-cream tracking-tight">
-                ¿Necesitas algo específico?
+                {t("plansPage.punctualTitle")}
               </h3>
               <p className="mt-2 text-sm text-cream2 font-body leading-relaxed">
-                Todos nuestros servicios pueden contratarse de forma individual. Una web, una migración de correo, una auditoría de seguridad — lo que necesites, sin suscripción.
+                {t("plansPage.punctualDescription")}
               </p>
-              <Link
+              <LocaleLink
                 to="/servicios"
                 className="inline-flex items-center gap-2 mt-4 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
               >
-                Ver servicios
+                {t("plansPage.punctualCta")}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
+              </LocaleLink>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -152,79 +135,80 @@ export default function PlansPage() {
               className="p-6 bg-carbon border border-red/30"
             >
               <span className="font-mono text-xs tracking-[0.3em] text-red uppercase">
-                Plan mensual
+                {t("plansPage.monthlyTag")}
               </span>
               <h3 className="mt-3 font-heading text-xl text-cream tracking-tight">
-                ¿Quieres un equipo IT dedicado?
+                {t("plansPage.monthlyTitle")}
               </h3>
               <p className="mt-2 text-sm text-cream2 font-body leading-relaxed">
-                Nuestros planes agrupan varios servicios en una suscripción mensual con soporte continuo. Elige el nivel que necesitas hoy y escala cuando quieras.
+                {t("plansPage.monthlyDescription")}
               </p>
-              <Link
+              <LocaleLink
                 to="/contacto"
                 className="inline-flex items-center gap-2 mt-4 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
               >
-                Agenda tu diagnóstico
+                {t("plansPage.monthlyCta")}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
+              </LocaleLink>
             </motion.div>
           </div>
 
           <div className="flex flex-col gap-6 lg:hidden">
-            {PLANS.map((plan, pi) => (
+            {PLAN_META.map((meta, pi) => (
               <motion.div
-                key={plan.name}
+                key={plans[pi].name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: pi * 0.1 }}
-                className={`p-6 ${plan.highlighted ? "bg-red/10 border-2 border-red" : "bg-carbon border border-line"}`}
+                className={`p-6 ${meta.highlighted ? "bg-red/10 border-2 border-red" : "bg-carbon border border-line"}`}
               >
                 <div className="text-center mb-6">
-                  {plan.badge && (
+                  {plans[pi].badge && (
                     <span className="inline-block px-3 py-1 bg-red text-cream text-xs font-mono tracking-[0.2em] uppercase mb-3">
-                      {plan.badge}
+                      {plans[pi].badge}
                     </span>
                   )}
-                  <h3 className="font-heading text-2xl tracking-tight text-cream">{plan.name}</h3>
-                  <p className={`mt-1 text-xs font-body ${plan.highlighted ? "text-red" : "text-cream2"}`}>
-                    {plan.tagline}
+                  <h3 className="font-heading text-2xl tracking-tight text-cream">{plans[pi].name}</h3>
+                  <p className={`mt-1 text-xs font-body ${meta.highlighted ? "text-red" : "text-cream2"}`}>
+                    {plans[pi].tagline}
                   </p>
-                  <span className="block mt-3 text-sm font-mono text-red">Precio personalizado</span>
+                  <span className="block mt-3 text-sm font-mono text-red">{t("plansPage.customPrice")}</span>
                 </div>
                 <ul className="space-y-3 mb-6">
-                  {FEATURE_KEYS.map((feature) => {
-                    const val = plan.features[feature];
+                  {featureKeys.map((feature, fi) => {
+                    const val = meta.features[fi];
+                    const displayVal = typeof val === "string" ? featureValues[val] : val;
                     return (
                       <li key={feature} className="flex items-center justify-between gap-3 py-2 border-b border-line/50">
                         <span className="font-body text-sm text-cream2">{feature}</span>
-                        {val === true ? (
+                        {displayVal === true ? (
                           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="shrink-0 text-red">
                             <path d="M4 8l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
-                        ) : val === false ? (
+                        ) : displayVal === false ? (
                           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" className="shrink-0 text-cream2/30">
                             <path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                           </svg>
                         ) : (
-                          <span className="font-body text-sm text-cream font-medium shrink-0">{val}</span>
+                          <span className="font-body text-sm text-cream font-medium shrink-0">{displayVal}</span>
                         )}
                       </li>
                     );
                   })}
                 </ul>
-                <Link
+                <LocaleLink
                   to="/contacto"
                   className={`block w-full py-3 text-center font-mono text-xs uppercase tracking-[0.1em] transition-all duration-300 ${
-                    plan.highlighted
+                    meta.highlighted
                       ? "bg-red text-cream hover:bg-red2"
                       : "border border-line text-red hover:bg-red hover:text-cream"
                   }`}
                 >
-                  Empezar con {plan.name}
-                </Link>
+                  {t("plansPage.startWith")} {plans[pi].name}
+                </LocaleLink>
               </motion.div>
             ))}
           </div>
@@ -240,21 +224,21 @@ export default function PlansPage() {
               <thead>
                 <tr>
                   <th className="text-left py-6 pr-6 w-1/4" />
-                  {PLANS.map((plan) => (
-                    <th key={plan.name} className="py-6 px-4 text-center w-1/4">
-                      <div className={`p-6 ${plan.highlighted ? "bg-red/10 border-2 border-red" : "bg-carbon3 border border-line"}`}>
-                        {plan.badge && (
+                  {PLAN_META.map((meta, pi) => (
+                    <th key={plans[pi].name} className="py-6 px-4 text-center w-1/4">
+                      <div className={`p-6 ${meta.highlighted ? "bg-red/10 border-2 border-red" : "bg-carbon3 border border-line"}`}>
+                        {plans[pi].badge && (
                           <span className="inline-block px-3 py-1 bg-red text-cream text-xs font-mono tracking-[0.2em] uppercase mb-3">
-                            {plan.badge}
+                            {plans[pi].badge}
                           </span>
                         )}
-                        <h3 className="font-heading text-2xl tracking-tight text-cream">{plan.name}</h3>
-                        <p className={`mt-2 text-xs font-body ${plan.highlighted ? "text-red" : "text-cream2"}`}>
-                          {plan.tagline}
+                        <h3 className="font-heading text-2xl tracking-tight text-cream">{plans[pi].name}</h3>
+                        <p className={`mt-2 text-xs font-body ${meta.highlighted ? "text-red" : "text-cream2"}`}>
+                          {plans[pi].tagline}
                         </p>
                         <div className="mt-4">
                           <span className="text-sm font-mono text-red">
-                            Precio personalizado
+                            {t("plansPage.customPrice")}
                           </span>
                         </div>
                       </div>
@@ -263,32 +247,36 @@ export default function PlansPage() {
                 </tr>
               </thead>
               <tbody>
-                {FEATURE_KEYS.map((feature) => (
+                {featureKeys.map((feature, fi) => (
                   <tr key={feature} className="border-b border-line">
                     <td className="py-4 pr-6 font-body text-sm text-cream font-medium">{feature}</td>
-                    {PLANS.map((plan) => (
-                      <td key={`${plan.name}-${feature}`} className="py-4 px-4 text-center">
-                        <FeatureCell value={plan.features[feature]} />
-                      </td>
-                    ))}
+                    {PLAN_META.map((meta, pi) => {
+                      const val = meta.features[fi];
+                      const displayVal = typeof val === "string" ? featureValues[val] : val;
+                      return (
+                        <td key={`${plans[pi].name}-${feature}`} className="py-4 px-4 text-center">
+                          <FeatureCell value={displayVal} />
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
               <tfoot>
                 <tr>
                   <td className="pt-8" />
-                  {PLANS.map((plan) => (
-                    <td key={plan.name} className="pt-8 px-4 text-center">
-                      <Link
+                  {PLAN_META.map((meta, pi) => (
+                    <td key={plans[pi].name} className="pt-8 px-4 text-center">
+                      <LocaleLink
                         to="/contacto"
                         className={`inline-block w-full py-3 font-mono text-xs uppercase tracking-[0.1em] transition-all duration-300 ${
-                          plan.highlighted
+                          meta.highlighted
                             ? "bg-red text-cream hover:bg-red2"
                             : "border border-line text-red hover:bg-red hover:text-cream"
                         }`}
                       >
-                        Empezar con {plan.name}
-                      </Link>
+                        {t("plansPage.startWith")} {plans[pi].name}
+                      </LocaleLink>
                     </td>
                   ))}
                 </tr>
@@ -301,11 +289,11 @@ export default function PlansPage() {
       <section className="py-20 bg-carbon">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-3xl sm:text-4xl tracking-tight text-cream text-center mb-12">
-            Preguntas frecuentes
+            {t("plansPage.faqTitle")}
           </h2>
           <div className="bg-carbon2 border border-line p-8">
-            {FAQ.map((item, index) => (
-              <FAQItem key={item.question} item={item} index={index} />
+            {faq.map((item, index) => (
+              <FAQItem key={index} item={item} index={index} />
             ))}
           </div>
         </div>

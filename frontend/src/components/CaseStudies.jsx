@@ -1,35 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
 import useCountUp from "../hooks/useCountUp.js";
 
-const TESTIMONIALS = [
-  {
-    quote: "Antes gastábamos en un desarrollador freelance, otro para el servidor y otro para el correo. Con Enigma tenemos todo integrado, con mejor calidad y por menos de lo que pagábamos antes.",
-    name: "Carlos Mendoza",
-    role: "Director General",
-    company: "Importaciones del Pacífico",
-    metricValue: 40,
-    metricSuffix: "%",
-    metricLabel: "reducción en costos IT",
-  },
-  {
-    quote: "El agente de IA que nos implementaron atiende el 70% de las consultas de nuestros clientes de forma automática. Nuestro equipo de ventas ahora se enfoca en cerrar negocios, no en responder las mismas preguntas.",
-    name: "María Elena Torres",
-    role: "Gerente Comercial",
-    company: "Clínica Dental Sonrisa",
-    metricValue: 70,
-    metricSuffix: "%",
-    metricLabel: "consultas automatizadas",
-  },
-  {
-    quote: "Después de la auditoría de seguridad encontraron vulnerabilidades críticas que no sabíamos que teníamos. Nos evitaron un problema serio. Ahora dormimos tranquilos sabiendo que alguien cuida nuestra infraestructura.",
-    name: "Roberto Álvarez",
-    role: "CEO",
-    company: "LegalTech Solutions",
-    metricValue: 12,
-    metricSuffix: "",
-    metricLabel: "vulnerabilidades corregidas",
-  },
+const METRIC_DATA = [
+  { value: 40, suffix: "%" },
+  { value: 70, suffix: "%" },
+  { value: 12, suffix: "" },
 ];
 
 function MetricCounter({ value, suffix }) {
@@ -62,19 +39,22 @@ function ArrowButton({ direction, onClick }) {
 }
 
 export default function CaseStudies() {
+  const { t } = useT();
   const [activeIndex, setActiveIndex] = useState(0);
   const isPaused = useRef(false);
   const timerRef = useRef(null);
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
-  const current = TESTIMONIALS[activeIndex];
+  const items = t("caseStudies.items");
+  const current = items[activeIndex];
+  const metric = METRIC_DATA[activeIndex];
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       if (!isPaused.current) {
-        setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+        setActiveIndex((prev) => (prev + 1) % METRIC_DATA.length);
       }
     }, 6000);
   }, []);
@@ -104,11 +84,11 @@ export default function CaseStudies() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-            Casos de éxito
+            {t("caseStudies.tag")}
           </span>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl tracking-tight text-cream leading-tight">
-            Empresas que ya tienen{" "}
-            <em className="italic">su equipo IT con Enigma</em>
+            {t("caseStudies.title")}{" "}
+            <em className="italic">{t("caseStudies.titleItalic")}</em>
           </h2>
         </motion.div>
 
@@ -123,7 +103,7 @@ export default function CaseStudies() {
               className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center bg-carbon2 border border-line p-8 md:p-12"
             >
               <div className="text-center md:text-left">
-                <MetricCounter key={`m-${activeIndex}`} value={current.metricValue} suffix={current.metricSuffix} />
+                <MetricCounter key={`m-${activeIndex}`} value={metric.value} suffix={metric.suffix} />
                 <span className="block font-mono text-xs tracking-[0.15em] text-red uppercase mt-2">
                   {current.metricLabel}
                 </span>
@@ -148,7 +128,7 @@ export default function CaseStudies() {
 
           <div className="flex items-center justify-between mt-8">
             <div className="flex items-center gap-2">
-              {TESTIMONIALS.map((_, i) => (
+              {METRIC_DATA.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
@@ -161,11 +141,11 @@ export default function CaseStudies() {
             <div className="flex items-center gap-2">
               <ArrowButton
                 direction="left"
-                onClick={() => goTo((activeIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                onClick={() => goTo((activeIndex - 1 + METRIC_DATA.length) % METRIC_DATA.length)}
               />
               <ArrowButton
                 direction="right"
-                onClick={() => goTo((activeIndex + 1) % TESTIMONIALS.length)}
+                onClick={() => goTo((activeIndex + 1) % METRIC_DATA.length)}
               />
             </div>
           </div>

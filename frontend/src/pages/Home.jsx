@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useT } from "../i18n/LanguageContext.jsx";
 import Hero from "../components/Hero.jsx";
 import Partners from "../components/Partners.jsx";
 import Problem from "../components/Problem.jsx";
@@ -45,15 +46,19 @@ function ScrollRotor() {
 }
 
 export default function Home() {
+  const { lang, t } = useT();
+  const canonical = lang === "es" ? "https://enigmasac.com" : "https://enigmasac.com/en";
+
   return (
     <>
-      <title>Enigma Developers | Tu área IT sin costos internos</title>
-      <meta name="description" content="El área IT completa de tu empresa, sin los costos de tenerla interna. Desarrollo web, servidores, ciberseguridad, automatización e inteligencia artificial para PYMEs." />
-      <meta property="og:title" content="Enigma Developers | Tu área IT sin costos internos" />
-      <meta property="og:description" content="Soluciones tecnológicas integrales para PYMEs. Desarrollo web, cloud, ciberseguridad, automatización e inteligencia artificial." />
+      <title>{t("meta.home.title")}</title>
+      <meta name="description" content={t("meta.home.description")} />
+      <meta property="og:title" content={t("meta.home.ogTitle")} />
+      <meta property="og:description" content={t("meta.home.ogDescription")} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://enigmasac.com" />
-      <link rel="canonical" href="https://enigmasac.com" />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+      <link rel="canonical" href={canonical} />
       <ScrollRotor />
       <Hero />
       <Partners />

@@ -1,0 +1,596 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "plans": "Plans",
+    "clients": "Clients",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Let's Talk",
+    "logoAria": "Enigma Developers - Home",
+    "menu": "Menu"
+  },
+  "footer": {
+    "tagline": "Your company's complete IT department, without the cost of having one in-house. From Lima and Barcelona for all of Latin America and Spain.",
+    "servicesTitle": "Services",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "services": ["Web Development", "Servers & Cloud", "Email & Google Workspace", "Cybersecurity", "Automation & APIs", "AI Agents", "360° Consulting"],
+    "company": ["About", "Clients", "Plans", "Contact"],
+    "phonePeru": "+51 959 561 015 (Peru)",
+    "phoneSpain": "+34 656 663 992 (Spain)",
+    "locationPeru": "Lima, Peru",
+    "locationSpain": "Barcelona, Spain",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "complaints": "Complaints Book",
+    "copyright": "Enigma Developers S.A.C. · RUC 20605632875 · All rights reserved."
+  },
+  "hero": {
+    "tag": "Beyond the obvious",
+    "headline": "We transform your business complexity into systems that simply work.",
+    "italicWord": "simply",
+    "description": "Web development, servers, cybersecurity, automation, and artificial intelligence. Everything you need to compete with technology, in a single team dedicated to your business.",
+    "ctaPrimary": "Book your assessment",
+    "ctaSecondary": "Explore our plans",
+    "stats": [
+      { "value": "+5", "label": "Years of experience" },
+      { "value": "+50", "label": "Projects delivered" },
+      { "value": "2", "label": "Countries operating" },
+      { "value": "24/7", "label": "Support available" }
+    ]
+  },
+  "problem": {
+    "tag": "The problem",
+    "items": [
+      {
+        "title": "Hiring an internal IT team is expensive",
+        "description": "A single developer, a sysadmin, and a security specialist can exceed $8,000/month in salary costs."
+      },
+      {
+        "title": "Uncommitted freelancers",
+        "description": "They respond when they want, disappear mid-project, and don't understand your business. Every new freelancer starts from scratch."
+      },
+      {
+        "title": "Technology advances, your company falls behind",
+        "description": "While your competition automates processes and uses AI, you're still solving everything manually and losing hours every week."
+      },
+      {
+        "title": "Undetected vulnerabilities",
+        "description": "Without a security team, your website, emails, and customer data are exposed. An attack could cost you your entire business."
+      }
+    ]
+  },
+  "howItWorks": {
+    "tag": "How it works",
+    "title": "From zero to IT team",
+    "titleItalic": "in three steps",
+    "description": "A simple and transparent process. No lock-in contracts, no surprises.",
+    "steps": [
+      {
+        "title": "Initial assessment",
+        "description": "We analyze your current digital ecosystem: website, servers, email, security, processes, and tools. We identify vulnerabilities and improvement opportunities."
+      },
+      {
+        "title": "Custom plan",
+        "description": "We design a roadmap tailored to your company, your goals, and your budget. Each plan is built around what you actually need."
+      },
+      {
+        "title": "Ongoing support",
+        "description": "We become your IT team. We manage your infrastructure, resolve incidents, and implement improvements. You grow, we take care of the rest."
+      }
+    ]
+  },
+  "services": {
+    "tag": "Services",
+    "headline": "Everything your company needs, in a single team",
+    "description": "Each service can be contracted separately or as part of a comprehensive plan. We adapt the solution to your reality.",
+    "viewDetail": "View full details",
+    "viewAll": "View all services in detail",
+    "items": [
+      { "title": "Web Development", "description": "WordPress, WooCommerce, and custom-coded web applications. From landing pages to complete platforms—fast, secure, and built to convert." },
+      { "title": "Servers & Cloud", "description": "AWS, cPanel, CloudPanel, and Linux administration. Your infrastructure always available, fast, and scalable." },
+      { "title": "Email & Workspace", "description": "Corporate email implementation and migration. Business Gmail, Drive, Calendar, and all Google tools." },
+      { "title": "Cybersecurity", "description": "Audits, firewalls, vulnerability analysis, and continuous protection. Protect your data, your clients' data, and your reputation." },
+      { "title": "Automation", "description": "CRM, ERP, webhooks, Zapier, Make, and n8n. We connect your tools and automate processes that steal hours from your day." },
+      { "title": "AI Agents", "description": "Chatbots and agents trained with your business data. They serve customers, process sales, and automate internal tasks." },
+      { "title": "360° Consulting", "description": "Comprehensive assessment of your digital ecosystem. We identify opportunities, design the strategy, and support you through execution." }
+    ]
+  },
+  "plans": {
+    "tag": "Plans",
+    "headline": "A plan for every stage of your company",
+    "description": "Start with what you need today and scale when you're ready. No lock-in contracts, no fine print.",
+    "customPrice": "Custom pricing",
+    "customPriceNote": "Based on your company's needs",
+    "compare": "Compare plans in detail",
+    "badge": "Most popular",
+    "items": [
+      {
+        "name": "Essential",
+        "tagline": "For companies that need a solid tech foundation",
+        "cta": "Start with Essential",
+        "features": ["Managed website", "Servers & cloud", "Corporate email", "Basic cybersecurity", "1h monthly consulting", "Ticket support"]
+      },
+      {
+        "name": "Pro",
+        "tagline": "For companies that want to automate and scale",
+        "cta": "Start with Pro",
+        "features": ["Everything in Essential", "Advanced cybersecurity", "Automations (Zapier, Make, n8n)", "2h monthly consulting", "Priority support"]
+      },
+      {
+        "name": "AI",
+        "tagline": "For companies that want to lead with artificial intelligence",
+        "cta": "Start with AI",
+        "features": ["Everything in Pro", "Custom AI agent included", "Real-time data dashboard", "4h monthly consulting", "Dedicated support"]
+      }
+    ]
+  },
+  "clients": {
+    "tag": "Success stories",
+    "title": "Companies that already have",
+    "titleItalic": "their IT team with Enigma",
+    "viewAll": "View all clients"
+  },
+  "caseStudies": {
+    "tag": "Success stories",
+    "title": "Companies that already have",
+    "titleItalic": "their IT team with Enigma",
+    "items": [
+      {
+        "quote": "We used to spend on a freelance developer, another for the server, and another for email. With Enigma we have everything integrated, with better quality and for less than what we were paying before.",
+        "name": "Carlos Mendoza",
+        "role": "General Director",
+        "company": "Importaciones del Pacífico",
+        "metricLabel": "reduction in IT costs"
+      },
+      {
+        "quote": "The AI agent they implemented handles 70% of our customer inquiries automatically. Our sales team now focuses on closing deals, not answering the same questions.",
+        "name": "María Elena Torres",
+        "role": "Commercial Manager",
+        "company": "Clínica Dental Sonrisa",
+        "metricLabel": "automated inquiries"
+      },
+      {
+        "quote": "After the security audit, they found critical vulnerabilities we didn't know we had. They saved us from a serious problem. Now we sleep soundly knowing someone is protecting our infrastructure.",
+        "name": "Roberto Álvarez",
+        "role": "CEO",
+        "company": "LegalTech Solutions",
+        "metricLabel": "vulnerabilities fixed"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "No-commitment assessment",
+    "headline": "Your company deserves world-class technology.",
+    "headlineItalic": "Let's make it happen.",
+    "description": "Book an assessment session with our team. We analyze your current situation, identify opportunities, and propose a concrete plan. No commitments, no fine print.",
+    "ctaPrimary": "Book your assessment",
+    "ctaWhatsApp": "Message us on WhatsApp"
+  },
+  "whatsapp": {
+    "tooltip": "Need help?",
+    "tooltipCta": "Message us",
+    "aria": "Contact us on WhatsApp",
+    "waText": "Hello%2C%20I'm%20interested%20in%20learning%20more%20about%20Enigma's%20services",
+    "waTextDiag": "Hello%2C%20I'm%20interested%20in%20booking%20an%20assessment"
+  },
+  "cookieConsent": {
+    "message": "We use essential and analytics cookies to improve your experience.",
+    "learnMore": "See our",
+    "policyLink": "cookie policy",
+    "moreInfo": "for more information.",
+    "reject": "Reject",
+    "accept": "Accept"
+  },
+  "partners": {
+    "label": "Technologies and platforms"
+  },
+  "meta": {
+    "home": {
+      "title": "Enigma Developers | Your IT Team Without Internal Costs",
+      "description": "Your company's complete IT department, without the cost of having one in-house. Web development, servers, cybersecurity, automation, and artificial intelligence for SMEs.",
+      "ogTitle": "Enigma Developers | Your IT Team Without Internal Costs",
+      "ogDescription": "Comprehensive technology solutions for SMEs. Web development, cloud, cybersecurity, automation, and artificial intelligence."
+    },
+    "services": {
+      "title": "Services | Enigma Developers",
+      "description": "Web development, cloud servers, cybersecurity, automation, AI agents, and 360° consulting. All the IT services your company needs.",
+      "ogTitle": "Services | Enigma Developers",
+      "ogDescription": "Comprehensive technology services for SMEs: web development, cloud, cybersecurity, automation, and artificial intelligence."
+    },
+    "plans": {
+      "title": "Plans & Pricing | Enigma Developers",
+      "description": "Monthly subscription plans for your complete IT team: Essential, Pro, and AI. No lock-in contracts, no fine print.",
+      "ogTitle": "Plans & Pricing | Enigma Developers",
+      "ogDescription": "Choose the plan that best fits your company. From the tech foundation to personalized artificial intelligence."
+    },
+    "clients": {
+      "title": "Clients | Enigma Developers",
+      "description": "Meet the companies that trust Enigma Developers as their IT team. Over 19 companies in Latin America and Spain."
+    },
+    "about": {
+      "title": "About Us | Enigma Developers",
+      "description": "Over 5 years building technology solutions from Lima and Barcelona. Learn about the history, team, and values of Enigma Developers.",
+      "ogTitle": "About Us | Enigma Developers",
+      "ogDescription": "Since 2019 helping companies compete with technology. Present in Lima, Peru and Barcelona, Spain."
+    },
+    "contact": {
+      "title": "Contact | Enigma Developers",
+      "description": "Contact Enigma Developers. Book your digital assessment or send us your inquiry. We respond within 24 hours.",
+      "ogTitle": "Contact | Enigma Developers",
+      "ogDescription": "Book an assessment or send us your inquiry. Lima, Peru and Barcelona, Spain."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Enigma Developers",
+      "description": "Privacy policy of Enigma Developers S.A.C. Learn how we collect, use, and protect your personal data."
+    },
+    "terms": {
+      "title": "Terms of Service | Enigma Developers",
+      "description": "Terms and conditions for Enigma Developers S.A.C. services. Learn the rules that govern our business relationship."
+    },
+    "cookies": {
+      "title": "Cookie Policy | Enigma Developers",
+      "description": "Cookie policy of Enigma Developers S.A.C. Learn what cookies we use, their purpose, and how to manage them."
+    }
+  },
+  "servicesPage": {
+    "heroPrefix": "Services that cover ",
+    "heroAccent": "everything you need",
+    "heroDescription": "Each service can be contracted individually or as part of a comprehensive plan. What matters isn't the tool, but solving your business problem.",
+    "whatIncludes": "What's included",
+    "navAria": "Services navigation",
+    "ctaTitle": "Not sure which services you need?",
+    "ctaDescription": "Book an assessment and we'll help you identify exactly what your company needs.",
+    "ctaButton": "Book your assessment",
+    "detail": [
+      {
+        "title": "Web Development",
+        "subtitle": "Your digital presence, built to convert",
+        "description": "We don't make pretty websites that don't work. We design and develop everything from WordPress sites to complete custom-coded web applications. Fast, secure, SEO and GEO optimized, and designed to convert visitors into customers.",
+        "features": ["WordPress and WooCommerce for online stores", "Custom web applications (React, Node.js, Python, etc.)", "Platforms, dashboards, and custom internal systems", "Responsive design optimized for mobile", "SEO and GEO integrated from the structure", "Load speed optimized (Core Web Vitals)", "Integration with CRM, ERP, and business tools"]
+      },
+      {
+        "title": "Servers & Cloud",
+        "subtitle": "Infrastructure that doesn't let you down",
+        "description": "We manage your servers and cloud infrastructure so your website and applications are always available. 24/7 monitoring, automatic backups, and scaling when you need it.",
+        "features": ["Amazon Web Services (AWS)", "cPanel and CloudPanel administration", "Linux servers (Ubuntu, CentOS, Debian)", "Automatic backups and recovery plans", "Real-time monitoring and alerts", "Server migration with zero downtime"]
+      },
+      {
+        "title": "Email & Google Workspace",
+        "subtitle": "Professional email that works",
+        "description": "We implement and migrate your corporate email to Google Workspace. Your team works with Gmail, Drive, Calendar, and Meet, with ongoing support and without losing a single email in the process.",
+        "features": ["Business Gmail with custom domain", "Google Drive with shared storage", "Calendar, Meet, and collaborative tools", "Migration from any provider without data loss", "DNS, SPF, DKIM, and DMARC configuration", "Team training to leverage all tools"]
+      },
+      {
+        "title": "Cybersecurity",
+        "subtitle": "Protect what matters most",
+        "description": "We audit your infrastructure, identify vulnerabilities, and fix them before someone exploits them. Continuous protection for your website, servers, emails, and your clients' data.",
+        "features": ["Comprehensive security audits", "Web and server vulnerability analysis", "Firewall and WAF configuration", "SSL certificates and server hardening", "Malware, ransomware, and phishing protection", "Incident response plan"]
+      },
+      {
+        "title": "Automation & APIs",
+        "subtitle": "Stop doing manually what technology can do on its own",
+        "description": "We connect your tools together and automate the repetitive processes that steal hours from your team. From automatic notifications to complete sales and operations workflows.",
+        "features": ["CRM and ERP integration", "Automations with Zapier, Make, and n8n", "Custom webhooks and APIs", "Cross-platform data synchronization", "Automated sales and billing workflows", "Automated reports and dashboards"]
+      },
+      {
+        "title": "Custom AI Agents",
+        "subtitle": "Artificial intelligence that knows your business",
+        "description": "We develop AI agents trained with your company's data. They're not generic chatbots: they understand your products, processes, and communication style. They serve customers, process sales, and automate internal tasks.",
+        "features": ["Agents trained with your business data", "24/7 automated customer service", "Sales assistants that know your catalog", "Internal process automation with AI", "Integration with WhatsApp, web, and other platforms", "Metrics and conversations dashboard"]
+      },
+      {
+        "title": "360° Consulting",
+        "subtitle": "Technology strategy with business vision",
+        "description": "We analyze your complete digital ecosystem, identify improvement opportunities, and design a technology roadmap aligned with your business goals. We don't sell technology for the sake of it: we recommend what you actually need.",
+        "features": ["Comprehensive digital ecosystem assessment", "Current tools and processes analysis", "Personalized technology roadmap", "Vendor and tools evaluation", "Implementation support", "Consulting sessions with specialists"]
+      }
+    ]
+  },
+  "plansPage": {
+    "heroTitle": "A plan for every",
+    "heroTitleItalic": "stage of your company",
+    "heroDescription": "Contract specific services or choose a monthly plan with everything included. No lock-in contracts, no fine print.",
+    "punctualTag": "One-time service",
+    "punctualTitle": "Need something specific?",
+    "punctualDescription": "All our services can be contracted individually. A website, an email migration, a security audit—whatever you need, no subscription required.",
+    "punctualCta": "View services",
+    "monthlyTag": "Monthly plan",
+    "monthlyTitle": "Want a dedicated IT team?",
+    "monthlyDescription": "Our plans bundle multiple services into a monthly subscription with ongoing support. Choose the level you need today and scale whenever you want.",
+    "monthlyCta": "Book your assessment",
+    "customPrice": "Custom pricing",
+    "startWith": "Start with",
+    "faqTitle": "Frequently asked questions",
+    "plans": [
+      { "name": "Essential", "tagline": "The tech foundation every company needs" },
+      { "name": "Pro", "tagline": "Automate, protect, and scale your operations", "badge": "Most popular" },
+      { "name": "AI", "tagline": "Lead your industry with artificial intelligence" }
+    ],
+    "featureKeys": ["Managed website", "Servers & cloud", "Corporate email", "Basic cybersecurity", "Advanced cybersecurity", "Automations", "Custom AI agent", "Real-time dashboard", "Monthly consulting", "Support"],
+    "featureValues": {
+      "1hora": "1 hour",
+      "2horas": "2 hours",
+      "4horas": "4 hours",
+      "tickets": "Ticket-based",
+      "prioritario": "Priority",
+      "dedicado": "Dedicated"
+    },
+    "faq": [
+      { "question": "Are there lock-in contracts?", "answer": "No. All our plans are monthly and you can cancel at any time. We believe the best way to keep you is by providing excellent service, not by tying you down with contracts." },
+      { "question": "Can I change plans later?", "answer": "Yes, you can upgrade or downgrade your plan at any time. Changes take effect in the next billing cycle." },
+      { "question": "What happens to my website and data if I cancel?", "answer": "Everything is yours. We provide full access to your website, servers, email, and any development we've done. We don't hold anything back." },
+      { "question": "Are prices the same for Peru and Spain?", "answer": "Prices are adapted to the local market. Book an assessment and we'll send you a personalized proposal based on your location and needs." },
+      { "question": "Can I hire individual services without a plan?", "answer": "Yes. All our services can be contracted independently. Plans are the most convenient option if you need multiple services, but it's not mandatory." }
+    ]
+  },
+  "clientsPage": {
+    "tag": "Our clients",
+    "title": "The machine that drives",
+    "titleItalic": "businesses",
+    "description": "Each rotor represents a company that trusts Enigma as their IT team. Together, we make the machine run.",
+    "counter": "companies trust Enigma"
+  },
+  "aboutPage": {
+    "heroTitle": "Technology with",
+    "heroTitleItalic": "business vision",
+    "heroDescription": "Over 5 years helping companies compete with technology. From Lima and Barcelona, for all of Latin America and Spain.",
+    "historyTag": "Our story",
+    "historyTitle": "From digital agency to comprehensive IT team",
+    "historyP1": "Enigma was born in 2019 in Lima, Peru, as a web development and hosting agency. Over time, our clients started asking for more: servers, security, email, automations.",
+    "historyP2": "We realized that SMEs don't need separate vendors solving isolated problems. They need a complete team that understands their business and manages all their technology comprehensively.",
+    "historyP3": "Today we operate from Lima and Barcelona, serving companies across Latin America and Spain, offering everything an internal IT department would—but without the costs of having one on payroll.",
+    "timeline": [
+      { "year": "2019", "title": "Enigma is born", "description": "We founded Enigma Developers in Lima, Peru, as a web development and hosting agency." },
+      { "year": "2020", "title": "Pandemic growth", "description": "The forced digitalization from COVID brought us dozens of companies that needed an urgent online presence." },
+      { "year": "2021", "title": "Service expansion", "description": "We added cybersecurity, cloud server administration, and comprehensive technology consulting." },
+      { "year": "2022", "title": "European presence", "description": "We opened operations in Barcelona, Spain, serving companies on both continents." },
+      { "year": "2023", "title": "The automation era", "description": "We integrated automation services with Zapier, Make, and n8n to optimize our clients' processes." },
+      { "year": "2024", "title": "Artificial intelligence", "description": "We launched our custom AI agents service, trained with each business's data." },
+      { "year": "2025", "title": "Your IT team", "description": "We evolved to the subscription model: being the complete IT department for the companies that trust us." }
+    ],
+    "valuesTag": "Our values",
+    "valuesTitle": "What defines us as a team",
+    "values": [
+      { "title": "Real commitment", "description": "We don't disappear after delivery. We're your team, not just another vendor." },
+      { "title": "Total transparency", "description": "Clear pricing, documented processes, and full access to everything we do for you." },
+      { "title": "Practical solutions", "description": "We don't sell technology for the sake of it. We recommend what actually solves your problem." },
+      { "title": "Continuous improvement", "description": "Technology evolves and so do we. We're always looking for ways to give you more value." }
+    ],
+    "locationTag": "Where we are",
+    "locationTitle": "Two cities, one team",
+    "limaTitle": "Lima, Peru",
+    "limaDescription": "Main headquarters. From here we serve all of Latin America with a development, servers, and technical support team.",
+    "barcelonaTitle": "Barcelona, Spain",
+    "barcelonaDescription": "Our European base. We serve companies in Spain and the European Union with proximity and local hours.",
+    "ctaTitle": "Want to know us better?",
+    "ctaDescription": "Book a no-commitment call. We'll tell you how we can help your company.",
+    "ctaButton": "Book your assessment"
+  },
+  "contactPage": {
+    "heroTitle": "Let's talk about",
+    "heroTitleItalic": "your project",
+    "heroDescription": "Tell us what you need. We respond within 24 hours.",
+    "tabContact": "General inquiry",
+    "tabDiagnosis": "Assessment",
+    "labelName": "Name",
+    "labelEmail": "Email",
+    "labelPhone": "Phone",
+    "labelCompany": "Company",
+    "labelMessageDiag": "Tell us about your company and what you need",
+    "labelMessageContact": "Message (optional)",
+    "placeholderPhone": "959 561 015",
+    "placeholderDiagMin": "Minimum 10 characters",
+    "placeholderMessage": "Write your message here...",
+    "submitDiag": "Request assessment",
+    "submitContact": "Send message",
+    "sending": "Sending...",
+    "successDiag": "We received your request. We'll contact you within 24 hours.",
+    "successContact": "Message sent successfully. We'll respond within 24 hours.",
+    "errorDefault": "There was an error sending.",
+    "errorRetry": "Try again or contact us via",
+    "directTitle": "Write to us directly",
+    "waLabel": "WhatsApp",
+    "waNote": "Immediate response",
+    "emailLabel": "Email",
+    "phonesTitle": "Phones",
+    "callTitle": "Prefer us to call you?",
+    "callDescription": "Leave your details in the form and select \"Assessment\". We'll contact you within 24 hours."
+  },
+  "companyInfo": {
+    "razonSocial": "Enigma Developers S.A.C.",
+    "ruc": "20605632875",
+    "domicilio": "Lima, Peru",
+    "email": "hello@enigmasac.com",
+    "web": "https://enigmasac.com",
+    "labelRazon": "Legal name:",
+    "labelRuc": "Tax ID:",
+    "labelDomicilio": "Registered address:",
+    "labelEmail": "Email:",
+    "labelWeb": "Website:",
+    "labelEmailShort": "Email:",
+    "labelPhonePeru": "Phone (Peru):",
+    "labelPhoneSpain": "Phone (Spain):"
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "February 28, 2026",
+    "lastUpdatedPrefix": "Last updated:",
+    "sections": [
+      {
+        "title": "1. Data controller",
+        "type": "info"
+      },
+      {
+        "title": "2. Data we collect",
+        "intro": "We collect personal data that you voluntarily provide through our contact and assessment forms:",
+        "items": ["Full name", "Email address", "Phone number", "Company name", "Message or description of needs"],
+        "outro": "Additionally, our website may automatically collect browsing data such as IP address, browser type, pages visited, and time spent."
+      },
+      {
+        "title": "3. Purpose of processing",
+        "intro": "The data collected is used exclusively for:",
+        "items": ["Responding to inquiries and contact requests", "Managing digital assessment requests", "Sending commercial proposals related to our services", "Improving the browsing experience on our website", "Complying with applicable legal obligations"]
+      },
+      {
+        "title": "4. Legal basis",
+        "text": "The processing of your data is based on your express consent when completing our forms, as well as the legitimate interest of Enigma Developers S.A.C. to manage commercial relationships. For clients, the legal basis includes the execution of the service contract."
+      },
+      {
+        "title": "5. Data retention",
+        "text": "Personal data will be retained as long as a commercial relationship exists or for the time necessary to fulfill the stated purposes. Once the relationship ends, data will be retained for the legal periods established by applicable Peruvian and/or European regulations."
+      },
+      {
+        "title": "6. Data sharing",
+        "intro": "We do not sell, rent, or share your personal data with third parties, except in the following cases:",
+        "items": ["Technology service providers necessary for operations (hosting, email, web analytics)", "Compliance with legal obligations or requests from competent authorities", "With your prior and express consent"]
+      },
+      {
+        "title": "7. Security",
+        "text": "We implement technical and organizational measures to protect your personal data against unauthorized access, loss, alteration, or disclosure. This includes the use of encrypted connections (SSL/TLS), access controls, and internal information security policies."
+      },
+      {
+        "title": "8. Data subject rights",
+        "intro": "In accordance with Law No. 29733 (Peru's Personal Data Protection Law) and the General Data Protection Regulation (GDPR) of the European Union, you have the right to:",
+        "items": ["Access your personal data", "Rectify inaccurate or incomplete data", "Request deletion of your data", "Object to the processing of your data", "Request data portability", "Revoke your consent at any time"],
+        "outro": "To exercise these rights, send an email to hello@enigmasac.com indicating your request and identification details."
+      },
+      {
+        "title": "9. Cookies",
+        "text": "This website may use its own and third-party cookies to improve the browsing experience and collect usage statistics. You can configure your browser to block or delete cookies at any time."
+      },
+      {
+        "title": "10. Modifications",
+        "text": "We reserve the right to update this privacy policy at any time. Modifications will be published on this same page with the date of the last update."
+      },
+      {
+        "title": "11. Contact",
+        "text": "If you have questions about this privacy policy or about the processing of your personal data, you can contact us at:"
+      }
+    ]
+  },
+  "termsPage": {
+    "title": "Terms of Service",
+    "lastUpdated": "February 28, 2026",
+    "lastUpdatedPrefix": "Last updated:",
+    "sections": [
+      {
+        "title": "1. Identification",
+        "type": "info"
+      },
+      {
+        "title": "2. Purpose",
+        "text": "These terms regulate the use of the enigmasac.com website and the contracting of services offered by Enigma Developers S.A.C., including web development, server and cloud administration, corporate email, cybersecurity, automation, artificial intelligence agents, and technology consulting."
+      },
+      {
+        "title": "3. Acceptance",
+        "text": "Access to and use of this website, as well as the contracting of any of our services, implies full acceptance of these terms and conditions. If you disagree with any of them, we recommend not using this site or contracting our services."
+      },
+      {
+        "title": "4. Services",
+        "intro": "Enigma Developers S.A.C. offers technology services that can be contracted individually or through monthly subscription plans. Services include, among others:",
+        "items": ["Design and development of websites and applications", "Server and cloud infrastructure administration", "Corporate email implementation and management (Google Workspace)", "Cybersecurity audits and protection", "Process automation and API integration", "Development of custom artificial intelligence agents", "Comprehensive technology consulting"],
+        "outro": "The specific scope of each service is detailed in the corresponding commercial proposal or service agreement."
+      },
+      {
+        "title": "5. Prices and payments",
+        "items": ["The prices of our services are customized according to each client's needs and are clearly communicated in the commercial proposal.", "Subscription plans are billed monthly. Payment must be made within the first 5 days of the billing cycle.", "We accept bank transfers, card payments, and other methods depending on the client's location.", "Prices do not include taxes, unless expressly indicated."]
+      },
+      {
+        "title": "6. Duration and cancellation",
+        "items": ["Subscription plans are monthly and can be canceled at any time without penalty.", "Cancellation must be communicated at least 10 days before the next billing cycle.", "Individually contracted services are governed by the deadlines established in the corresponding agreement.", "In case of cancellation, the client maintains access to their website, data, servers, email, and any development performed."]
+      },
+      {
+        "title": "7. Intellectual property",
+        "intro": "Intellectual property is governed by the following rules:",
+        "items": ["Source code, designs, and developments made for the client are the property of the client once the corresponding payment is completed.", "The brand, logo, design, and content of the enigmasac.com website are the exclusive property of Enigma Developers S.A.C.", "Reusable tools, frameworks, and components developed generically by Enigma Developers S.A.C. may be used in other projects."]
+      },
+      {
+        "title": "8. Client obligations",
+        "intro": "The client commits to:",
+        "items": ["Provide truthful and up-to-date information", "Provide the access and credentials necessary for service delivery", "Make payments within the agreed deadlines", "Not use contracted services for illegal activities", "Respect the intellectual property of third parties"]
+      },
+      {
+        "title": "9. Limitation of liability",
+        "items": ["Enigma Developers S.A.C. is not responsible for service interruptions caused by third parties, force majeure, or circumstances beyond its control.", "The maximum liability of Enigma Developers S.A.C. is limited to the total amount paid by the client in the last 3 months for the affected services.", "We are not responsible for content published by the client on their website or platforms."]
+      },
+      {
+        "title": "10. Confidentiality",
+        "text": "Both parties commit to maintaining the confidentiality of sensitive information shared during the commercial relationship. This obligation remains in effect even after the termination of services."
+      },
+      {
+        "title": "11. Modifications",
+        "text": "Enigma Developers S.A.C. reserves the right to modify these terms at any time. Modifications will be published on this page and, in case of significant changes, active clients will be notified by email."
+      },
+      {
+        "title": "12. Applicable law",
+        "text": "These terms are governed by the laws of the Republic of Peru. For clients located in the European Union, the consumer protection provisions of the client's country of residence will additionally apply. Any dispute will be resolved before the competent courts of Lima, Peru, unless otherwise agreed between the parties."
+      },
+      {
+        "title": "13. Contact",
+        "text": "For inquiries about these terms of service, you can contact us at:"
+      }
+    ]
+  },
+  "cookiesPage": {
+    "title": "Cookie Policy",
+    "lastUpdated": "February 28, 2026",
+    "lastUpdatedPrefix": "Last updated:",
+    "sections": [
+      {
+        "title": "1. What are cookies?",
+        "text": "Cookies are small text files that websites store on your device (computer, tablet, or mobile phone) when you visit them. They are used to remember your preferences, improve your browsing experience, and in some cases, collect statistical information about site usage."
+      },
+      {
+        "title": "2. Cookie usage controller",
+        "type": "info"
+      },
+      {
+        "title": "3. Types of cookies we use",
+        "subsections": [
+          {
+            "title": "Essential cookies",
+            "intro": "They are necessary for the basic functioning of the website and cannot be disabled. They include:",
+            "items": ["Session cookies to keep navigation active", "Consent cookies to remember your choice about cookie usage", "Security cookies to protect against unauthorized access"]
+          },
+          {
+            "title": "Analytics cookies",
+            "intro": "They allow us to measure and analyze user behavior on our website to improve our services. They include:",
+            "items": ["Number of visitors and most viewed pages", "Time spent on each page", "Traffic source (search engine, direct link, social media)", "Device and browser used"]
+          }
+        ]
+      },
+      {
+        "title": "4. Purpose of cookies",
+        "intro": "The cookies we use have the following purposes:",
+        "items": ["Ensure the correct functioning of the website", "Remember user preferences and choices", "Collect anonymous statistical information about site usage", "Improve the browsing experience and quality of our content", "Analyze the performance and effectiveness of our pages"]
+      },
+      {
+        "title": "5. Cookie duration",
+        "intro": "Based on their duration, the cookies we use are classified as:",
+        "items": ["Session cookies: automatically deleted when you close the browser.", "Persistent cookies: remain on your device for a specified period or until you manually delete them. Consent cookies are kept for 12 months. Analytics cookies may be kept for up to 24 months."]
+      },
+      {
+        "title": "6. Managing cookies from your browser",
+        "intro": "You can configure your browser to block, delete, or receive alerts about cookies. Below, we indicate how to do this in the most commonly used browsers:",
+        "browserLinks": [
+          { "name": "Google Chrome", "url": "https://support.google.com/chrome/answer/95647" },
+          { "name": "Mozilla Firefox", "url": "https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" },
+          { "name": "Safari", "url": "https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" },
+          { "name": "Microsoft Edge", "url": "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" }
+        ],
+        "outro": "Please note that disabling cookies may affect the functioning of some website features."
+      },
+      {
+        "title": "7. Modifications",
+        "text": "Enigma Developers S.A.C. reserves the right to modify this cookie policy at any time. Updates will be published on this same page with the date of the last update."
+      },
+      {
+        "title": "8. Contact",
+        "text": "If you have questions about our cookie policy, you can contact us at:"
+      }
+    ]
+  }
+}

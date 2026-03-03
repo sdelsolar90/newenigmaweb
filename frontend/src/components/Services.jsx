@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useInView, AnimatePresence } from "motion/react";
-import { Link } from "react-router-dom";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 import { EnigmaIsotipo } from "./EnigmaLogo.jsx";
 import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 const SERVICES = [
   {
     id: "desarrollo-web",
-    title: "Desarrollo Web",
-    description: "WordPress, WooCommerce y aplicaciones web a medida con código. Desde landing pages hasta plataformas completas, rápidas, seguras y hechas para convertir.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="14" y1="4" x2="10" y2="20" />
@@ -17,8 +16,6 @@ const SERVICES = [
   },
   {
     id: "servidores-cloud",
-    title: "Servidores & Cloud",
-    description: "AWS, cPanel, CloudPanel y administración Linux. Tu infraestructura siempre disponible, rápida y escalable.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="8" rx="2" /><rect x="2" y="14" width="20" height="8" rx="2" /><circle cx="6" cy="6" r="1" /><circle cx="6" cy="18" r="1" />
@@ -27,8 +24,6 @@ const SERVICES = [
   },
   {
     id: "correo",
-    title: "Correo & Workspace",
-    description: "Implementación y migración de correo corporativo. Gmail empresarial, Drive, Calendar y todas las herramientas de Google.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -37,8 +32,6 @@ const SERVICES = [
   },
   {
     id: "ciberseguridad",
-    title: "Ciberseguridad",
-    description: "Auditorías, firewalls, análisis de vulnerabilidades y protección continua. Protege tus datos, los de tus clientes y tu reputación.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" />
@@ -47,8 +40,6 @@ const SERVICES = [
   },
   {
     id: "automatizacion",
-    title: "Automatización",
-    description: "CRM, ERP, webhooks, Zapier, Make y n8n. Conectamos tus herramientas y automatizamos procesos que hoy te roban horas.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="13 17 18 12 13 7" /><polyline points="6 17 11 12 6 7" />
@@ -57,8 +48,6 @@ const SERVICES = [
   },
   {
     id: "agentes-ia",
-    title: "Agentes de IA",
-    description: "Chatbots y agentes entrenados con los datos de tu negocio. Atienden clientes, procesan ventas y automatizan tareas internas.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 8V4H8" /><rect x="2" y="8" width="20" height="14" rx="2" /><path d="M6 12h.01M18 12h.01" /><path d="M9 16c.85.63 1.885 1 3 1s2.15-.37 3-1" />
@@ -67,8 +56,6 @@ const SERVICES = [
   },
   {
     id: "consultoria",
-    title: "Consultoría 360°",
-    description: "Diagnóstico integral de tu ecosistema digital. Identificamos oportunidades, diseñamos la estrategia y te acompañamos en la ejecución.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />
@@ -119,6 +106,7 @@ function RotorIcon({ service, index, springRotation, radius, isActive, onSelect,
 }
 
 export default function Services() {
+  const { t } = useT();
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -129,11 +117,12 @@ export default function Services() {
   const ringRotation = useMotionValue(0);
   const springRotation = useSpring(ringRotation, { damping: 25, stiffness: 150 });
 
-  const headlineText = "Todo lo que tu empresa necesita, en un solo equipo";
+  const headlineText = t("services.headline");
   const { displayText } = useTextDecrypt(headlineText, isHeaderInView);
 
+  const items = t("services.items");
   const activeService = SERVICES[active];
-  const { displayText: decryptedTitle } = useTextDecrypt(activeService.title, true, { interval: 30, stagger: 20 });
+  const { displayText: decryptedTitle } = useTextDecrypt(items[active].title, true, { interval: 30, stagger: 20 });
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -162,7 +151,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <div ref={headerRef} className="max-w-3xl mx-auto text-center mb-16">
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-            Servicios
+            {t("services.tag")}
           </span>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight tracking-tight">
             {isHeaderInView ? displayText : headlineText}
@@ -173,8 +162,7 @@ export default function Services() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-5 text-base text-cream2 font-body leading-relaxed"
           >
-            Cada servicio puede contratarse por separado o como parte de un plan integral.
-            Adaptamos la solución a tu realidad.
+            {t("services.description")}
           </motion.p>
         </div>
 
@@ -241,17 +229,17 @@ export default function Services() {
                 transition={{ duration: 0.3 }}
               >
                 <p className="text-sm text-cream2 font-body leading-relaxed mb-4">
-                  {activeService.description}
+                  {items[active].description}
                 </p>
-                <Link
+                <LocaleLink
                   to={`/servicios#${activeService.id}`}
                   className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
                 >
-                  Ver detalle completo
+                  {t("services.viewDetail")}
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </Link>
+                </LocaleLink>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -264,15 +252,15 @@ export default function Services() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <Link
+          <LocaleLink
             to="/servicios"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-red hover:text-cream transition-colors duration-200"
           >
-            Ver todos los servicios en detalle
+            {t("services.viewAll")}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </LocaleLink>
         </motion.div>
       </div>
     </section>

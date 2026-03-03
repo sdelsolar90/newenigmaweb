@@ -1,25 +1,21 @@
-import { Link } from "react-router-dom";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 import { EnigmaLogotype } from "./EnigmaLogo.jsx";
 
-const FOOTER_LINKS = {
-  servicios: [
-    { label: "Desarrollo Web", to: "/servicios#desarrollo-web" },
-    { label: "Servidores & Cloud", to: "/servicios#servidores-cloud" },
-    { label: "Correo & Google Workspace", to: "/servicios#correo" },
-    { label: "Ciberseguridad", to: "/servicios#ciberseguridad" },
-    { label: "Automatización & APIs", to: "/servicios#automatizacion" },
-    { label: "Agentes de IA", to: "/servicios#agentes-ia" },
-    { label: "Consultoría 360°", to: "/servicios#consultoria" },
-  ],
-  empresa: [
-    { label: "Nosotros", to: "/nosotros" },
-    { label: "Clientes", to: "/clientes" },
-    { label: "Planes", to: "/planes" },
-    { label: "Contacto", to: "/contacto" },
-  ],
-};
+const SERVICE_ROUTES = [
+  "/servicios#desarrollo-web",
+  "/servicios#servidores-cloud",
+  "/servicios#correo",
+  "/servicios#ciberseguridad",
+  "/servicios#automatizacion",
+  "/servicios#agentes-ia",
+  "/servicios#consultoria",
+];
+
+const COMPANY_ROUTES = ["/nosotros", "/clientes", "/planes", "/contacto"];
 
 export default function Footer() {
+  const { lang, t } = useT();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -27,11 +23,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block">
+            <LocaleLink to="/" className="inline-block">
               <EnigmaLogotype variant="dark" />
-            </Link>
+            </LocaleLink>
             <p className="mt-5 text-sm text-cream2 font-body leading-relaxed max-w-xs">
-              El área IT completa de tu empresa, sin los costos de tenerla interna. Desde Lima y Barcelona para toda Latinoamérica y España.
+              {t("footer.tagline")}
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
@@ -65,33 +61,33 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">Servicios</h4>
+            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.servicesTitle")}</h4>
             <ul className="space-y-3">
-              {FOOTER_LINKS.servicios.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.to} className="font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
-                    {link.label}
-                  </Link>
+              {t("footer.services").map((label, i) => (
+                <li key={i}>
+                  <LocaleLink to={SERVICE_ROUTES[i]} className="font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
+                    {label}
+                  </LocaleLink>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">Empresa</h4>
+            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.companyTitle")}</h4>
             <ul className="space-y-3">
-              {FOOTER_LINKS.empresa.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.to} className="font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
-                    {link.label}
-                  </Link>
+              {t("footer.company").map((label, i) => (
+                <li key={i}>
+                  <LocaleLink to={COMPANY_ROUTES[i]} className="font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
+                    {label}
+                  </LocaleLink>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">Contacto</h4>
+            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.contactTitle")}</h4>
             <ul className="space-y-4">
               <li>
                 <a href="mailto:hello@enigmasac.com" className="flex items-center gap-3 font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
@@ -102,15 +98,15 @@ export default function Footer() {
               <li className="flex items-start gap-3 font-body text-sm text-cream2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 <div className="space-y-1">
-                  <a href="tel:+51959561015" className="block hover:text-red transition-colors duration-200">+51 959 561 015 (Perú)</a>
-                  <a href="tel:+34656663992" className="block hover:text-red transition-colors duration-200">+34 656 663 992 (España)</a>
+                  <a href="tel:+51959561015" className="block hover:text-red transition-colors duration-200">{t("footer.phonePeru")}</a>
+                  <a href="tel:+34656663992" className="block hover:text-red transition-colors duration-200">{t("footer.phoneSpain")}</a>
                 </div>
               </li>
               <li className="flex items-start gap-3 font-body text-sm text-cream2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <div className="space-y-1">
-                  <span className="block">Lima, Perú</span>
-                  <span className="block">Barcelona, España</span>
+                  <span className="block">{t("footer.locationPeru")}</span>
+                  <span className="block">{t("footer.locationSpain")}</span>
                 </div>
               </li>
             </ul>
@@ -119,21 +115,23 @@ export default function Footer() {
 
         <div className="mt-14 pt-8 border-t border-line flex flex-col items-center gap-4 text-center">
           <div className="flex items-center gap-6">
-            <Link to="/privacidad" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
-              Política de privacidad
-            </Link>
-            <Link to="/terminos" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
-              Términos de servicio
-            </Link>
-            <Link to="/cookies" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
-              Política de cookies
-            </Link>
-            <Link to="/libro-reclamaciones" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
-              Libro de reclamaciones
-            </Link>
+            <LocaleLink to="/privacidad" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
+              {t("footer.privacy")}
+            </LocaleLink>
+            <LocaleLink to="/terminos" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
+              {t("footer.terms")}
+            </LocaleLink>
+            <LocaleLink to="/cookies" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
+              {t("footer.cookiePolicy")}
+            </LocaleLink>
+            {lang === "es" && (
+              <LocaleLink to="/libro-reclamaciones" className="font-body text-xs text-cream2 hover:text-cream transition-colors duration-200">
+                {t("footer.complaints")}
+              </LocaleLink>
+            )}
           </div>
           <p className="font-body text-xs text-cream2">
-            &copy; {currentYear} Enigma Developers S.A.C. &middot; RUC 20605632875 &middot; Todos los derechos reservados.
+            &copy; {currentYear} {t("footer.copyright")}
           </p>
         </div>
       </div>

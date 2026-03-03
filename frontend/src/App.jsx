@@ -1,5 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
+import { LanguageProvider, useT } from "./i18n/LanguageContext.jsx";
+import { ROUTE_MAP } from "./i18n/routes.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppBubble from "./components/WhatsAppBubble.jsx";
@@ -33,31 +35,84 @@ function ScrollToTop() {
   return null;
 }
 
+const BASE = "https://enigmasac.com";
+
+function HreflangTags() {
+  const { pathname } = useLocation();
+  const { lang } = useT();
+
+  const pathWithoutHash = pathname.split("#")[0];
+  const esRoutes = ROUTE_MAP.es;
+  const enRoutes = ROUTE_MAP.en;
+
+  const routeKey = Object.keys(lang === "en" ? enRoutes : esRoutes).find(
+    (k) => (lang === "en" ? enRoutes : esRoutes)[k] === pathWithoutHash
+  );
+
+  if (!routeKey) return null;
+
+  const esPath = esRoutes[routeKey];
+  const enPath = enRoutes[routeKey];
+
+  if (!esPath || !enPath) {
+    return (
+      <link rel="alternate" hrefLang="es" href={`${BASE}${esPath || pathname}`} />
+    );
+  }
+
+  return (
+    <>
+      <link rel="alternate" hrefLang="es" href={`${BASE}${esPath}`} />
+      <link rel="alternate" hrefLang="en" href={`${BASE}${enPath}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${BASE}${esPath}`} />
+    </>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/servicios" element={<ServicesPage />} />
+      <Route path="/planes" element={<PlansPage />} />
+      <Route path="/clientes" element={<ClientsPage />} />
+      <Route path="/nosotros" element={<About />} />
+      <Route path="/contacto" element={<Contact />} />
+      <Route path="/privacidad" element={<PrivacyPolicy />} />
+      <Route path="/terminos" element={<TermsOfService />} />
+      <Route path="/cookies" element={<CookiePolicy />} />
+      <Route path="/libro-reclamaciones" element={<ComplaintBook />} />
+
+      <Route path="/en" element={<Home />} />
+      <Route path="/en/services" element={<ServicesPage />} />
+      <Route path="/en/plans" element={<PlansPage />} />
+      <Route path="/en/clients" element={<ClientsPage />} />
+      <Route path="/en/about" element={<About />} />
+      <Route path="/en/contact" element={<Contact />} />
+      <Route path="/en/privacy" element={<PrivacyPolicy />} />
+      <Route path="/en/terms" element={<TermsOfService />} />
+      <Route path="/en/cookies" element={<CookiePolicy />} />
+    </Routes>
+  );
+}
+
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <ScrollToTop />
-      <Navbar />
-      <main className="flex-1">
-        <Suspense fallback={<LoadingFallback />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/servicios" element={<ServicesPage />} />
-            <Route path="/planes" element={<PlansPage />} />
-            <Route path="/clientes" element={<ClientsPage />} />
-            <Route path="/nosotros" element={<About />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/privacidad" element={<PrivacyPolicy />} />
-            <Route path="/terminos" element={<TermsOfService />} />
-            <Route path="/cookies" element={<CookiePolicy />} />
-            <Route path="/libro-reclamaciones" element={<ComplaintBook />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-      <WhatsAppBubble />
-      <MobileBottomNav />
-      <CookieConsent />
-    </div>
+    <LanguageProvider>
+      <div className="flex flex-col min-h-screen">
+        <ScrollToTop />
+        <HreflangTags />
+        <Navbar />
+        <main className="flex-1">
+          <Suspense fallback={<LoadingFallback />}>
+            <AppRoutes />
+          </Suspense>
+        </main>
+        <Footer />
+        <WhatsAppBubble />
+        <MobileBottomNav />
+        <CookieConsent />
+      </div>
+    </LanguageProvider>
   );
 }

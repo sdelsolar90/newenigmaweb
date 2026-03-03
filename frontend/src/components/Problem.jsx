@@ -1,25 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
 import useTextDecrypt from "../hooks/useTextDecrypt.js";
-
-const PAIN_POINTS = [
-  {
-    title: "Contratar un equipo IT interno es caro",
-    description: "Un solo desarrollador, un administrador de sistemas y un especialista en seguridad pueden superar los $8,000/mes en costos salariales.",
-  },
-  {
-    title: "Freelancers sin compromiso",
-    description: "Responden cuando quieren, desaparecen a mitad de proyecto y no entienden tu negocio. Cada nuevo freelancer empieza de cero.",
-  },
-  {
-    title: "La tecnología avanza, tu empresa se queda",
-    description: "Mientras tu competencia automatiza procesos y usa IA, tú sigues resolviendo todo manualmente y perdiendo horas cada semana.",
-  },
-  {
-    title: "Vulnerabilidades sin detectar",
-    description: "Sin un equipo de seguridad, tu web, correos y datos de clientes están expuestos. Un ataque puede costarte el negocio entero.",
-  },
-];
+import { useT } from "../i18n/LanguageContext.jsx";
 
 function ArrowButton({ direction, onClick }) {
   return (
@@ -56,13 +38,15 @@ function DotNav({ count, active, onSelect }) {
 }
 
 export default function Problem() {
+  const { t } = useT();
+  const painPoints = t("problem.items");
   const [activeIndex, setActiveIndex] = useState(0);
   const isPaused = useRef(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
   const timerRef = useRef(null);
 
-  const currentPoint = PAIN_POINTS[activeIndex];
+  const currentPoint = painPoints[activeIndex];
   const { displayText } = useTextDecrypt(currentPoint.title, isInView);
 
   const goTo = useCallback((i) => {
@@ -72,22 +56,22 @@ export default function Problem() {
   }, []);
 
   const prev = useCallback(() => {
-    goTo((activeIndex - 1 + PAIN_POINTS.length) % PAIN_POINTS.length);
-  }, [activeIndex, goTo]);
+    goTo((activeIndex - 1 + painPoints.length) % painPoints.length);
+  }, [activeIndex, painPoints.length, goTo]);
 
   const next = useCallback(() => {
-    goTo((activeIndex + 1) % PAIN_POINTS.length);
-  }, [activeIndex, goTo]);
+    goTo((activeIndex + 1) % painPoints.length);
+  }, [activeIndex, painPoints.length, goTo]);
 
   useEffect(() => {
     if (!isInView || isPaused.current) return;
     timerRef.current = setInterval(() => {
       if (!isPaused.current) {
-        setActiveIndex((prev) => (prev + 1) % PAIN_POINTS.length);
+        setActiveIndex((prev) => (prev + 1) % painPoints.length);
       }
     }, 5000);
     return () => clearInterval(timerRef.current);
-  }, [isInView]);
+  }, [isInView, painPoints.length]);
 
   return (
     <section
@@ -103,7 +87,7 @@ export default function Problem() {
           transition={{ duration: 0.4 }}
           className="font-mono text-xs tracking-[0.42em] text-red uppercase"
         >
-          El problema
+          {t("problem.tag")}
         </motion.span>
 
         <div className="mt-8 min-h-[3em]">
@@ -139,7 +123,7 @@ export default function Problem() {
 
         <div className="flex items-center justify-center gap-6 mt-10">
           <ArrowButton direction="left" onClick={prev} />
-          <DotNav count={PAIN_POINTS.length} active={activeIndex} onSelect={goTo} />
+          <DotNav count={painPoints.length} active={activeIndex} onSelect={goTo} />
           <ArrowButton direction="right" onClick={next} />
         </div>
       </div>

@@ -1,0 +1,907 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "plans": "Planes",
+    "clients": "Clientes",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "cta": "Hablemos",
+    "logoAria": "Enigma Developers - Inicio",
+    "menu": "Men\u00fa"
+  },
+  "footer": {
+    "tagline": "El \u00e1rea IT completa de tu empresa, sin los costos de tenerla interna. Desde Lima y Barcelona para toda Latinoam\u00e9rica y Espa\u00f1a.",
+    "servicesTitle": "Servicios",
+    "companyTitle": "Empresa",
+    "contactTitle": "Contacto",
+    "services": [
+      "Desarrollo Web",
+      "Servidores & Cloud",
+      "Correo & Google Workspace",
+      "Ciberseguridad",
+      "Automatizaci\u00f3n & APIs",
+      "Agentes de IA",
+      "Consultor\u00eda 360\u00b0"
+    ],
+    "company": [
+      "Nosotros",
+      "Clientes",
+      "Planes",
+      "Contacto"
+    ],
+    "phonePeru": "+51 959 561 015 (Per\u00fa)",
+    "phoneSpain": "+34 656 663 992 (Espa\u00f1a)",
+    "locationPeru": "Lima, Per\u00fa",
+    "locationSpain": "Barcelona, Espa\u00f1a",
+    "privacy": "Pol\u00edtica de privacidad",
+    "terms": "T\u00e9rminos de servicio",
+    "cookiePolicy": "Pol\u00edtica de cookies",
+    "complaints": "Libro de reclamaciones",
+    "copyright": "Enigma Developers S.A.C. \u00b7 RUC 20605632875 \u00b7 Todos los derechos reservados."
+  },
+  "hero": {
+    "tag": "Beyond the obvious",
+    "headline": "Transformamos la complejidad de tu negocio en sistemas que simplemente funcionan.",
+    "italicWord": "simplemente",
+    "description": "Desarrollo web, servidores, ciberseguridad, automatizaci\u00f3n e inteligencia artificial. Todo lo que necesitas para competir con tecnolog\u00eda, en un solo equipo dedicado a tu negocio.",
+    "ctaPrimary": "Agenda tu diagn\u00f3stico",
+    "ctaSecondary": "Conoce nuestros planes",
+    "stats": [
+      { "value": "+5", "label": "A\u00f1os de experiencia" },
+      { "value": "+50", "label": "Proyectos entregados" },
+      { "value": "2", "label": "Pa\u00edses operando" },
+      { "value": "24/7", "label": "Soporte disponible" }
+    ]
+  },
+  "problem": {
+    "tag": "El problema",
+    "items": [
+      {
+        "title": "Contratar un equipo IT interno es caro",
+        "description": "Un solo desarrollador, un administrador de sistemas y un especialista en seguridad pueden superar los $8,000/mes en costos salariales."
+      },
+      {
+        "title": "Freelancers sin compromiso",
+        "description": "Responden cuando quieren, desaparecen a mitad de proyecto y no entienden tu negocio. Cada nuevo freelancer empieza de cero."
+      },
+      {
+        "title": "La tecnolog\u00eda avanza, tu empresa se queda",
+        "description": "Mientras tu competencia automatiza procesos y usa IA, t\u00fa sigues resolviendo todo manualmente y perdiendo horas cada semana."
+      },
+      {
+        "title": "Vulnerabilidades sin detectar",
+        "description": "Sin un equipo de seguridad, tu web, correos y datos de clientes est\u00e1n expuestos. Un ataque puede costarte el negocio entero."
+      }
+    ]
+  },
+  "howItWorks": {
+    "tag": "C\u00f3mo funciona",
+    "title": "De cero a equipo IT",
+    "titleItalic": "en tres pasos",
+    "description": "Un proceso simple y transparente. Sin contratos de permanencia, sin sorpresas.",
+    "steps": [
+      {
+        "title": "Diagn\u00f3stico inicial",
+        "description": "Analizamos tu ecosistema digital actual: web, servidores, correo, seguridad, procesos y herramientas. Identificamos vulnerabilidades y oportunidades de mejora."
+      },
+      {
+        "title": "Plan personalizado",
+        "description": "Dise\u00f1amos una hoja de ruta adaptada a tu empresa, tus objetivos y tu presupuesto. Cada plan se construye alrededor de lo que realmente necesitas."
+      },
+      {
+        "title": "Acompa\u00f1amiento continuo",
+        "description": "Nos convertimos en tu equipo IT. Gestionamos tu infraestructura, resolvemos incidencias e implementamos mejoras. T\u00fa creces, nosotros nos encargamos."
+      }
+    ]
+  },
+  "services": {
+    "tag": "Servicios",
+    "headline": "Todo lo que tu empresa necesita, en un solo equipo",
+    "description": "Cada servicio puede contratarse por separado o como parte de un plan integral. Adaptamos la soluci\u00f3n a tu realidad.",
+    "viewDetail": "Ver detalle completo",
+    "viewAll": "Ver todos los servicios en detalle",
+    "items": [
+      {
+        "id": "desarrollo-web",
+        "title": "Desarrollo Web",
+        "description": "WordPress, WooCommerce y aplicaciones web a medida con c\u00f3digo. Desde landing pages hasta plataformas completas, r\u00e1pidas, seguras y hechas para convertir."
+      },
+      {
+        "id": "servidores-cloud",
+        "title": "Servidores & Cloud",
+        "description": "AWS, cPanel, CloudPanel y administraci\u00f3n Linux. Tu infraestructura siempre disponible, r\u00e1pida y escalable."
+      },
+      {
+        "id": "correo",
+        "title": "Correo & Workspace",
+        "description": "Implementaci\u00f3n y migraci\u00f3n de correo corporativo. Gmail empresarial, Drive, Calendar y todas las herramientas de Google."
+      },
+      {
+        "id": "ciberseguridad",
+        "title": "Ciberseguridad",
+        "description": "Auditor\u00edas, firewalls, an\u00e1lisis de vulnerabilidades y protecci\u00f3n continua. Protege tus datos, los de tus clientes y tu reputaci\u00f3n."
+      },
+      {
+        "id": "automatizacion",
+        "title": "Automatizaci\u00f3n",
+        "description": "CRM, ERP, webhooks, Zapier, Make y n8n. Conectamos tus herramientas y automatizamos procesos que hoy te roban horas."
+      },
+      {
+        "id": "agentes-ia",
+        "title": "Agentes de IA",
+        "description": "Chatbots y agentes entrenados con los datos de tu negocio. Atienden clientes, procesan ventas y automatizan tareas internas."
+      },
+      {
+        "id": "consultoria",
+        "title": "Consultor\u00eda 360\u00b0",
+        "description": "Diagn\u00f3stico integral de tu ecosistema digital. Identificamos oportunidades, dise\u00f1amos la estrategia y te acompa\u00f1amos en la ejecuci\u00f3n."
+      }
+    ]
+  },
+  "plans": {
+    "tag": "Planes",
+    "headline": "Un plan para cada etapa de tu empresa",
+    "description": "Empieza con lo que necesitas hoy y escala cuando est\u00e9s listo. Sin contratos de permanencia, sin letra peque\u00f1a.",
+    "customPrice": "Precio personalizado",
+    "customPriceNote": "Seg\u00fan las necesidades de tu empresa",
+    "compare": "Comparar planes en detalle",
+    "badge": "M\u00e1s popular",
+    "items": [
+      {
+        "name": "Esencial",
+        "tagline": "Para empresas que necesitan una base tecnol\u00f3gica s\u00f3lida",
+        "cta": "Empezar con Esencial",
+        "features": [
+          "Web gestionada",
+          "Servidores & cloud",
+          "Correo corporativo",
+          "Ciberseguridad b\u00e1sica",
+          "1h consultor\u00eda mensual",
+          "Soporte por tickets"
+        ]
+      },
+      {
+        "name": "Pro",
+        "tagline": "Para empresas que quieren automatizar y escalar",
+        "cta": "Empezar con Pro",
+        "features": [
+          "Todo lo del plan Esencial",
+          "Ciberseguridad avanzada",
+          "Automatizaciones (Zapier, Make, n8n)",
+          "2h consultor\u00eda mensual",
+          "Soporte prioritario"
+        ]
+      },
+      {
+        "name": "IA",
+        "tagline": "Para empresas que quieren liderar con inteligencia artificial",
+        "cta": "Empezar con IA",
+        "features": [
+          "Todo lo del plan Pro",
+          "Agente de IA personalizado incluido",
+          "Dashboard con datos en tiempo real",
+          "4h consultor\u00eda mensual",
+          "Soporte dedicado"
+        ]
+      }
+    ]
+  },
+  "clients": {
+    "tag": "Casos de \u00e9xito",
+    "title": "Empresas que ya tienen",
+    "titleItalic": "su equipo IT con Enigma",
+    "viewAll": "Ver todos los clientes"
+  },
+  "caseStudies": {
+    "tag": "Casos de \u00e9xito",
+    "title": "Empresas que ya tienen",
+    "titleItalic": "su equipo IT con Enigma",
+    "items": [
+      {
+        "quote": "Antes gast\u00e1bamos en un desarrollador freelance, otro para el servidor y otro para el correo. Con Enigma tenemos todo integrado, con mejor calidad y por menos de lo que pag\u00e1bamos antes.",
+        "name": "Carlos Mendoza",
+        "role": "Director General",
+        "company": "Importaciones del Pac\u00edfico",
+        "metricLabel": "reducci\u00f3n en costos IT"
+      },
+      {
+        "quote": "El agente de IA que nos implementaron atiende el 70% de las consultas de nuestros clientes de forma autom\u00e1tica. Nuestro equipo de ventas ahora se enfoca en cerrar negocios, no en responder las mismas preguntas.",
+        "name": "Mar\u00eda Elena Torres",
+        "role": "Gerente Comercial",
+        "company": "Cl\u00ednica Dental Sonrisa",
+        "metricLabel": "consultas automatizadas"
+      },
+      {
+        "quote": "Despu\u00e9s de la auditor\u00eda de seguridad encontraron vulnerabilidades cr\u00edticas que no sab\u00edamos que ten\u00edamos. Nos evitaron un problema serio. Ahora dormimos tranquilos sabiendo que alguien cuida nuestra infraestructura.",
+        "name": "Roberto \u00c1lvarez",
+        "role": "CEO",
+        "company": "LegalTech Solutions",
+        "metricLabel": "vulnerabilidades corregidas"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "Diagn\u00f3stico sin compromiso",
+    "headline": "Tu empresa merece tecnolog\u00eda de primer nivel.",
+    "headlineItalic": "Hagamos que suceda.",
+    "description": "Agenda una sesi\u00f3n de diagn\u00f3stico con nuestro equipo. Analizamos tu situaci\u00f3n actual, identificamos oportunidades y te proponemos un plan concreto. Sin compromisos, sin letra peque\u00f1a.",
+    "ctaPrimary": "Agenda tu diagn\u00f3stico",
+    "ctaWhatsApp": "Escr\u00edbenos por WhatsApp"
+  },
+  "whatsapp": {
+    "tooltip": "\u00bfNecesitas ayuda?",
+    "tooltipCta": "Escr\u00edbenos",
+    "aria": "Cont\u00e1ctanos por WhatsApp",
+    "waTextEs": "Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20Enigma",
+    "waTextDiag": "Hola%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico"
+  },
+  "cookieConsent": {
+    "message": "Utilizamos cookies esenciales y de anal\u00edtica para mejorar tu experiencia.",
+    "learnMore": "Consulta nuestra",
+    "policyLink": "pol\u00edtica de cookies",
+    "moreInfo": "para m\u00e1s informaci\u00f3n.",
+    "reject": "Rechazar",
+    "accept": "Aceptar"
+  },
+  "partners": {
+    "label": "Tecnolog\u00edas y plataformas"
+  },
+  "meta": {
+    "home": {
+      "title": "Enigma Developers | Tu \u00e1rea IT sin costos internos",
+      "description": "El \u00e1rea IT completa de tu empresa, sin los costos de tenerla interna. Desarrollo web, servidores, ciberseguridad, automatizaci\u00f3n e inteligencia artificial para PYMEs.",
+      "ogTitle": "Enigma Developers | Tu \u00e1rea IT sin costos internos",
+      "ogDescription": "Soluciones tecnol\u00f3gicas integrales para PYMEs. Desarrollo web, cloud, ciberseguridad, automatizaci\u00f3n e inteligencia artificial."
+    },
+    "services": {
+      "title": "Servicios | Enigma Developers",
+      "description": "Desarrollo web, servidores cloud, ciberseguridad, automatizaci\u00f3n, agentes de IA y consultor\u00eda 360\u00b0. Todos los servicios IT que tu empresa necesita.",
+      "ogTitle": "Servicios | Enigma Developers",
+      "ogDescription": "Servicios tecnol\u00f3gicos integrales para PYMEs: desarrollo web, cloud, ciberseguridad, automatizaci\u00f3n e inteligencia artificial."
+    },
+    "plans": {
+      "title": "Planes y Precios | Enigma Developers",
+      "description": "Planes de suscripci\u00f3n mensual para tener tu equipo IT completo: Esencial, Pro e IA. Sin contratos de permanencia, sin letra peque\u00f1a.",
+      "ogTitle": "Planes y Precios | Enigma Developers",
+      "ogDescription": "Elige el plan que mejor se adapta a tu empresa. Desde la base tecnol\u00f3gica hasta inteligencia artificial personalizada."
+    },
+    "clients": {
+      "title": "Clientes | Enigma Developers",
+      "description": "Conoce las empresas que conf\u00edan en Enigma Developers como su equipo IT. M\u00e1s de 19 empresas en Latinoam\u00e9rica y Espa\u00f1a."
+    },
+    "about": {
+      "title": "Nosotros | Enigma Developers",
+      "description": "M\u00e1s de 5 a\u00f1os creando soluciones tecnol\u00f3gicas desde Lima y Barcelona. Conoce la historia, el equipo y los valores de Enigma Developers.",
+      "ogTitle": "Nosotros | Enigma Developers",
+      "ogDescription": "Desde 2019 ayudando a empresas a competir con tecnolog\u00eda. Presentes en Lima, Per\u00fa y Barcelona, Espa\u00f1a."
+    },
+    "contact": {
+      "title": "Contacto | Enigma Developers",
+      "description": "Contacta con Enigma Developers. Agenda tu diagn\u00f3stico digital o env\u00edanos tu consulta. Respondemos en menos de 24 horas.",
+      "ogTitle": "Contacto | Enigma Developers",
+      "ogDescription": "Agenda un diagn\u00f3stico o env\u00edanos tu consulta. Lima, Per\u00fa y Barcelona, Espa\u00f1a."
+    },
+    "privacy": {
+      "title": "Pol\u00edtica de Privacidad | Enigma Developers",
+      "description": "Pol\u00edtica de privacidad de Enigma Developers S.A.C. Conoce c\u00f3mo recopilamos, usamos y protegemos tus datos personales."
+    },
+    "terms": {
+      "title": "T\u00e9rminos de Servicio | Enigma Developers",
+      "description": "T\u00e9rminos y condiciones de uso de los servicios de Enigma Developers S.A.C. Conoce las reglas que rigen nuestra relaci\u00f3n comercial."
+    },
+    "cookies": {
+      "title": "Pol\u00edtica de Cookies | Enigma Developers",
+      "description": "Pol\u00edtica de cookies de Enigma Developers S.A.C. Conoce qu\u00e9 cookies utilizamos, su finalidad y c\u00f3mo gestionarlas."
+    }
+  },
+  "servicesPage": {
+    "heroPrefix": "Servicios que cubren ",
+    "heroAccent": "todo lo que necesitas",
+    "heroDescription": "Cada servicio puede contratarse individualmente o como parte de un plan integral. Lo importante no es la herramienta, sino resolver el problema de tu negocio.",
+    "whatIncludes": "Qu\u00e9 incluye",
+    "navAria": "Navegaci\u00f3n de servicios",
+    "ctaTitle": "\u00bfNo sabes qu\u00e9 servicios necesitas?",
+    "ctaDescription": "Agenda un diagn\u00f3stico y te ayudamos a identificar exactamente qu\u00e9 necesita tu empresa.",
+    "ctaButton": "Agenda tu diagn\u00f3stico",
+    "detail": [
+      {
+        "title": "Desarrollo Web",
+        "subtitle": "Tu presencia digital, hecha para convertir",
+        "description": "No hacemos webs bonitas que no sirven. Dise\u00f1amos y desarrollamos desde sitios WordPress hasta aplicaciones web completas con c\u00f3digo a medida. R\u00e1pidas, seguras, optimizadas para SEO y GEO, y pensadas para convertir visitantes en clientes.",
+        "features": [
+          "WordPress y WooCommerce para tiendas online",
+          "Aplicaciones web a medida (React, Node.js, Python, etc.)",
+          "Plataformas, dashboards y sistemas internos personalizados",
+          "Dise\u00f1o responsive y optimizado para m\u00f3viles",
+          "SEO y GEO integrados desde la estructura",
+          "Velocidad de carga optimizada (Core Web Vitals)",
+          "Integraci\u00f3n con CRM, ERP y herramientas del negocio"
+        ]
+      },
+      {
+        "title": "Servidores & Cloud",
+        "subtitle": "Infraestructura que no te deja tirado",
+        "description": "Gestionamos tus servidores y tu infraestructura cloud para que tu web y tus aplicaciones est\u00e9n siempre disponibles. Monitoreo 24/7, backups autom\u00e1ticos y escalado cuando lo necesitas.",
+        "features": [
+          "Amazon Web Services (AWS)",
+          "Administraci\u00f3n de cPanel y CloudPanel",
+          "Servidores Linux (Ubuntu, CentOS, Debian)",
+          "Backups autom\u00e1ticos y planes de recuperaci\u00f3n",
+          "Monitoreo y alertas en tiempo real",
+          "Migraci\u00f3n de servidores sin downtime"
+        ]
+      },
+      {
+        "title": "Correo & Google Workspace",
+        "subtitle": "Correo profesional que funciona",
+        "description": "Implementamos y migramos tu correo corporativo a Google Workspace. Tu equipo trabaja con Gmail, Drive, Calendar y Meet, con soporte continuo y sin perder ni un email en el proceso.",
+        "features": [
+          "Gmail empresarial con dominio propio",
+          "Google Drive con almacenamiento compartido",
+          "Calendar, Meet y herramientas colaborativas",
+          "Migraci\u00f3n desde cualquier proveedor sin p\u00e9rdida de datos",
+          "Configuraci\u00f3n de DNS, SPF, DKIM y DMARC",
+          "Capacitaci\u00f3n al equipo para aprovechar todas las herramientas"
+        ]
+      },
+      {
+        "title": "Ciberseguridad",
+        "subtitle": "Protege lo que m\u00e1s importa",
+        "description": "Auditamos tu infraestructura, identificamos vulnerabilidades y las corregimos antes de que alguien las explote. Protecci\u00f3n continua para tu web, tus servidores, tus correos y los datos de tus clientes.",
+        "features": [
+          "Auditor\u00edas de seguridad completas",
+          "An\u00e1lisis de vulnerabilidades web y de servidores",
+          "Configuraci\u00f3n de firewalls y WAF",
+          "Certificados SSL y hardening de servidores",
+          "Protecci\u00f3n contra malware, ransomware y phishing",
+          "Plan de respuesta a incidentes"
+        ]
+      },
+      {
+        "title": "Automatizaci\u00f3n & APIs",
+        "subtitle": "Deja de hacer manualmente lo que la tecnolog\u00eda puede hacer sola",
+        "description": "Conectamos tus herramientas entre s\u00ed y automatizamos los procesos repetitivos que le roban horas a tu equipo. Desde notificaciones autom\u00e1ticas hasta flujos completos de ventas y operaciones.",
+        "features": [
+          "Integraci\u00f3n de CRM y ERP",
+          "Automatizaciones con Zapier, Make y n8n",
+          "Webhooks y APIs personalizadas",
+          "Sincronizaci\u00f3n de datos entre plataformas",
+          "Flujos autom\u00e1ticos de ventas y facturaci\u00f3n",
+          "Reportes y dashboards automatizados"
+        ]
+      },
+      {
+        "title": "Agentes de IA Personalizados",
+        "subtitle": "Inteligencia artificial que conoce tu negocio",
+        "description": "Desarrollamos agentes de IA entrenados con los datos de tu empresa. No son chatbots gen\u00e9ricos: entienden tus productos, tus procesos y tu tono de comunicaci\u00f3n. Atienden clientes, procesan ventas y automatizan tareas internas.",
+        "features": [
+          "Agentes entrenados con datos de tu negocio",
+          "Atenci\u00f3n al cliente automatizada 24/7",
+          "Asistentes de ventas que conocen tu cat\u00e1logo",
+          "Automatizaci\u00f3n de procesos internos con IA",
+          "Integraci\u00f3n con WhatsApp, web y otras plataformas",
+          "Dashboard de m\u00e9tricas y conversaciones"
+        ]
+      },
+      {
+        "title": "Consultor\u00eda 360\u00b0",
+        "subtitle": "Estrategia tecnol\u00f3gica con visi\u00f3n de negocio",
+        "description": "Analizamos tu ecosistema digital completo, identificamos oportunidades de mejora y dise\u00f1amos una hoja de ruta tecnol\u00f3gica alineada con tus objetivos de negocio. No vendemos tecnolog\u00eda por vender: recomendamos lo que realmente necesitas.",
+        "features": [
+          "Diagn\u00f3stico integral del ecosistema digital",
+          "An\u00e1lisis de herramientas y procesos actuales",
+          "Hoja de ruta tecnol\u00f3gica personalizada",
+          "Evaluaci\u00f3n de proveedores y herramientas",
+          "Acompa\u00f1amiento en la implementaci\u00f3n",
+          "Sesiones de consultor\u00eda con especialistas"
+        ]
+      }
+    ]
+  },
+  "plansPage": {
+    "heroTitle": "Un plan para cada",
+    "heroTitleItalic": "etapa de tu empresa",
+    "heroDescription": "Contrata servicios puntuales o elige un plan mensual con todo incluido. Sin contratos de permanencia, sin letra peque\u00f1a.",
+    "punctualTag": "Servicio puntual",
+    "punctualTitle": "\u00bfNecesitas algo espec\u00edfico?",
+    "punctualDescription": "Todos nuestros servicios pueden contratarse de forma individual. Una web, una migraci\u00f3n de correo, una auditor\u00eda de seguridad \u2014 lo que necesites, sin suscripci\u00f3n.",
+    "punctualCta": "Ver servicios",
+    "monthlyTag": "Plan mensual",
+    "monthlyTitle": "\u00bfQuieres un equipo IT dedicado?",
+    "monthlyDescription": "Nuestros planes agrupan varios servicios en una suscripci\u00f3n mensual con soporte continuo. Elige el nivel que necesitas hoy y escala cuando quieras.",
+    "monthlyCta": "Agenda tu diagn\u00f3stico",
+    "customPrice": "Precio personalizado",
+    "startWith": "Empezar con",
+    "faqTitle": "Preguntas frecuentes",
+    "plans": [
+      {
+        "name": "Esencial",
+        "tagline": "La base tecnol\u00f3gica que toda empresa necesita"
+      },
+      {
+        "name": "Pro",
+        "tagline": "Automatiza, protege y escala tu operaci\u00f3n",
+        "badge": "M\u00e1s popular"
+      },
+      {
+        "name": "IA",
+        "tagline": "Lidera tu industria con inteligencia artificial"
+      }
+    ],
+    "featureKeys": [
+      "Web gestionada",
+      "Servidores & cloud",
+      "Correo corporativo",
+      "Ciberseguridad b\u00e1sica",
+      "Ciberseguridad avanzada",
+      "Automatizaciones",
+      "Agente de IA personalizado",
+      "Dashboard en tiempo real",
+      "Consultor\u00eda mensual",
+      "Soporte"
+    ],
+    "featureValues": {
+      "1hora": "1 hora",
+      "2horas": "2 horas",
+      "4horas": "4 horas",
+      "tickets": "Por tickets",
+      "prioritario": "Prioritario",
+      "dedicado": "Dedicado"
+    },
+    "faq": [
+      {
+        "question": "\u00bfHay contratos de permanencia?",
+        "answer": "No. Todos nuestros planes son mensuales y puedes cancelar en cualquier momento. Creemos que la mejor forma de retenerte es d\u00e1ndote un servicio excelente, no at\u00e1ndote con contratos."
+      },
+      {
+        "question": "\u00bfPuedo cambiar de plan despu\u00e9s?",
+        "answer": "S\u00ed, puedes escalar o reducir tu plan en cualquier momento. Los cambios se aplican en el siguiente ciclo de facturaci\u00f3n."
+      },
+      {
+        "question": "\u00bfQu\u00e9 pasa con mi web y datos si cancelo?",
+        "answer": "Todo es tuyo. Te entregamos acceso completo a tu web, servidores, correo y cualquier desarrollo que hayamos hecho. No retenemos nada."
+      },
+      {
+        "question": "\u00bfLos precios son iguales para Per\u00fa y Espa\u00f1a?",
+        "answer": "Los precios se adaptan al mercado local. Agenda un diagn\u00f3stico y te enviamos una propuesta personalizada seg\u00fan tu ubicaci\u00f3n y necesidades."
+      },
+      {
+        "question": "\u00bfPuedo contratar servicios sueltos sin un plan?",
+        "answer": "S\u00ed. Todos nuestros servicios pueden contratarse de forma independiente. Los planes son la opci\u00f3n m\u00e1s conveniente si necesitas varios servicios, pero no es obligatorio."
+      }
+    ]
+  },
+  "clientsPage": {
+    "tag": "Nuestros clientes",
+    "title": "La m\u00e1quina que mueve",
+    "titleItalic": "negocios",
+    "description": "Cada rotor es una empresa que conf\u00eda en Enigma como su equipo IT. Juntos, hacemos funcionar la m\u00e1quina.",
+    "counter": "empresas conf\u00edan en Enigma"
+  },
+  "aboutPage": {
+    "heroTitle": "Tecnolog\u00eda con",
+    "heroTitleItalic": "visi\u00f3n de negocio",
+    "heroDescription": "M\u00e1s de 5 a\u00f1os ayudando a empresas a competir con tecnolog\u00eda. Desde Lima y Barcelona, para toda Latinoam\u00e9rica y Espa\u00f1a.",
+    "historyTag": "Nuestra historia",
+    "historyTitle": "De agencia digital a equipo IT integral",
+    "historyP1": "Enigma naci\u00f3 en 2019 en Lima, Per\u00fa, como una agencia de desarrollo web y hosting. Con el tiempo, nuestros clientes empezaron a pedirnos m\u00e1s: servidores, seguridad, correo, automatizaciones.",
+    "historyP2": "Nos dimos cuenta de que las PYMEs no necesitan proveedores sueltos que resuelvan problemas aislados. Necesitan un equipo completo que entienda su negocio y gestione toda su tecnolog\u00eda de forma integral.",
+    "historyP3": "Hoy operamos desde Lima y Barcelona, atendemos empresas en toda Latinoam\u00e9rica y Espa\u00f1a, y ofrecemos todo lo que un \u00e1rea IT interna har\u00eda \u2014 pero sin los costos de tenerla en planilla.",
+    "timeline": [
+      {
+        "year": "2019",
+        "title": "Nace Enigma",
+        "description": "Fundamos Enigma Developers en Lima, Per\u00fa, como una agencia de desarrollo web y hosting."
+      },
+      {
+        "year": "2020",
+        "title": "Crecimiento en pandemia",
+        "description": "La digitalizaci\u00f3n forzada por el COVID nos trajo decenas de empresas que necesitaban presencia online urgente."
+      },
+      {
+        "year": "2021",
+        "title": "Expansi\u00f3n de servicios",
+        "description": "Incorporamos ciberseguridad, administraci\u00f3n de servidores cloud y consultor\u00eda tecnol\u00f3gica integral."
+      },
+      {
+        "year": "2022",
+        "title": "Presencia en Europa",
+        "description": "Abrimos operaciones en Barcelona, Espa\u00f1a, atendiendo empresas en ambos continentes."
+      },
+      {
+        "year": "2023",
+        "title": "Era de la automatizaci\u00f3n",
+        "description": "Integramos servicios de automatizaci\u00f3n con Zapier, Make y n8n para optimizar procesos de nuestros clientes."
+      },
+      {
+        "year": "2024",
+        "title": "Inteligencia artificial",
+        "description": "Lanzamos nuestro servicio de agentes de IA personalizados, entrenados con datos de cada negocio."
+      },
+      {
+        "year": "2025",
+        "title": "Tu equipo IT",
+        "description": "Evolucionamos al modelo de suscripci\u00f3n: ser el \u00e1rea IT completa de las empresas que conf\u00edan en nosotros."
+      }
+    ],
+    "valuesTag": "Nuestros valores",
+    "valuesTitle": "Lo que nos define como equipo",
+    "values": [
+      {
+        "title": "Compromiso real",
+        "description": "No desaparecemos despu\u00e9s de entregar. Somos tu equipo, no un proveedor m\u00e1s."
+      },
+      {
+        "title": "Transparencia total",
+        "description": "Precios claros, procesos documentados y acceso completo a todo lo que hacemos por ti."
+      },
+      {
+        "title": "Soluciones pr\u00e1cticas",
+        "description": "No vendemos tecnolog\u00eda por vender. Recomendamos lo que realmente resuelve tu problema."
+      },
+      {
+        "title": "Mejora continua",
+        "description": "La tecnolog\u00eda evoluciona y nosotros contigo. Siempre buscamos c\u00f3mo darte m\u00e1s valor."
+      }
+    ],
+    "locationTag": "D\u00f3nde estamos",
+    "locationTitle": "Dos ciudades, un solo equipo",
+    "limaTitle": "Lima, Per\u00fa",
+    "limaDescription": "Sede principal. Desde aqu\u00ed atendemos toda Latinoam\u00e9rica con un equipo de desarrollo, servidores y soporte t\u00e9cnico.",
+    "barcelonaTitle": "Barcelona, Espa\u00f1a",
+    "barcelonaDescription": "Nuestra base en Europa. Atendemos empresas en Espa\u00f1a y la Uni\u00f3n Europea con cercan\u00eda y horario local.",
+    "ctaTitle": "\u00bfQuieres conocernos mejor?",
+    "ctaDescription": "Agenda una llamada sin compromiso. Te contamos c\u00f3mo podemos ayudar a tu empresa.",
+    "ctaButton": "Agenda tu diagn\u00f3stico"
+  },
+  "contactPage": {
+    "heroTitle": "Hablemos de",
+    "heroTitleItalic": "tu proyecto",
+    "heroDescription": "Cu\u00e9ntanos qu\u00e9 necesitas. Respondemos en menos de 24 horas.",
+    "tabContact": "Contacto general",
+    "tabDiagnosis": "Diagn\u00f3stico",
+    "labelName": "Nombre",
+    "labelEmail": "Email",
+    "labelPhone": "Tel\u00e9fono",
+    "labelCompany": "Empresa",
+    "labelMessageDiag": "Cu\u00e9ntanos sobre tu empresa y qu\u00e9 necesitas",
+    "labelMessageContact": "Mensaje (opcional)",
+    "placeholderPhone": "959 561 015",
+    "placeholderDiagMin": "M\u00ednimo 10 caracteres",
+    "placeholderMessage": "Escribe tu mensaje aqu\u00ed...",
+    "submitDiag": "Solicitar diagn\u00f3stico",
+    "submitContact": "Enviar mensaje",
+    "sending": "Enviando...",
+    "successDiag": "Recibimos tu solicitud. Te contactaremos en menos de 24 horas.",
+    "successContact": "Mensaje enviado correctamente. Te responderemos en menos de 24 horas.",
+    "errorDefault": "Hubo un error al enviar.",
+    "errorRetry": "Intenta de nuevo o cont\u00e1ctanos por",
+    "directTitle": "Escr\u00edbenos directamente",
+    "waLabel": "WhatsApp",
+    "waNote": "Respuesta inmediata",
+    "emailLabel": "Email",
+    "phonesTitle": "Tel\u00e9fonos",
+    "callTitle": "\u00bfPrefieres que te llamemos?",
+    "callDescription": "D\u00e9janos tus datos en el formulario y selecciona \"Diagn\u00f3stico\". Te contactamos nosotros en menos de 24 horas."
+  },
+  "companyInfo": {
+    "razonSocial": "Enigma Developers S.A.C.",
+    "ruc": "20605632875",
+    "domicilio": "Lima, Per\u00fa",
+    "email": "hello@enigmasac.com",
+    "web": "https://enigmasac.com",
+    "labelRazon": "Raz\u00f3n social:",
+    "labelRuc": "RUC:",
+    "labelDomicilio": "Domicilio fiscal:",
+    "labelEmail": "Correo electr\u00f3nico:",
+    "labelWeb": "Sitio web:",
+    "labelEmailShort": "Email:",
+    "labelPhonePeru": "Tel\u00e9fono (Per\u00fa):",
+    "labelPhoneSpain": "Tel\u00e9fono (Espa\u00f1a):"
+  },
+  "privacyPage": {
+    "title": "Pol\u00edtica de Privacidad",
+    "lastUpdated": "28 de febrero de 2026",
+    "lastUpdatedPrefix": "\u00daltima actualizaci\u00f3n:",
+    "sections": [
+      {
+        "title": "1. Responsable del tratamiento",
+        "type": "info"
+      },
+      {
+        "title": "2. Datos que recopilamos",
+        "intro": "Recopilamos los datos personales que nos proporcionas voluntariamente a trav\u00e9s de nuestros formularios de contacto y diagn\u00f3stico:",
+        "items": [
+          "Nombre completo",
+          "Direcci\u00f3n de correo electr\u00f3nico",
+          "N\u00famero de tel\u00e9fono",
+          "Nombre de la empresa",
+          "Mensaje o descripci\u00f3n de necesidades"
+        ],
+        "outro": "Adicionalmente, nuestro sitio web puede recopilar de forma autom\u00e1tica datos de navegaci\u00f3n como direcci\u00f3n IP, tipo de navegador, p\u00e1ginas visitadas y tiempo de permanencia."
+      },
+      {
+        "title": "3. Finalidad del tratamiento",
+        "intro": "Los datos recopilados se utilizan exclusivamente para:",
+        "items": [
+          "Responder a consultas y solicitudes de contacto",
+          "Gestionar solicitudes de diagn\u00f3stico digital",
+          "Enviar propuestas comerciales relacionadas con nuestros servicios",
+          "Mejorar la experiencia de navegaci\u00f3n en nuestro sitio web",
+          "Cumplir con obligaciones legales aplicables"
+        ]
+      },
+      {
+        "title": "4. Base legal",
+        "text": "El tratamiento de tus datos se realiza con base en tu consentimiento expreso al completar nuestros formularios, as\u00ed como en el inter\u00e9s leg\u00edtimo de Enigma Developers S.A.C. para gestionar las relaciones comerciales. En el caso de clientes, la base legal incluye la ejecuci\u00f3n del contrato de servicios."
+      },
+      {
+        "title": "5. Conservaci\u00f3n de datos",
+        "text": "Los datos personales se conservar\u00e1n mientras exista una relaci\u00f3n comercial o durante el tiempo necesario para cumplir las finalidades indicadas. Una vez finalizada la relaci\u00f3n, los datos se conservar\u00e1n durante los plazos legales establecidos por la normativa peruana y/o europea aplicable."
+      },
+      {
+        "title": "6. Compartici\u00f3n de datos",
+        "intro": "No vendemos, alquilamos ni compartimos tus datos personales con terceros, salvo en los siguientes casos:",
+        "items": [
+          "Proveedores de servicios tecnol\u00f3gicos necesarios para la operaci\u00f3n (hosting, correo electr\u00f3nico, anal\u00edtica web)",
+          "Cumplimiento de obligaciones legales o requerimientos de autoridades competentes",
+          "Con tu consentimiento previo y expreso"
+        ]
+      },
+      {
+        "title": "7. Seguridad",
+        "text": "Implementamos medidas t\u00e9cnicas y organizativas para proteger tus datos personales contra acceso no autorizado, p\u00e9rdida, alteraci\u00f3n o divulgaci\u00f3n. Esto incluye el uso de conexiones cifradas (SSL/TLS), control de accesos y pol\u00edticas internas de seguridad de la informaci\u00f3n."
+      },
+      {
+        "title": "8. Derechos del titular",
+        "intro": "De acuerdo con la Ley N\u00b0 29733 (Ley de Protecci\u00f3n de Datos Personales del Per\u00fa) y el Reglamento General de Protecci\u00f3n de Datos (RGPD) de la Uni\u00f3n Europea, tienes derecho a:",
+        "items": [
+          "Acceder a tus datos personales",
+          "Rectificar datos inexactos o incompletos",
+          "Solicitar la supresi\u00f3n de tus datos",
+          "Oponerte al tratamiento de tus datos",
+          "Solicitar la portabilidad de tus datos",
+          "Revocar tu consentimiento en cualquier momento"
+        ],
+        "outro": "Para ejercer estos derechos, env\u00eda un correo a hello@enigmasac.com indicando tu solicitud y datos de identificaci\u00f3n."
+      },
+      {
+        "title": "9. Cookies",
+        "text": "Este sitio web puede utilizar cookies propias y de terceros para mejorar la experiencia de navegaci\u00f3n y recopilar estad\u00edsticas de uso. Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento."
+      },
+      {
+        "title": "10. Modificaciones",
+        "text": "Nos reservamos el derecho de actualizar esta pol\u00edtica de privacidad en cualquier momento. Las modificaciones se publicar\u00e1n en esta misma p\u00e1gina con la fecha de \u00faltima actualizaci\u00f3n."
+      },
+      {
+        "title": "11. Contacto",
+        "intro": "Si tienes preguntas sobre esta pol\u00edtica de privacidad o sobre el tratamiento de tus datos personales, puedes contactarnos en:"
+      }
+    ]
+  },
+  "termsPage": {
+    "title": "T\u00e9rminos de Servicio",
+    "lastUpdated": "28 de febrero de 2026",
+    "lastUpdatedPrefix": "\u00daltima actualizaci\u00f3n:",
+    "sections": [
+      {
+        "title": "1. Identificaci\u00f3n",
+        "type": "info"
+      },
+      {
+        "title": "2. Objeto",
+        "text": "Los presentes t\u00e9rminos regulan el uso del sitio web enigmasac.com y la contrataci\u00f3n de los servicios ofrecidos por Enigma Developers S.A.C., incluyendo desarrollo web, administraci\u00f3n de servidores y cloud, correo corporativo, ciberseguridad, automatizaci\u00f3n, agentes de inteligencia artificial y consultor\u00eda tecnol\u00f3gica."
+      },
+      {
+        "title": "3. Aceptaci\u00f3n",
+        "text": "El acceso y uso de este sitio web, as\u00ed como la contrataci\u00f3n de cualquiera de nuestros servicios, implica la aceptaci\u00f3n plena de estos t\u00e9rminos y condiciones. Si no est\u00e1s de acuerdo con alguno de ellos, te recomendamos no utilizar este sitio ni contratar nuestros servicios."
+      },
+      {
+        "title": "4. Servicios",
+        "intro": "Enigma Developers S.A.C. ofrece servicios tecnol\u00f3gicos que pueden contratarse de forma individual o mediante planes de suscripci\u00f3n mensual. Los servicios incluyen, entre otros:",
+        "items": [
+          "Dise\u00f1o y desarrollo de sitios web y aplicaciones",
+          "Administraci\u00f3n de servidores e infraestructura cloud",
+          "Implementaci\u00f3n y gesti\u00f3n de correo corporativo (Google Workspace)",
+          "Auditor\u00edas y protecci\u00f3n de ciberseguridad",
+          "Automatizaci\u00f3n de procesos e integraci\u00f3n de APIs",
+          "Desarrollo de agentes de inteligencia artificial personalizados",
+          "Consultor\u00eda tecnol\u00f3gica integral"
+        ],
+        "outro": "El alcance espec\u00edfico de cada servicio se detalla en la propuesta comercial o acuerdo de servicio correspondiente."
+      },
+      {
+        "title": "5. Precios y pagos",
+        "items": [
+          "Los precios de nuestros servicios son personalizados seg\u00fan las necesidades de cada cliente y se comunican de forma clara en la propuesta comercial.",
+          "Los planes de suscripci\u00f3n se facturan mensualmente. El pago debe realizarse dentro de los primeros 5 d\u00edas del ciclo de facturaci\u00f3n.",
+          "Aceptamos transferencias bancarias, pagos con tarjeta y otros medios seg\u00fan la ubicaci\u00f3n del cliente.",
+          "Los precios no incluyen impuestos, salvo que se indique expresamente."
+        ]
+      },
+      {
+        "title": "6. Duraci\u00f3n y cancelaci\u00f3n",
+        "items": [
+          "Los planes de suscripci\u00f3n son mensuales y pueden cancelarse en cualquier momento sin penalizaci\u00f3n.",
+          "La cancelaci\u00f3n debe comunicarse con al menos 10 d\u00edas de anticipaci\u00f3n al siguiente ciclo de facturaci\u00f3n.",
+          "Los servicios contratados de forma individual se rigen por los plazos establecidos en el acuerdo correspondiente.",
+          "En caso de cancelaci\u00f3n, el cliente mantiene acceso a su web, datos, servidores, correo y cualquier desarrollo realizado."
+        ]
+      },
+      {
+        "title": "7. Propiedad intelectual",
+        "intro": "La propiedad intelectual se rige por las siguientes reglas:",
+        "items": [
+          "El c\u00f3digo fuente, dise\u00f1os y desarrollos realizados para el cliente son propiedad del cliente una vez completado el pago correspondiente.",
+          "La marca, logotipo, dise\u00f1o y contenido del sitio web enigmasac.com son propiedad exclusiva de Enigma Developers S.A.C.",
+          "Las herramientas, frameworks y componentes reutilizables desarrollados por Enigma Developers S.A.C. de forma gen\u00e9rica pueden ser utilizados en otros proyectos."
+        ]
+      },
+      {
+        "title": "8. Obligaciones del cliente",
+        "intro": "El cliente se compromete a:",
+        "items": [
+          "Proporcionar informaci\u00f3n veraz y actualizada",
+          "Facilitar los accesos y credenciales necesarios para la prestaci\u00f3n de los servicios",
+          "Realizar los pagos en los plazos acordados",
+          "No utilizar los servicios contratados para actividades il\u00edcitas",
+          "Respetar la propiedad intelectual de terceros"
+        ]
+      },
+      {
+        "title": "9. Limitaci\u00f3n de responsabilidad",
+        "items": [
+          "Enigma Developers S.A.C. no se hace responsable de interrupciones en los servicios causadas por terceros, fuerza mayor o circunstancias fuera de su control.",
+          "La responsabilidad m\u00e1xima de Enigma Developers S.A.C. se limita al monto total pagado por el cliente en los \u00faltimos 3 meses por los servicios afectados.",
+          "No nos hacemos responsables del contenido publicado por el cliente en su sitio web o plataformas."
+        ]
+      },
+      {
+        "title": "10. Confidencialidad",
+        "text": "Ambas partes se comprometen a mantener la confidencialidad de la informaci\u00f3n sensible compartida durante la relaci\u00f3n comercial. Esta obligaci\u00f3n se mantiene vigente incluso despu\u00e9s de la finalizaci\u00f3n de los servicios."
+      },
+      {
+        "title": "11. Modificaciones",
+        "text": "Enigma Developers S.A.C. se reserva el derecho de modificar estos t\u00e9rminos en cualquier momento. Las modificaciones se publicar\u00e1n en esta p\u00e1gina y, en caso de cambios significativos, se notificar\u00e1 a los clientes activos por correo electr\u00f3nico."
+      },
+      {
+        "title": "12. Legislaci\u00f3n aplicable",
+        "text": "Estos t\u00e9rminos se rigen por las leyes de la Rep\u00fablica del Per\u00fa. Para clientes ubicados en la Uni\u00f3n Europea, se aplicar\u00e1n adicionalmente las disposiciones de protecci\u00f3n al consumidor del pa\u00eds de residencia del cliente. Cualquier controversia se resolver\u00e1 ante los tribunales competentes de Lima, Per\u00fa, salvo acuerdo distinto entre las partes."
+      },
+      {
+        "title": "13. Contacto",
+        "intro": "Para consultas sobre estos t\u00e9rminos de servicio, puedes contactarnos en:"
+      }
+    ]
+  },
+  "cookiesPage": {
+    "title": "Pol\u00edtica de Cookies",
+    "lastUpdated": "28 de febrero de 2026",
+    "lastUpdatedPrefix": "\u00daltima actualizaci\u00f3n:",
+    "sections": [
+      {
+        "title": "1. \u00bfQu\u00e9 son las cookies?",
+        "text": "Las cookies son peque\u00f1os archivos de texto que los sitios web almacenan en tu dispositivo (ordenador, tablet o tel\u00e9fono m\u00f3vil) cuando los visitas. Se utilizan para recordar tus preferencias, mejorar tu experiencia de navegaci\u00f3n y, en algunos casos, recopilar informaci\u00f3n estad\u00edstica sobre el uso del sitio."
+      },
+      {
+        "title": "2. Responsable del uso de cookies",
+        "type": "info"
+      },
+      {
+        "title": "3. Tipos de cookies que utilizamos",
+        "subsections": [
+          {
+            "title": "Cookies esenciales",
+            "intro": "Son necesarias para el funcionamiento b\u00e1sico del sitio web y no pueden desactivarse. Incluyen:",
+            "items": [
+              "Cookies de sesi\u00f3n para mantener la navegaci\u00f3n activa",
+              "Cookies de consentimiento para recordar tu elecci\u00f3n sobre el uso de cookies",
+              "Cookies de seguridad para proteger contra accesos no autorizados"
+            ]
+          },
+          {
+            "title": "Cookies de anal\u00edtica",
+            "intro": "Nos permiten medir y analizar el comportamiento de los usuarios en nuestro sitio web para mejorar nuestros servicios. Incluyen:",
+            "items": [
+              "N\u00famero de visitantes y p\u00e1ginas m\u00e1s consultadas",
+              "Tiempo de permanencia en cada p\u00e1gina",
+              "Origen del tr\u00e1fico (motor de b\u00fasqueda, enlace directo, red social)",
+              "Dispositivo y navegador utilizado"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "4. Finalidad de las cookies",
+        "intro": "Las cookies que utilizamos tienen las siguientes finalidades:",
+        "items": [
+          "Garantizar el correcto funcionamiento del sitio web",
+          "Recordar las preferencias y elecciones del usuario",
+          "Recopilar informaci\u00f3n estad\u00edstica an\u00f3nima sobre el uso del sitio",
+          "Mejorar la experiencia de navegaci\u00f3n y la calidad de nuestros contenidos",
+          "Analizar el rendimiento y la eficacia de nuestras p\u00e1ginas"
+        ]
+      },
+      {
+        "title": "5. Duraci\u00f3n de las cookies",
+        "intro": "Seg\u00fan su duraci\u00f3n, las cookies que utilizamos se clasifican en:",
+        "items": [
+          "Cookies de sesi\u00f3n: se eliminan autom\u00e1ticamente al cerrar el navegador.",
+          "Cookies persistentes: permanecen en tu dispositivo durante un per\u00edodo determinado o hasta que las elimines manualmente. Las cookies de consentimiento se conservan durante 12 meses. Las cookies de anal\u00edtica pueden conservarse hasta 24 meses."
+        ]
+      },
+      {
+        "title": "6. Gesti\u00f3n de cookies desde el navegador",
+        "intro": "Puedes configurar tu navegador para bloquear, eliminar o recibir avisos sobre las cookies. A continuaci\u00f3n, te indicamos c\u00f3mo hacerlo en los navegadores m\u00e1s utilizados:",
+        "browserLinks": [
+          { "name": "Google Chrome", "url": "https://support.google.com/chrome/answer/95647" },
+          { "name": "Mozilla Firefox", "url": "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" },
+          { "name": "Safari", "url": "https://support.apple.com/es-es/guide/safari/sfri11471/mac" },
+          { "name": "Microsoft Edge", "url": "https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" }
+        ],
+        "outro": "Ten en cuenta que la desactivaci\u00f3n de cookies puede afectar el funcionamiento de algunas funciones del sitio web."
+      },
+      {
+        "title": "7. Modificaciones",
+        "text": "Enigma Developers S.A.C. se reserva el derecho de modificar esta pol\u00edtica de cookies en cualquier momento. Las actualizaciones se publicar\u00e1n en esta misma p\u00e1gina con la fecha de \u00faltima actualizaci\u00f3n."
+      },
+      {
+        "title": "8. Contacto",
+        "intro": "Si tienes preguntas sobre nuestra pol\u00edtica de cookies, puedes contactarnos en:"
+      }
+    ]
+  },
+  "complaintBook": {
+    "title": "Libro de Reclamaciones",
+    "titleAccent": "Reclamaciones",
+    "subtitle": "Conforme al Art\u00edculo 150\u00b0 de la Ley N\u00b0 29571, C\u00f3digo de Protecci\u00f3n y Defensa del Consumidor.",
+    "consumerTitle": "Datos del consumidor",
+    "labelFullName": "Nombre completo",
+    "labelDocType": "Tipo de documento",
+    "docTypeDNI": "DNI",
+    "docTypeCE": "Carn\u00e9 de extranjer\u00eda",
+    "docTypePassport": "Pasaporte",
+    "labelDocNumber": "N\u00famero de documento",
+    "labelAddress": "Domicilio",
+    "labelPhone": "Tel\u00e9fono",
+    "labelEmail": "Email",
+    "isMinor": "Soy menor de edad",
+    "labelGuardian": "Nombre del padre, madre o tutor",
+    "registryTypeTitle": "Tipo de registro",
+    "typeReclamo": "Reclamo",
+    "typeQueja": "Queja",
+    "reclamoDescription": "Reclamo: disconformidad relacionada con los productos o servicios.",
+    "quejaDescription": "Queja: disconformidad con la atenci\u00f3n recibida, no relacionada con el producto o servicio.",
+    "serviceDetailTitle": "Detalle del bien o servicio contratado",
+    "labelServiceDescription": "Descripci\u00f3n del producto o servicio",
+    "labelAmountClaimed": "Monto reclamado (S/)",
+    "detailTitle": "Detalle del",
+    "labelDetail": "Descripci\u00f3n del",
+    "labelConsumerRequest": "Pedido del consumidor (resoluci\u00f3n esperada)",
+    "sending": "Enviando...",
+    "submitReclamo": "Registrar reclamo",
+    "submitQueja": "Registrar queja",
+    "successTitle": "Registro enviado correctamente.",
+    "successMessage": "Tu n\u00famero de {{type}} es #{{id}}. Recibir\u00e1s una confirmaci\u00f3n por email. El plazo m\u00e1ximo de respuesta es de 30 d\u00edas calendario.",
+    "errorMessage": "Hubo un error al enviar. Intenta de nuevo o cont\u00e1ctanos directamente por WhatsApp.",
+    "providerTitle": "Datos del proveedor",
+    "providerRazon": "Raz\u00f3n social:",
+    "providerRuc": "RUC:",
+    "providerDomicilio": "Domicilio:",
+    "providerEmail": "Email:",
+    "providerWeb": "Web:",
+    "responseTitle": "Plazo de respuesta",
+    "responseText": "De acuerdo con el Art\u00edculo 24\u00b0 del D.S. N\u00b0 011-2011-PCM, el proveedor dar\u00e1 respuesta al reclamo o queja en un plazo m\u00e1ximo de 30 d\u00edas calendario, contados desde la fecha de registro.",
+    "responseDays": "30 d\u00edas calendario",
+    "differenceTitle": "Reclamo vs. Queja",
+    "differenceReclamo": "Disconformidad relacionada con los productos o servicios adquiridos o contratados con el proveedor.",
+    "differenceQueja": "Disconformidad no relacionada con el producto o servicio, sino con la atenci\u00f3n al p\u00fablico por parte del proveedor.",
+    "meta": {
+      "title": "Libro de Reclamaciones | Enigma Developers",
+      "description": "Libro de Reclamaciones virtual de Enigma Developers S.A.C. conforme a la Ley N\u00b0 29571 y el D.S. N\u00b0 011-2011-PCM.",
+      "ogTitle": "Libro de Reclamaciones | Enigma Developers",
+      "ogDescription": "Registra tu reclamo o queja. Enigma Developers S.A.C., RUC 20605632875."
+    }
+  }
+}

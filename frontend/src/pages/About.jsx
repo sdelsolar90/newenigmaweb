@@ -1,38 +1,13 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { Link } from "react-router-dom";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 
-const TIMELINE = [
-  { year: "2019", title: "Nace Enigma", description: "Fundamos Enigma Developers en Lima, Perú, como una agencia de desarrollo web y hosting." },
-  { year: "2020", title: "Crecimiento en pandemia", description: "La digitalización forzada por el COVID nos trajo decenas de empresas que necesitaban presencia online urgente." },
-  { year: "2021", title: "Expansión de servicios", description: "Incorporamos ciberseguridad, administración de servidores cloud y consultoría tecnológica integral." },
-  { year: "2022", title: "Presencia en Europa", description: "Abrimos operaciones en Barcelona, España, atendiendo empresas en ambos continentes." },
-  { year: "2023", title: "Era de la automatización", description: "Integramos servicios de automatización con Zapier, Make y n8n para optimizar procesos de nuestros clientes." },
-  { year: "2024", title: "Inteligencia artificial", description: "Lanzamos nuestro servicio de agentes de IA personalizados, entrenados con datos de cada negocio." },
-  { year: "2025", title: "Tu equipo IT", description: "Evolucionamos al modelo de suscripción: ser el área IT completa de las empresas que confían en nosotros." },
-];
-
-const VALUES = [
-  {
-    title: "Compromiso real",
-    description: "No desaparecemos después de entregar. Somos tu equipo, no un proveedor más.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.78.77L12 20.64l7.64-7.64.78-.77a5.4 5.4 0 0 0 0-7.65z" /></svg>,
-  },
-  {
-    title: "Transparencia total",
-    description: "Precios claros, procesos documentados y acceso completo a todo lo que hacemos por ti.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>,
-  },
-  {
-    title: "Soluciones prácticas",
-    description: "No vendemos tecnología por vender. Recomendamos lo que realmente resuelve tu problema.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>,
-  },
-  {
-    title: "Mejora continua",
-    description: "La tecnología evoluciona y nosotros contigo. Siempre buscamos cómo darte más valor.",
-    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
-  },
+const VALUE_ICONS = [
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.78.77L12 20.64l7.64-7.64.78-.77a5.4 5.4 0 0 0 0-7.65z" /></svg>,
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>,
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>,
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
 ];
 
 function TimelineItem({ item, index }) {
@@ -61,7 +36,7 @@ function TimelineItem({ item, index }) {
   );
 }
 
-function ValueCard({ value, index }) {
+function ValueCard({ value, icon, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -74,7 +49,7 @@ function ValueCard({ value, index }) {
       className="p-6 bg-carbon3 border border-line hover:border-red/20 transition-all duration-300"
     >
       <div className="w-12 h-12 bg-red/10 border border-red/20 text-red flex items-center justify-center mb-4">
-        {value.icon}
+        {icon}
       </div>
       <h3 className="font-heading text-lg text-cream mb-2">{value.title}</h3>
       <p className="font-body text-sm text-cream2 leading-relaxed">{value.description}</p>
@@ -83,13 +58,19 @@ function ValueCard({ value, index }) {
 }
 
 export default function About() {
+  const { lang, t } = useT();
+  const timeline = t("aboutPage.timeline");
+  const values = t("aboutPage.values");
+  const canonical = lang === "es" ? "https://enigmasac.com/nosotros" : "https://enigmasac.com/en/about";
+
   return (
     <>
-      <title>Nosotros | Enigma Developers</title>
-      <meta name="description" content="Más de 5 años creando soluciones tecnológicas desde Lima y Barcelona. Conoce la historia, el equipo y los valores de Enigma Developers." />
-      <meta property="og:title" content="Nosotros | Enigma Developers" />
-      <meta property="og:description" content="Desde 2019 ayudando a empresas a competir con tecnología. Presentes en Lima, Perú y Barcelona, España." />
-      <link rel="canonical" href="https://enigmasac.com/nosotros" />
+      <title>{t("meta.about.title")}</title>
+      <meta name="description" content={t("meta.about.description")} />
+      <meta property="og:title" content={t("meta.about.ogTitle")} />
+      <meta property="og:description" content={t("meta.about.ogDescription")} />
+      <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+      <link rel="canonical" href={canonical} />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">
@@ -103,8 +84,8 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl tracking-tight text-cream leading-tight"
           >
-            Tecnología con{" "}
-            <em className="italic text-red">visión de negocio</em>
+            {t("aboutPage.heroTitle")}{" "}
+            <em className="italic text-red">{t("aboutPage.heroTitleItalic")}</em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -112,8 +93,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-6 text-base text-cream2 font-body max-w-2xl mx-auto leading-relaxed"
           >
-            Más de 5 años ayudando a empresas a competir con tecnología.
-            Desde Lima y Barcelona, para toda Latinoamérica y España.
+            {t("aboutPage.heroDescription")}
           </motion.p>
         </div>
       </section>
@@ -123,26 +103,20 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-                Nuestra historia
+                {t("aboutPage.historyTag")}
               </span>
               <h2 className="mt-4 font-heading text-3xl sm:text-4xl tracking-tight text-cream leading-tight mb-6">
-                De agencia digital a equipo IT integral
+                {t("aboutPage.historyTitle")}
               </h2>
               <div className="space-y-4 font-body text-cream2 leading-relaxed">
-                <p>
-                  Enigma nació en 2019 en Lima, Perú, como una agencia de desarrollo web y hosting. Con el tiempo, nuestros clientes empezaron a pedirnos más: servidores, seguridad, correo, automatizaciones.
-                </p>
-                <p>
-                  Nos dimos cuenta de que las PYMEs no necesitan proveedores sueltos que resuelvan problemas aislados. Necesitan un equipo completo que entienda su negocio y gestione toda su tecnología de forma integral.
-                </p>
-                <p>
-                  Hoy operamos desde Lima y Barcelona, atendemos empresas en toda Latinoamérica y España, y ofrecemos todo lo que un área IT interna haría — pero sin los costos de tenerla en planilla.
-                </p>
+                <p>{t("aboutPage.historyP1")}</p>
+                <p>{t("aboutPage.historyP2")}</p>
+                <p>{t("aboutPage.historyP3")}</p>
               </div>
             </div>
 
             <div className="lg:pl-8">
-              {TIMELINE.map((item, index) => (
+              {timeline.map((item, index) => (
                 <TimelineItem key={item.year} item={item} index={index} />
               ))}
             </div>
@@ -154,15 +128,15 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-              Nuestros valores
+              {t("aboutPage.valuesTag")}
             </span>
             <h2 className="mt-4 font-heading text-3xl sm:text-4xl tracking-tight text-cream leading-tight">
-              Lo que nos define como equipo
+              {t("aboutPage.valuesTitle")}
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
-            {VALUES.map((value, index) => (
-              <ValueCard key={value.title} value={value} index={index} />
+            {values.map((value, index) => (
+              <ValueCard key={index} value={value} icon={VALUE_ICONS[index]} index={index} />
             ))}
           </div>
         </div>
@@ -172,10 +146,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-              Dónde estamos
+              {t("aboutPage.locationTag")}
             </span>
             <h2 className="mt-4 font-heading text-3xl sm:text-4xl tracking-tight text-cream leading-tight">
-              Dos ciudades, un solo equipo
+              {t("aboutPage.locationTitle")}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-line max-w-4xl mx-auto">
@@ -185,9 +159,9 @@ export default function About() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <h3 className="font-heading text-xl tracking-tight text-cream mb-2">Lima, Perú</h3>
+              <h3 className="font-heading text-xl tracking-tight text-cream mb-2">{t("aboutPage.limaTitle")}</h3>
               <p className="font-body text-sm text-cream2 leading-relaxed">
-                Sede principal. Desde aquí atendemos toda Latinoamérica con un equipo de desarrollo, servidores y soporte técnico.
+                {t("aboutPage.limaDescription")}
               </p>
               <a href="tel:+51959561015" className="inline-flex items-center gap-2 mt-4 text-sm text-red font-mono">
                 +51 959 561 015
@@ -199,9 +173,9 @@ export default function About() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <h3 className="font-heading text-xl tracking-tight text-cream mb-2">Barcelona, España</h3>
+              <h3 className="font-heading text-xl tracking-tight text-cream mb-2">{t("aboutPage.barcelonaTitle")}</h3>
               <p className="font-body text-sm text-cream2 leading-relaxed">
-                Nuestra base en Europa. Atendemos empresas en España y la Unión Europea con cercanía y horario local.
+                {t("aboutPage.barcelonaDescription")}
               </p>
               <a href="tel:+34656663992" className="inline-flex items-center gap-2 mt-4 text-sm text-red font-mono">
                 +34 656 663 992
@@ -214,20 +188,20 @@ export default function About() {
       <section className="py-20 bg-red">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-heading text-3xl sm:text-4xl tracking-tight text-cream leading-tight">
-            ¿Quieres conocernos mejor?
+            {t("aboutPage.ctaTitle")}
           </h2>
           <p className="mt-4 text-base text-cream/70 font-body">
-            Agenda una llamada sin compromiso. Te contamos cómo podemos ayudar a tu empresa.
+            {t("aboutPage.ctaDescription")}
           </p>
-          <Link
+          <LocaleLink
             to="/contacto"
             className="inline-flex items-center gap-2 mt-8 px-8 py-4 font-mono text-xs uppercase tracking-[0.25em] text-red bg-cream hover:bg-white transition-all duration-300"
           >
-            Agenda tu diagnóstico
+            {t("aboutPage.ctaButton")}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </LocaleLink>
         </div>
       </section>
     </>

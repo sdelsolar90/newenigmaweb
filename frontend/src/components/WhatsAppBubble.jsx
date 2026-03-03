@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
-const WA_URL = "https://wa.me/51959561015?text=Hola%2C%20me%20interesa%20saber%20más%20sobre%20los%20servicios%20de%20Enigma";
+import { useT } from "../i18n/LanguageContext.jsx";
 
 export default function WhatsAppBubble() {
+  const { t } = useT();
   const [showTooltip, setShowTooltip] = useState(false);
   const [visible, setVisible] = useState(false);
+
+  const waUrl = `https://wa.me/51959561015?text=${t("whatsapp.waText")}`;
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 2000);
@@ -39,7 +41,7 @@ export default function WhatsAppBubble() {
                 onClick={() => setShowTooltip(false)}
               >
                 <p className="font-body text-sm text-cream leading-snug">
-                  ¿Necesitas ayuda? <span className="font-semibold text-red">Escríbenos</span>
+                  {t("whatsapp.tooltip")} <span className="font-semibold text-red">{t("whatsapp.tooltipCta")}</span>
                 </p>
                 <div className="absolute top-1/2 -translate-y-1/2 -right-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-carbon2" />
               </motion.div>
@@ -47,10 +49,10 @@ export default function WhatsAppBubble() {
           </AnimatePresence>
 
           <a
-            href={WA_URL}
+            href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contáctanos por WhatsApp"
+            aria-label={t("whatsapp.aria")}
             className="group relative w-14 h-14 rounded-full bg-red shadow-lg shadow-red/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-red/40 transition-all duration-300"
             onMouseEnter={() => setShowTooltip(true)}
           >

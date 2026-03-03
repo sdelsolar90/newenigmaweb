@@ -1,13 +1,71 @@
 import { motion } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
 
-const LAST_UPDATED = "28 de febrero de 2026";
+function renderSection(section, index, sections, info) {
+  const isLast = index === sections.length - 1;
+
+  return (
+    <div key={index}>
+      <h2 className="font-heading text-lg font-semibold text-cream mb-4">{section.title}</h2>
+
+      {section.type === "info" && (
+        <ul className="space-y-2">
+          <li><span className="text-cream">{info.labelRazon}</span> {info.razonSocial}</li>
+          <li><span className="text-cream">{info.labelRuc}</span> {info.ruc}</li>
+          <li><span className="text-cream">{info.labelDomicilio}</span> {info.domicilio}</li>
+          <li><span className="text-cream">{info.labelEmail}</span> {info.email}</li>
+          <li><span className="text-cream">{info.labelWeb}</span> {info.web}</li>
+        </ul>
+      )}
+
+      {section.text && <p>{section.text}</p>}
+
+      {section.paragraphs && section.paragraphs.map((p, i) => (
+        <p key={i} className={i > 0 ? "mt-3" : ""}>{p}</p>
+      ))}
+
+      {section.intro && <p className={section.items ? "mb-3" : ""}>{section.intro}</p>}
+
+      {section.items && (
+        <ul className="space-y-1.5 list-disc list-inside">
+          {section.items.map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
+      )}
+
+      {section.outro && (
+        <p className="mt-3">
+          {section.outro.includes("hello@enigmasac.com") ? (
+            <>
+              {section.outro.split("hello@enigmasac.com")[0]}
+              <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a>
+              {section.outro.split("hello@enigmasac.com")[1]}
+            </>
+          ) : section.outro}
+        </p>
+      )}
+
+      {isLast && !section.type && (
+        <ul className="mt-3 space-y-2">
+          <li><span className="text-cream">{info.labelEmailShort}</span> <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a></li>
+          <li><span className="text-cream">{info.labelPhonePeru}</span> +51 959 561 015</li>
+          <li><span className="text-cream">{info.labelPhoneSpain}</span> +34 656 663 992</li>
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export default function PrivacyPolicy() {
+  const { lang, t } = useT();
+  const page = t("privacyPage");
+  const info = t("companyInfo");
+  const meta = t("meta.privacy");
+
   return (
     <>
-      <title>Política de Privacidad | Enigma Developers</title>
-      <meta name="description" content="Política de privacidad de Enigma Developers S.A.C. Conoce cómo recopilamos, usamos y protegemos tus datos personales." />
-      <link rel="canonical" href="https://enigmasac.com/privacidad" />
+      <title>{meta.title}</title>
+      <meta name="description" content={meta.description} />
+      <link rel="canonical" href={`https://enigmasac.com${lang === "es" ? "/privacidad" : "/en/privacy"}`} />
 
       <section className="pt-32 pb-16 bg-carbon relative overflow-hidden">
         <div className="absolute inset-0">
@@ -21,7 +79,7 @@ export default function PrivacyPolicy() {
             transition={{ duration: 0.6 }}
             className="font-heading text-4xl sm:text-5xl tracking-tight text-cream leading-tight"
           >
-            Política de Privacidad
+            {page.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -29,7 +87,7 @@ export default function PrivacyPolicy() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-4 text-sm text-cream2 font-body"
           >
-            Última actualización: {LAST_UPDATED}
+            {page.lastUpdatedPrefix || "Last updated:"} {page.lastUpdated}
           </motion.p>
         </div>
       </section>
@@ -37,100 +95,7 @@ export default function PrivacyPolicy() {
       <section className="py-20 bg-carbon">
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-carbon2 border border-line p-8 sm:p-12 space-y-10 font-body text-sm text-cream2 leading-relaxed">
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">1. Responsable del tratamiento</h2>
-              <ul className="space-y-2">
-                <li><span className="text-cream">Razón social:</span> Enigma Developers S.A.C.</li>
-                <li><span className="text-cream">RUC:</span> 20605632875</li>
-                <li><span className="text-cream">Domicilio fiscal:</span> Lima, Perú</li>
-                <li><span className="text-cream">Correo electrónico:</span> hello@enigmasac.com</li>
-                <li><span className="text-cream">Sitio web:</span> https://enigmasac.com</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">2. Datos que recopilamos</h2>
-              <p className="mb-3">Recopilamos los datos personales que nos proporcionas voluntariamente a través de nuestros formularios de contacto y diagnóstico:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Nombre completo</li>
-                <li>Dirección de correo electrónico</li>
-                <li>Número de teléfono</li>
-                <li>Nombre de la empresa</li>
-                <li>Mensaje o descripción de necesidades</li>
-              </ul>
-              <p className="mt-3">Adicionalmente, nuestro sitio web puede recopilar de forma automática datos de navegación como dirección IP, tipo de navegador, páginas visitadas y tiempo de permanencia.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">3. Finalidad del tratamiento</h2>
-              <p className="mb-3">Los datos recopilados se utilizan exclusivamente para:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Responder a consultas y solicitudes de contacto</li>
-                <li>Gestionar solicitudes de diagnóstico digital</li>
-                <li>Enviar propuestas comerciales relacionadas con nuestros servicios</li>
-                <li>Mejorar la experiencia de navegación en nuestro sitio web</li>
-                <li>Cumplir con obligaciones legales aplicables</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">4. Base legal</h2>
-              <p>El tratamiento de tus datos se realiza con base en tu consentimiento expreso al completar nuestros formularios, así como en el interés legítimo de Enigma Developers S.A.C. para gestionar las relaciones comerciales. En el caso de clientes, la base legal incluye la ejecución del contrato de servicios.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">5. Conservación de datos</h2>
-              <p>Los datos personales se conservarán mientras exista una relación comercial o durante el tiempo necesario para cumplir las finalidades indicadas. Una vez finalizada la relación, los datos se conservarán durante los plazos legales establecidos por la normativa peruana y/o europea aplicable.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">6. Compartición de datos</h2>
-              <p className="mb-3">No vendemos, alquilamos ni compartimos tus datos personales con terceros, salvo en los siguientes casos:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Proveedores de servicios tecnológicos necesarios para la operación (hosting, correo electrónico, analítica web)</li>
-                <li>Cumplimiento de obligaciones legales o requerimientos de autoridades competentes</li>
-                <li>Con tu consentimiento previo y expreso</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">7. Seguridad</h2>
-              <p>Implementamos medidas técnicas y organizativas para proteger tus datos personales contra acceso no autorizado, pérdida, alteración o divulgación. Esto incluye el uso de conexiones cifradas (SSL/TLS), control de accesos y políticas internas de seguridad de la información.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">8. Derechos del titular</h2>
-              <p className="mb-3">De acuerdo con la Ley N° 29733 (Ley de Protección de Datos Personales del Perú) y el Reglamento General de Protección de Datos (RGPD) de la Unión Europea, tienes derecho a:</p>
-              <ul className="space-y-1.5 list-disc list-inside">
-                <li>Acceder a tus datos personales</li>
-                <li>Rectificar datos inexactos o incompletos</li>
-                <li>Solicitar la supresión de tus datos</li>
-                <li>Oponerte al tratamiento de tus datos</li>
-                <li>Solicitar la portabilidad de tus datos</li>
-                <li>Revocar tu consentimiento en cualquier momento</li>
-              </ul>
-              <p className="mt-3">Para ejercer estos derechos, envía un correo a <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a> indicando tu solicitud y datos de identificación.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">9. Cookies</h2>
-              <p>Este sitio web puede utilizar cookies propias y de terceros para mejorar la experiencia de navegación y recopilar estadísticas de uso. Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">10. Modificaciones</h2>
-              <p>Nos reservamos el derecho de actualizar esta política de privacidad en cualquier momento. Las modificaciones se publicarán en esta misma página con la fecha de última actualización.</p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-lg font-semibold text-cream mb-4">11. Contacto</h2>
-              <p>Si tienes preguntas sobre esta política de privacidad o sobre el tratamiento de tus datos personales, puedes contactarnos en:</p>
-              <ul className="mt-3 space-y-2">
-                <li><span className="text-cream">Email:</span> <a href="mailto:hello@enigmasac.com" className="text-red hover:text-red transition-colors">hello@enigmasac.com</a></li>
-                <li><span className="text-cream">Teléfono (Perú):</span> +51 959 561 015</li>
-                <li><span className="text-cream">Teléfono (España):</span> +34 656 663 992</li>
-              </ul>
-            </div>
+            {page.sections.map((section, i) => renderSection(section, i, page.sections, info))}
           </div>
         </div>
       </section>

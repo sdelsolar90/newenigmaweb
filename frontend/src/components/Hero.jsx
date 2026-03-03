@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 import InteractiveRotor from "./InteractiveRotor.jsx";
 import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
@@ -34,6 +35,7 @@ function StatItem({ value, label, delay }) {
 }
 
 export default function Hero() {
+  const { t } = useT();
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
@@ -46,7 +48,8 @@ export default function Hero() {
     return () => [t1, t2, t3, t4, t5, t6].forEach(clearTimeout);
   }, []);
 
-  const headline = "Transformamos la complejidad de tu negocio en sistemas que simplemente funcionan.";
+  const headline = t("hero.headline");
+  const italicWord = t("hero.italicWord");
   const { displayText } = useTextDecrypt(headline, stage >= 3);
 
   return (
@@ -62,7 +65,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
             >
               <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-                Beyond the obvious
+                {t("hero.tag")}
               </span>
             </motion.div>
 
@@ -73,12 +76,12 @@ export default function Hero() {
               >
                 {stage >= 3 ? (
                   <>
-                    {displayText.split("simplemente").map((part, i) =>
+                    {displayText.split(italicWord).map((part, i) =>
                       i === 0 ? (
                         <span key={i}>{part}</span>
                       ) : (
                         <span key={i}>
-                          <em className="italic">simplemente</em>
+                          <em className="italic">{italicWord}</em>
                           {part}
                         </span>
                       )
@@ -96,8 +99,7 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="mt-6 text-base sm:text-lg text-cream2 max-w-xl leading-relaxed font-body mx-auto lg:mx-0"
             >
-              Desarrollo web, servidores, ciberseguridad, automatización e inteligencia artificial.
-              Todo lo que necesitas para competir con tecnología, en un solo equipo dedicado a tu negocio.
+              {t("hero.description")}
             </motion.p>
 
             <motion.div
@@ -106,21 +108,21 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
             >
-              <Link
+              <LocaleLink
                 to="/contacto"
                 className="inline-flex items-center gap-2 px-7 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream bg-red hover:bg-red2 transition-all duration-300"
               >
-                Agenda tu diagnóstico
+                {t("hero.ctaPrimary")}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 to="/planes"
                 className="inline-flex items-center gap-2 px-7 py-4 font-mono text-xs uppercase tracking-[0.25em] text-cream2 border border-line hover:border-red/40 hover:text-red transition-all duration-300"
               >
-                Conoce nuestros planes
-              </Link>
+                {t("hero.ctaSecondary")}
+              </LocaleLink>
             </motion.div>
           </div>
 
@@ -140,10 +142,9 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto border-t border-line pt-10"
         >
-          <StatItem value="+5" label="Años de experiencia" delay={3.6} />
-          <StatItem value="+50" label="Proyectos entregados" delay={3.7} />
-          <StatItem value="2" label="Países operando" delay={3.8} />
-          <StatItem value="24/7" label="Soporte disponible" delay={3.9} />
+          {t("hero.stats").map((stat, i) => (
+            <StatItem key={i} value={stat.value} label={stat.label} delay={3.6 + i * 0.1} />
+          ))}
         </motion.div>
       </div>
     </section>

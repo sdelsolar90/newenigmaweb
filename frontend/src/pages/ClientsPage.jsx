@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
 
 const ALL_CLIENTS = [
   { name: "Bernal Dental Clinic", domain: "bernaldentalclinic.com", logo: "/clients/bernal-dental-clinic.png", useFilter: true },
@@ -139,8 +140,10 @@ function ClientRotor({ client, index, rowIndex }) {
 }
 
 export default function ClientsPage() {
+  const { lang, t } = useT();
   const headerRef = useRef(null);
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const canonical = lang === "es" ? "https://enigmasac.com/clientes" : "https://enigmasac.com/en/clients";
 
   const getRowIndex = (index) => {
     if (typeof window === "undefined") return 0;
@@ -151,6 +154,10 @@ export default function ClientsPage() {
 
   return (
     <section className="pt-32 pb-24 lg:pt-40 lg:pb-32 bg-carbon min-h-screen">
+      <title>{t("meta.clients.title")}</title>
+      <meta name="description" content={t("meta.clients.description")} />
+      <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+      <link rel="canonical" href={canonical} />
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           ref={headerRef}
@@ -160,15 +167,14 @@ export default function ClientsPage() {
           className="max-w-3xl mx-auto text-center mb-20 lg:mb-24"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-            Nuestros clientes
+            {t("clientsPage.tag")}
           </span>
           <h1 className="mt-4 font-heading text-4xl sm:text-5xl lg:text-6xl tracking-tight text-cream leading-tight">
-            La máquina que mueve{" "}
-            <em className="italic">negocios</em>
+            {t("clientsPage.title")}{" "}
+            <em className="italic">{t("clientsPage.titleItalic")}</em>
           </h1>
           <p className="mt-6 font-body text-base text-cream2 leading-relaxed max-w-xl mx-auto">
-            Cada rotor es una empresa que confía en Enigma como su equipo IT.
-            Juntos, hacemos funcionar la máquina.
+            {t("clientsPage.description")}
           </p>
         </motion.div>
 
@@ -191,7 +197,7 @@ export default function ClientsPage() {
           className="mt-20 text-center"
         >
           <p className="font-mono text-xs tracking-[0.2em] text-cream2/30 uppercase">
-            +{ALL_CLIENTS.length} empresas confían en Enigma
+            +{ALL_CLIENTS.length} {t("clientsPage.counter")}
           </p>
         </motion.div>
       </div>

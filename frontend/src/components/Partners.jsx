@@ -1,4 +1,5 @@
 import useCountUp from "../hooks/useCountUp.js";
+import { useT } from "../i18n/LanguageContext.jsx";
 
 const PARTNERS = [
   {
@@ -63,6 +64,7 @@ function MarqueeRow({ partners, direction = "left" }) {
 }
 
 export default function Partners() {
+  const { t } = useT();
   const firstRow = PARTNERS.slice(0, 10);
   const secondRow = PARTNERS.slice(10);
   const countRef = useCountUp(21, { duration: 1800, suffix: "+" });
@@ -72,7 +74,7 @@ export default function Partners() {
       <div className="max-w-7xl mx-auto px-6 mb-10 flex flex-col items-center gap-2">
         <span ref={countRef} className="font-heading text-4xl text-cream tracking-tight">0</span>
         <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-          Tecnologías y plataformas
+          {t("partners.label")}
         </span>
       </div>
       <div className="space-y-4 group">

@@ -1,12 +1,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { EnigmaIsotipo } from "./EnigmaLogo.jsx";
+import { useT } from "../i18n/LanguageContext.jsx";
 
-const STEPS = [
+const STEP_ICONS = [
   {
     number: "01",
-    title: "Diagnóstico inicial",
-    description: "Analizamos tu ecosistema digital actual: web, servidores, correo, seguridad, procesos y herramientas. Identificamos vulnerabilidades y oportunidades de mejora.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /><path d="M11 8v6M8 11h6" />
@@ -15,8 +14,6 @@ const STEPS = [
   },
   {
     number: "02",
-    title: "Plan personalizado",
-    description: "Diseñamos una hoja de ruta adaptada a tu empresa, tus objetivos y tu presupuesto. Cada plan se construye alrededor de lo que realmente necesitas.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><path d="M14 2v6h6" /><path d="M8 13h8M8 17h8M8 9h2" />
@@ -25,8 +22,6 @@ const STEPS = [
   },
   {
     number: "03",
-    title: "Acompañamiento continuo",
-    description: "Nos convertimos en tu equipo IT. Gestionamos tu infraestructura, resolvemos incidencias e implementamos mejoras. Tú creces, nosotros nos encargamos.",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -80,13 +75,13 @@ function TimelineConnector({ index }) {
   );
 }
 
-function MobileTimeline() {
+function MobileTimeline({ steps }) {
   return (
     <div className="flex flex-col gap-0">
-      {STEPS.map((step, i) => (
+      {steps.map((step, i) => (
         <div key={step.number}>
           <StepCard step={step} index={i} />
-          {i < STEPS.length - 1 && (
+          {i < steps.length - 1 && (
             <div className="flex justify-center py-3">
               <div className="flex flex-col items-center gap-1">
                 <div className="w-px h-4 bg-red/20" />
@@ -102,8 +97,16 @@ function MobileTimeline() {
 }
 
 export default function HowItWorks() {
+  const { t } = useT();
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-40px" });
+
+  const translatedSteps = t("howItWorks.steps");
+  const steps = STEP_ICONS.map((s, i) => ({
+    ...s,
+    title: translatedSteps[i].title,
+    description: translatedSteps[i].description,
+  }));
 
   return (
     <section className="py-20 bg-carbon2">
@@ -116,28 +119,28 @@ export default function HowItWorks() {
           className="text-center mb-12"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-            Cómo funciona
+            {t("howItWorks.tag")}
           </span>
           <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl text-cream leading-tight tracking-tight">
-            De cero a equipo IT{" "}
-            <em className="italic">en tres pasos</em>
+            {t("howItWorks.title")}{" "}
+            <em className="italic">{t("howItWorks.titleItalic")}</em>
           </h2>
           <p className="mt-4 text-base text-cream2 font-body leading-relaxed max-w-2xl mx-auto">
-            Un proceso simple y transparente. Sin contratos de permanencia, sin sorpresas.
+            {t("howItWorks.description")}
           </p>
         </motion.div>
 
         <div className="hidden md:flex items-stretch gap-0">
-          {STEPS.map((step, i) => (
+          {steps.map((step, i) => (
             <div key={step.number} className="contents">
               <StepCard step={step} index={i} />
-              {i < STEPS.length - 1 && <TimelineConnector index={i} />}
+              {i < steps.length - 1 && <TimelineConnector index={i} />}
             </div>
           ))}
         </div>
 
         <div className="md:hidden">
-          <MobileTimeline />
+          <MobileTimeline steps={steps} />
         </div>
       </div>
     </section>

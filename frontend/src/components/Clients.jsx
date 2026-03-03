@@ -1,16 +1,18 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 import { motion, useInView } from "motion/react";
+import { useT } from "../i18n/LanguageContext.jsx";
+import LocaleLink from "../i18n/LocaleLink.jsx";
 
 const CLIENTS = [
   { name: "Bernal Dental Clinic", domain: "bernaldentalclinic.com", logo: "/clients/bernal-dental-clinic.png" },
-  { name: "Psicológamente", domain: "psicologamente.pe", logo: "/clients/psicologamente.png" },
+  { name: "Psicologamente", domain: "psicologamente.pe", logo: "/clients/psicologamente.png" },
   { name: "Ebombo", domain: "ebombo.com", logo: "/clients/ebombo.webp" },
   { name: "Mara Intimates", domain: "maraintimates.com", logo: "/clients/mara-intimates.svg" },
   { name: "El Piombino", domain: "elpiombino.com", logo: "/clients/el-piombino.png" },
 ];
 
 export default function Clients() {
+  const { t } = useT();
   const headerRef = useRef(null);
   const isInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -25,11 +27,11 @@ export default function Clients() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
-            Casos de éxito
+            {t("clients.tag")}
           </span>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl tracking-tight text-cream leading-tight">
-            Empresas que ya tienen{" "}
-            <em className="italic">su equipo IT con Enigma</em>
+            {t("clients.title")}{" "}
+            <em className="italic">{t("clients.titleItalic")}</em>
           </h2>
         </motion.div>
 
@@ -69,15 +71,15 @@ export default function Clients() {
           transition={{ duration: 0.4, delay: 0.7 }}
           className="mt-14 text-center"
         >
-          <Link
+          <LocaleLink
             to="/clientes"
             className="inline-flex items-center gap-2 px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] text-cream2 border border-line hover:border-red hover:text-red transition-all duration-300"
           >
-            Ver todos los clientes
+            {t("clients.viewAll")}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Link>
+          </LocaleLink>
         </motion.div>
       </div>
     </section>
