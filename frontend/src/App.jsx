@@ -46,9 +46,9 @@ const JSONLD_GRAPH = [
     url: "https://enigmasac.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://enigmasac.com/brand/enigma-logotype-dark.svg",
-      width: 200,
-      height: 40,
+      url: "https://enigmasac.com/favicon.svg",
+      width: 64,
+      height: 64,
     },
     image: "https://enigmasac.com/og-image.png",
     description: "Soluciones tecnológicas integrales para PYMEs. Desarrollo web, cloud, ciberseguridad, automatización e inteligencia artificial.",

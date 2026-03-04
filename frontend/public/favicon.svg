@@ -1,7 +1,25 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="32" r="29" stroke="#F0EDE6" stroke-width="2.5" fill="none"/>
-  <circle cx="32" cy="32" r="23" fill="#C44A20"/>
-  <circle cx="32" cy="32" r="14" stroke="#F0EDE6" stroke-width="1.5" fill="#1C1C1E"/>
-  <circle cx="32" cy="32" r="6" fill="#C44A20" stroke="#F0EDE6" stroke-width="1"/>
-  <circle cx="32" cy="32" r="2" fill="#F0EDE6"/>
+<svg width="64" height="64" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="54" stroke="#F0EDE6" stroke-width="3" fill="none"/>
+  <circle cx="60" cy="60" r="44" fill="#C44A20"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(0 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(18 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(36 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(90 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(108 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(162 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(180 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(198 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(216 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(270 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(288 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(324 60 60)"/>
+  <rect x="57.5" y="2" width="5" height="3" rx="1" fill="#F0EDE6" transform="rotate(342 60 60)"/>
+  <g transform="rotate(-60 60 60)">
+    <rect x="58" y="8" width="4" height="14" rx="2" fill="#B8B0A4"/>
+    <polygon points="60,6 56,12 64,12" fill="#B8B0A4"/>
+  </g>
+  <circle cx="60" cy="60" r="28" stroke="#F0EDE6" stroke-width="2" fill="#1C1C1E"/>
+  <circle cx="60" cy="60" r="11" fill="#C44A20" stroke="#F0EDE6" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="3" fill="#F0EDE6"/>
+  <line x1="57" y1="60" x2="63" y2="60" stroke="#1C1C1E" stroke-width="1"/>
 </svg>
