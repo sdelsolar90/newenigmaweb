@@ -42,7 +42,7 @@ const PARTNERS = [
 function PartnerItem({ partner }) {
   return (
     <div className="flex items-center gap-3 px-5 py-3 border border-line bg-carbon2 shrink-0 select-none group/item hover:border-red/20 transition-all duration-300">
-      <span style={{ color: partner.color }} className="transition-colors duration-300">
+      <span className="text-cream2 group-hover/item:text-red transition-colors duration-300">
         {partner.icon}
       </span>
       <span className="font-mono text-xs text-cream2 group-hover/item:text-cream transition-colors duration-300">
