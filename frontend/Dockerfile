@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
+ARG VITE_RECAPTCHA_SITE_KEY
+ENV VITE_RECAPTCHA_SITE_KEY=$VITE_RECAPTCHA_SITE_KEY
 RUN npm run build
 
 FROM nginx:alpine
