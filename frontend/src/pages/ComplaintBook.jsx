@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
+const RECAPTCHA_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const INITIAL_FORM = {
   name: "",
@@ -93,9 +94,16 @@ export default function ComplaintBook() {
     setStatus("sending");
 
     try {
+      const recaptchaToken = await new Promise((resolve) => {
+        window.grecaptcha.enterprise.ready(async () => {
+          const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_KEY, { action: "SUBMIT" });
+          resolve(token);
+        });
+      });
       const payload = {
         ...form,
         amountClaimed: form.amountClaimed ? Number(form.amountClaimed) : null,
+        recaptchaToken,
       };
 
       const res = await fetch(`${API_URL}/complaints`, {
