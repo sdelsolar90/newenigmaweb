@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "../db.js";
 import { sendEmail } from "../mail.js";
+import { confirmationEmail } from "../emailTemplate.js";
 
 const contactSchema = z.object({
   name: z.string().min(2).max(100),
@@ -45,14 +46,7 @@ export async function submitContact(req, res) {
     await sendEmail({
       to: email,
       subject: "Recibimos tu mensaje — Enigma Developers",
-      html: `
-        <h2>Hola ${name},</h2>
-        <p>Recibimos tu mensaje correctamente. Nuestro equipo te responderá en menos de 24 horas.</p>
-        <p>Si necesitas una respuesta más rápida, puedes escribirnos por WhatsApp:</p>
-        <p><a href="https://wa.me/51959561015">+51 959 561 015</a></p>
-        <br />
-        <p>Saludos,<br />Equipo Enigma Developers</p>
-      `,
+      html: confirmationEmail({ name, message, id: contact.id }),
     });
 
     res.status(201).json({ message: "Mensaje enviado correctamente", id: contact.id });

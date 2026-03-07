@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "../db.js";
 import { sendEmail } from "../mail.js";
+import { confirmationEmail } from "../emailTemplate.js";
 
 const leadSchema = z.object({
   name: z.string().min(2).max(100),
@@ -45,21 +46,7 @@ export async function submitLead(req, res) {
     await sendEmail({
       to: email,
       subject: "Tu diagnóstico gratuito está en camino — Enigma Developers",
-      html: `
-        <h2>Hola ${name},</h2>
-        <p>Recibimos tu solicitud de diagnóstico gratuito. Nuestro equipo se pondrá en contacto contigo en menos de 24 horas para agendar la sesión.</p>
-        <p><strong>¿Qué incluye el diagnóstico?</strong></p>
-        <ul>
-          <li>Análisis de tu web, servidores y correo</li>
-          <li>Evaluación de seguridad básica</li>
-          <li>Identificación de oportunidades de mejora</li>
-          <li>Propuesta personalizada sin compromiso</li>
-        </ul>
-        <p>Si necesitas una respuesta más rápida:</p>
-        <p><a href="https://wa.me/51959561015">WhatsApp: +51 959 561 015</a></p>
-        <br />
-        <p>Saludos,<br />Equipo Enigma Developers</p>
-      `,
+      html: confirmationEmail({ name, message, id: lead.id }),
     });
 
     res.status(201).json({ message: "Solicitud de diagnóstico recibida", id: lead.id });
