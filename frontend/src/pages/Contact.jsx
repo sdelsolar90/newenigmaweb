@@ -207,7 +207,15 @@ export default function Contact() {
                     prefix={form.prefix}
                     phone={form.phone}
                     onPrefixChange={(e) => setForm((p) => ({ ...p, prefix: e.target.value }))}
-                    onPhoneChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
+                    onPhoneChange={(e) => {
+                      const val = e.target.value.replace(/\s+/g, "");
+                      const match = PREFIXES.find((p) => p.code && val.startsWith(p.code));
+                      if (match) {
+                        setForm((p) => ({ ...p, prefix: match.code, phone: val.slice(match.code.length) }));
+                      } else {
+                        setForm((p) => ({ ...p, phone: e.target.value }));
+                      }
+                    }}
                   />
                   <InputField label={t("contactPage.labelCompany")} name="company" value={form.company} onChange={handleChange} />
                 </div>

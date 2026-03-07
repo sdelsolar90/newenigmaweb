@@ -24,8 +24,8 @@ export function confirmationEmail({ name, message, id }) {
           <div style="width:1px; height:40px; background:rgba(240,237,230,0.25);"></div>
         </td>
         <td style="vertical-align:middle;">
-          <div style="font-family:'DM Sans',Arial,sans-serif; font-weight:400; font-size:22px; letter-spacing:0.22em; color:#F0EDE6; line-height:1;">ENIGMA</div>
-          <div style="font-family:'DM Sans',Arial,sans-serif; font-weight:300; font-size:9px; letter-spacing:0.28em; color:rgba(240,237,230,0.45); line-height:1; margin-top:2px;">DEVELOPERS</div>
+          <div style="font-family:'DM Sans',Arial,sans-serif; font-weight:300; font-size:16px; letter-spacing:0.42em; color:#F0EDE6; line-height:1; text-transform:uppercase;">Enigma</div>
+          <div style="font-family:'DM Mono','Courier New',monospace; font-weight:400; font-size:8px; letter-spacing:0.48em; color:rgba(240,237,230,0.40); line-height:1; margin-top:3px; text-transform:uppercase;">Developers</div>
         </td>
       </tr>
     </table>
