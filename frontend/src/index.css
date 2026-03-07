@@ -60,6 +60,8 @@
   to { transform: rotate(-360deg); }
 }
 
+.grecaptcha-badge { visibility: hidden !important; }
+
 .gear-spin { animation: gear-cw 18s linear infinite; }
 .gear-spin-reverse { animation: gear-ccw 18s linear infinite; }
 .gear-wrapper:hover .gear-spin,

@@ -304,6 +304,12 @@ export default function ComplaintBook() {
                     Hubo un error al enviar. Intenta de nuevo o contáctanos directamente por WhatsApp.
                   </motion.div>
                 )}
+
+                <p className="mt-4 text-[10px] text-cream2/50 font-body leading-relaxed">
+                  Este sitio está protegido por reCAPTCHA y aplican la{" "}
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">Política de Privacidad</a> y los{" "}
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">Términos de Servicio</a> de Google.
+                </p>
               </motion.form>
             </div>
 

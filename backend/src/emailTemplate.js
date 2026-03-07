@@ -9,8 +9,11 @@ export function confirmationEmail({ name, message, id }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enigma Developers — Mensaje Recibido</title>
 </head>
-<body style="margin:0; padding:0; background-color:#1C1C1E; font-family:'DM Sans',Arial,Helvetica,sans-serif; color:#F0EDE6; min-height:100vh; padding:40px 20px;">
+<body style="margin:0; padding:0; font-family:'DM Sans',Arial,Helvetica,sans-serif; color:#F0EDE6;">
 
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#1C1C1E;">
+  <tr>
+    <td align="center" style="padding:40px 20px;">
 <div style="max-width:560px; width:100%; margin:0 auto;">
 
   <!-- Logo lockup -->
@@ -169,6 +172,10 @@ export function confirmationEmail({ name, message, id }) {
   </div>
 
 </div>
+
+    </td>
+  </tr>
+</table>
 
 </body>
 </html>`;
