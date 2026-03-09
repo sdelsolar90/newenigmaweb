@@ -59,6 +59,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setLang(otherLang)}
+          aria-label={`Switch to ${otherLang === "es" ? "Spanish" : "English"}`}
           className="lg:hidden font-mono text-xs uppercase tracking-[0.1em] text-cream2 hover:text-red transition-colors duration-200 flex items-center gap-1.5 absolute right-6"
         >
           <span className={lang === "es" ? "text-red" : ""}>ES</span>
@@ -69,6 +70,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={() => setLang(otherLang)}
+            aria-label={`Switch to ${otherLang === "es" ? "Spanish" : "English"}`}
             className="font-mono text-xs uppercase tracking-[0.1em] text-cream2 hover:text-red transition-colors duration-200 flex items-center gap-1.5"
           >
             <span className={lang === "es" ? "text-red" : ""}>ES</span>

@@ -189,6 +189,7 @@ export default function MobileBottomNav() {
                   <button
                     key="menu"
                     onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label={t(BAR_LABEL_KEYS[i])}
                     className={`flex flex-col items-center justify-self-center gap-0.5 py-1.5 px-3 transition-colors duration-200 ${
                       menuOpen ? "text-red" : "text-cream2/60 active:text-cream"
                     }`}
@@ -233,13 +234,14 @@ export default function MobileBottomNav() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setLang(otherLang)}
+                aria-label={`Switch to ${otherLang === "es" ? "Spanish" : "English"}`}
                 className="font-mono text-xs uppercase tracking-[0.1em] text-cream2 hover:text-red transition-colors duration-200 flex items-center gap-1.5"
               >
                 <span className={lang === "es" ? "text-red" : ""}>ES</span>
                 <span className="text-line">/</span>
                 <span className={lang === "en" ? "text-red" : ""}>EN</span>
               </button>
-              <button onClick={() => setMenuOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-carbon3 text-cream2">
+              <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-10 h-10 flex items-center justify-center rounded-full bg-carbon3 text-cream2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
