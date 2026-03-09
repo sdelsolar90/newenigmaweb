@@ -24,16 +24,20 @@ function DotNav({ count, active, onSelect }) {
   return (
     <div className="flex items-center justify-center gap-2">
       {Array.from({ length: count }).map((_, i) => (
-        <motion.button
+        <button
           key={i}
           onClick={() => onSelect(i)}
           aria-label={`Slide ${i + 1}`}
-          className={`h-1.5 rounded-full transition-colors duration-300 ${
-            i === active ? "bg-red" : "bg-line hover:bg-cream2/40"
-          }`}
-          animate={{ width: i === active ? 32 : 8 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        />
+          className="relative py-4 cursor-pointer"
+        >
+          <motion.span
+            className={`block h-1.5 rounded-full transition-colors duration-300 ${
+              i === active ? "bg-red" : "bg-line hover:bg-cream2/40"
+            }`}
+            animate={{ width: i === active ? 32 : 8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          />
+        </button>
       ))}
     </div>
   );
