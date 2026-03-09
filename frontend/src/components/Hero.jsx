@@ -7,15 +7,35 @@ import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 function DotGrid() {
   return (
-    <div className="absolute inset-0 overflow-hidden" style={{ contain: "strict" }}>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        overflow: "hidden",
+        contain: "strict",
+      }}
+    >
       <div
-        className="absolute inset-0 opacity-[0.03]"
         style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.03,
           backgroundImage: "radial-gradient(circle, #F0EDE6 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
-      <div className="absolute inset-0 m-auto w-[600px] h-[600px] bg-carbon2/60 rounded-full blur-[180px]" />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          margin: "auto",
+          width: 600,
+          height: 600,
+          borderRadius: "50%",
+          filter: "blur(180px)",
+          background: "rgba(38, 38, 40, 0.6)",
+        }}
+      />
     </div>
   );
 }
