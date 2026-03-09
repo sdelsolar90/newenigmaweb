@@ -7,7 +7,7 @@ import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 function DotGrid() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden" style={{ contain: "strict" }}>
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -15,7 +15,7 @@ function DotGrid() {
           backgroundSize: "32px 32px",
         }}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-carbon2/60 rounded-full blur-[180px]" />
+      <div className="absolute inset-0 m-auto w-[600px] h-[600px] bg-carbon2/60 rounded-full blur-[180px]" />
     </div>
   );
 }
@@ -71,8 +71,8 @@ export default function Hero() {
 
             <div className="mt-6">
               <h1
-                className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight"
-                style={{ minHeight: "3.5em" }}
+                className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight overflow-hidden"
+                style={{ minHeight: "3.5em", contain: "layout" }}
               >
                 {displayText.split(italicWord).map((part, i) =>
                   i === 0 ? (
