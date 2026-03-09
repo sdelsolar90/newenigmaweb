@@ -128,16 +128,20 @@ export default function CaseStudies() {
           </AnimatePresence>
 
           <div className="flex items-center justify-between mt-8">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {METRIC_DATA.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
                   aria-label={`Slide ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === activeIndex ? "bg-red w-6" : "bg-line hover:bg-cream2/40"
-                  }`}
-                />
+                  className="relative py-4 px-1 cursor-pointer"
+                >
+                  <span
+                    className={`block h-2 rounded-full transition-all duration-300 ${
+                      i === activeIndex ? "bg-red w-6" : "bg-line hover:bg-cream2/40 w-2"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
             <div className="flex items-center gap-2">
