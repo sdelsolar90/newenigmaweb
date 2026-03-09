@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { useT } from "../i18n/LanguageContext.jsx";
 
+import { executeRecaptcha } from "../utils/loadRecaptcha.js";
+
 const API_URL = import.meta.env.VITE_API_URL || "/api";
-const RECAPTCHA_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const PREFIXES = [
   { code: "+51", country: "PE", flag: "🇵🇪" },
@@ -90,12 +91,7 @@ export default function Contact() {
     setErrorMsg("");
 
     try {
-      const recaptchaToken = await new Promise((resolve) => {
-        window.grecaptcha.enterprise.ready(async () => {
-          const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_KEY, { action: "SUBMIT" });
-          resolve(token);
-        });
-      });
+      const recaptchaToken = await executeRecaptcha("SUBMIT");
       const endpoint = form.type === "diagnosis" ? "/leads" : "/contact";
       const payload = {
         name: form.name,

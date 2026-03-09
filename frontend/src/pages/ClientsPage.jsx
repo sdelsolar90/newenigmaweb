@@ -9,8 +9,8 @@ const ALL_CLIENTS = [
   { name: "Mara Intimates", domain: "maraintimates.com", logo: "/clients/mara-intimates.svg" },
   { name: "El Piombino", domain: "elpiombino.com", logo: "/clients/el-piombino.png" },
   { name: "Black Tiger", domain: "blacktiger.pe", logo: "/clients/black-tiger.webp" },
-  { name: "Birck SAC", domain: "bricksac.com", logo: "/clients/brick-sac.png" },
-  { name: "Casa Naiaco", domain: "casanaiaco.com", logo: "/clients/casa-naiaco.png" },
+  { name: "Birck SAC", domain: "bricksac.com", logo: "/clients/brick-sac.webp" },
+  { name: "Casa Naiaco", domain: "casanaiaco.com", logo: "/clients/casa-naiaco.webp" },
   { name: "Golootza", domain: "golootza.com", logo: "/clients/golootza.png" },
   { name: "Grupo Omen", domain: "grupoomen.com", logo: "/clients/grupo-omen.png" },
   { name: "G Studio", domain: "gstudio.es", logo: "/clients/gstudio.webp" },
@@ -18,9 +18,9 @@ const ALL_CLIENTS = [
   { name: "Iniciativa", domain: "iniciativa.pe", logo: "/clients/iniciativa.png" },
   { name: "Innvoice", domain: "innvoice.pe", logo: "/clients/innvoice.png" },
   { name: "Kila Design", domain: "kiladesignpe.com", logo: "/clients/kila-design.png" },
-  { name: "Qala Diseño", domain: "qaladiseno.pe", logo: "/clients/qala-diseno.png" },
-  { name: "Secreto Inca Co.", domain: "secretoincaco.pe", logo: "/clients/secreto-inca.png" },
-  { name: "Soldevilla", domain: "soldevilla.pe", logo: "/clients/soldevilla.png" },
+  { name: "Qala Diseño", domain: "qaladiseno.pe", logo: "/clients/qala-diseno.webp" },
+  { name: "Secreto Inca Co.", domain: "secretoincaco.pe", logo: "/clients/secreto-inca.webp" },
+  { name: "Soldevilla", domain: "soldevilla.pe", logo: "/clients/soldevilla.webp" },
   { name: "Tangram", domain: "tangram.com.pe", logo: "/clients/tangram.png" },
 ];
 
@@ -90,7 +90,7 @@ function ClientRotor({ client, index, rowIndex }) {
         <div className="relative h-8 w-[110px]">
           {client.useFilter ? (
             <div className="client-logo-wrap h-full w-full">
-              <img src={client.logo} alt={client.name} className="h-full w-full object-contain" />
+              <img src={client.logo} alt={client.name} width={110} height={32} loading="lazy" className="h-full w-full object-contain" />
               <div
                 className="client-logo-color"
                 style={{
