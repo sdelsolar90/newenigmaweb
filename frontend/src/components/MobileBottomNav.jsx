@@ -173,6 +173,7 @@ export default function MobileBottomNav() {
                       href={waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="WhatsApp"
                       className="w-14 h-14 rounded-full bg-red shadow-lg shadow-red/30 flex items-center justify-center active:scale-95 transition-transform duration-150"
                     >
                       <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
