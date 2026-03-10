@@ -39,12 +39,12 @@ export default function Hero() {
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setStage(1), 300);
-    const t2 = setTimeout(() => setStage(2), 800);
-    const t3 = setTimeout(() => setStage(3), 1200);
-    const t4 = setTimeout(() => setStage(4), 2500);
-    const t5 = setTimeout(() => setStage(5), 3000);
-    const t6 = setTimeout(() => setStage(6), 3500);
+    const t1 = setTimeout(() => setStage(1), 100);
+    const t2 = setTimeout(() => setStage(2), 200);
+    const t3 = setTimeout(() => setStage(3), 300);
+    const t4 = setTimeout(() => setStage(4), 700);
+    const t5 = setTimeout(() => setStage(5), 1000);
+    const t6 = setTimeout(() => setStage(6), 1400);
     return () => [t1, t2, t3, t4, t5, t6].forEach(clearTimeout);
   }, []);
 
@@ -74,21 +74,15 @@ export default function Hero() {
                 className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight"
                 style={{ minHeight: "3.5em" }}
               >
-                {stage >= 3 ? (
-                  <>
-                    {displayText.split(italicWord).map((part, i) =>
-                      i === 0 ? (
-                        <span key={i}>{part}</span>
-                      ) : (
-                        <span key={i}>
-                          <em className="italic">{italicWord}</em>
-                          {part}
-                        </span>
-                      )
-                    )}
-                  </>
-                ) : (
-                  <span className="opacity-0">{headline}</span>
+                {displayText.split(italicWord).map((part, i) =>
+                  i === 0 ? (
+                    <span key={i}>{part}</span>
+                  ) : (
+                    <span key={i}>
+                      <em className="italic">{italicWord}</em>
+                      {part}
+                    </span>
+                  )
                 )}
               </h1>
             </div>
@@ -143,7 +137,7 @@ export default function Hero() {
           className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto border-t border-line pt-10"
         >
           {t("hero.stats").map((stat, i) => (
-            <StatItem key={i} value={stat.value} label={stat.label} delay={3.6 + i * 0.1} />
+            <StatItem key={i} value={stat.value} label={stat.label} delay={1.5 + i * 0.1} />
           ))}
         </motion.div>
       </div>
