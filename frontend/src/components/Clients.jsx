@@ -51,6 +51,9 @@ export default function Clients() {
                 <img
                   src={client.logo}
                   alt={client.name}
+                  width={170}
+                  height={56}
+                  loading="lazy"
                   className="h-full w-full object-contain"
                 />
                 <div

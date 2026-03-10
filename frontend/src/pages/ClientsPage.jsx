@@ -90,7 +90,7 @@ function ClientRotor({ client, index, rowIndex }) {
         <div className="relative h-8 w-[110px]">
           {client.useFilter ? (
             <div className="client-logo-wrap h-full w-full">
-              <img src={client.logo} alt={client.name} className="h-full w-full object-contain" />
+              <img src={client.logo} alt={client.name} width={110} height={32} loading="lazy" className="h-full w-full object-contain" />
               <div
                 className="client-logo-color"
                 style={{
