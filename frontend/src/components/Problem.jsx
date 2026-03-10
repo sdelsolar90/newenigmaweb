@@ -7,7 +7,6 @@ function ArrowButton({ direction, onClick }) {
   return (
     <button
       onClick={onClick}
-      aria-label={direction === "left" ? "Previous" : "Next"}
       className="w-10 h-10 flex items-center justify-center border border-line text-cream2 hover:border-red hover:text-red transition-all duration-300 rounded-full"
     >
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -24,20 +23,15 @@ function DotNav({ count, active, onSelect }) {
   return (
     <div className="flex items-center justify-center gap-2">
       {Array.from({ length: count }).map((_, i) => (
-        <button
+        <motion.button
           key={i}
           onClick={() => onSelect(i)}
-          aria-label={`Slide ${i + 1}`}
-          className="relative py-4 cursor-pointer"
-        >
-          <motion.span
-            className={`block h-1.5 rounded-full transition-colors duration-300 ${
-              i === active ? "bg-red" : "bg-line hover:bg-cream2/40"
-            }`}
-            animate={{ width: i === active ? 32 : 8 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          />
-        </button>
+          className={`h-1.5 rounded-full transition-colors duration-300 ${
+            i === active ? "bg-red" : "bg-line hover:bg-cream2/40"
+          }`}
+          animate={{ width: i === active ? 32 : 8 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        />
       ))}
     </div>
   );

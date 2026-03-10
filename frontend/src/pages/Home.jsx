@@ -1,14 +1,14 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { useT } from "../i18n/LanguageContext.jsx";
 import Hero from "../components/Hero.jsx";
-import { EnigmaIsotipo } from "../components/EnigmaLogo.jsx";
+import Partners from "../components/Partners.jsx";
+import Problem from "../components/Problem.jsx";
+import HowItWorks from "../components/HowItWorks.jsx";
+import Services from "../components/Services.jsx";
 
-const Partners = lazy(() => import("../components/Partners.jsx"));
-const Problem = lazy(() => import("../components/Problem.jsx"));
-const HowItWorks = lazy(() => import("../components/HowItWorks.jsx"));
-const Services = lazy(() => import("../components/Services.jsx"));
-const Clients = lazy(() => import("../components/Clients.jsx"));
-const CTAFinal = lazy(() => import("../components/CTAFinal.jsx"));
+import Clients from "../components/Clients.jsx";
+import CTAFinal from "../components/CTAFinal.jsx";
+import { EnigmaIsotipo } from "../components/EnigmaLogo.jsx";
 
 function ScrollRotor() {
   const [rotation, setRotation] = useState(0);
@@ -77,14 +77,12 @@ export default function Home() {
       />
       <ScrollRotor />
       <Hero />
-      <Suspense fallback={null}>
-        <Partners />
-        <Problem />
-        <HowItWorks />
-        <Services />
-        <Clients />
-        <CTAFinal />
-      </Suspense>
+      <Partners />
+      <Problem />
+      <HowItWorks />
+      <Services />
+      <Clients />
+      <CTAFinal />
     </>
   );
 }

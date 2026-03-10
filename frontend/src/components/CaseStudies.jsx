@@ -25,7 +25,6 @@ function ArrowButton({ direction, onClick }) {
   return (
     <button
       onClick={onClick}
-      aria-label={direction === "left" ? "Previous" : "Next"}
       className="w-10 h-10 border border-line hover:border-red/40 flex items-center justify-center text-cream2 hover:text-red transition-all duration-200"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -128,20 +127,15 @@ export default function CaseStudies() {
           </AnimatePresence>
 
           <div className="flex items-center justify-between mt-8">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               {METRIC_DATA.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
-                  aria-label={`Slide ${i + 1}`}
-                  className="relative py-4 px-1 cursor-pointer"
-                >
-                  <span
-                    className={`block h-2 rounded-full transition-all duration-300 ${
-                      i === activeIndex ? "bg-red w-6" : "bg-line hover:bg-cream2/40 w-2"
-                    }`}
-                  />
-                </button>
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === activeIndex ? "bg-red w-6" : "bg-line hover:bg-cream2/40"
+                  }`}
+                />
               ))}
             </div>
             <div className="flex items-center gap-2">

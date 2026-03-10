@@ -84,7 +84,6 @@ function RotorIcon({ service, index, springRotation, radius, isActive, onSelect,
     >
       <motion.button
         onClick={() => onSelect(index)}
-        aria-label={service.id}
         style={{
           rotate: counterRotation,
           width: iconSize,

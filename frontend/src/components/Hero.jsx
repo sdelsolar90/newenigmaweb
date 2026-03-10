@@ -7,35 +7,15 @@ import useTextDecrypt from "../hooks/useTextDecrypt.js";
 
 function DotGrid() {
   return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        overflow: "hidden",
-        contain: "strict",
-      }}
-    >
+    <div className="absolute inset-0 overflow-hidden">
       <div
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          position: "absolute",
-          inset: 0,
-          opacity: 0.03,
           backgroundImage: "radial-gradient(circle, #F0EDE6 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          margin: "auto",
-          width: 600,
-          height: 600,
-          borderRadius: "50%",
-          filter: "blur(180px)",
-          background: "rgba(38, 38, 40, 0.6)",
-        }}
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-carbon2/60 rounded-full blur-[180px]" />
     </div>
   );
 }
@@ -43,8 +23,8 @@ function DotGrid() {
 function StatItem({ value, label, delay }) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       className="text-center"
     >
@@ -59,12 +39,12 @@ export default function Hero() {
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setStage(1), 100);
-    const t2 = setTimeout(() => setStage(2), 200);
-    const t3 = setTimeout(() => setStage(3), 300);
-    const t4 = setTimeout(() => setStage(4), 700);
-    const t5 = setTimeout(() => setStage(5), 1000);
-    const t6 = setTimeout(() => setStage(6), 1400);
+    const t1 = setTimeout(() => setStage(1), 300);
+    const t2 = setTimeout(() => setStage(2), 800);
+    const t3 = setTimeout(() => setStage(3), 1200);
+    const t4 = setTimeout(() => setStage(4), 2500);
+    const t5 = setTimeout(() => setStage(5), 3000);
+    const t6 = setTimeout(() => setStage(6), 3500);
     return () => [t1, t2, t3, t4, t5, t6].forEach(clearTimeout);
   }, []);
 
@@ -80,8 +60,8 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={stage >= 2 ? { opacity: 1 } : {}}
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 2 ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
             >
               <span className="font-mono text-xs tracking-[0.42em] text-red uppercase">
@@ -91,25 +71,31 @@ export default function Hero() {
 
             <div className="mt-6">
               <h1
-                className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight overflow-hidden"
-                style={{ minHeight: "3.5em", contain: "layout" }}
+                className="font-heading text-[clamp(34px,4.5vw,56px)] text-cream leading-[1.12] tracking-tight"
+                style={{ minHeight: "3.5em" }}
               >
-                {displayText.split(italicWord).map((part, i) =>
-                  i === 0 ? (
-                    <span key={i}>{part}</span>
-                  ) : (
-                    <span key={i}>
-                      <em className="italic">{italicWord}</em>
-                      {part}
-                    </span>
-                  )
+                {stage >= 3 ? (
+                  <>
+                    {displayText.split(italicWord).map((part, i) =>
+                      i === 0 ? (
+                        <span key={i}>{part}</span>
+                      ) : (
+                        <span key={i}>
+                          <em className="italic">{italicWord}</em>
+                          {part}
+                        </span>
+                      )
+                    )}
+                  </>
+                ) : (
+                  <span className="opacity-0">{headline}</span>
                 )}
               </h1>
             </div>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={stage >= 4 ? { opacity: 1 } : {}}
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 4 ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
               className="mt-6 text-base sm:text-lg text-cream2 max-w-xl leading-relaxed font-body mx-auto lg:mx-0"
             >
@@ -117,8 +103,8 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={stage >= 5 ? { opacity: 1 } : {}}
+              initial={{ opacity: 0, y: 20 }}
+              animate={stage >= 5 ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
               className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
             >
@@ -157,7 +143,7 @@ export default function Hero() {
           className="mt-20 lg:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto border-t border-line pt-10"
         >
           {t("hero.stats").map((stat, i) => (
-            <StatItem key={i} value={stat.value} label={stat.label} delay={1.5 + i * 0.1} />
+            <StatItem key={i} value={stat.value} label={stat.label} delay={3.6 + i * 0.1} />
           ))}
         </motion.div>
       </div>

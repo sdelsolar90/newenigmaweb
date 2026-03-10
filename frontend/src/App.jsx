@@ -4,9 +4,9 @@ import { LanguageProvider, useT } from "./i18n/LanguageContext.jsx";
 import { ROUTE_MAP } from "./i18n/routes.js";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-const WhatsAppBubble = lazy(() => import("./components/WhatsAppBubble.jsx"));
-const CookieConsent = lazy(() => import("./components/CookieConsent.jsx"));
-const MobileBottomNav = lazy(() => import("./components/MobileBottomNav.jsx"));
+import WhatsAppBubble from "./components/WhatsAppBubble.jsx";
+import CookieConsent from "./components/CookieConsent.jsx";
+import MobileBottomNav from "./components/MobileBottomNav.jsx";
 import Home from "./pages/Home.jsx";
 
 const ServicesPage = lazy(() => import("./pages/ServicesPage.jsx"));
@@ -270,11 +270,9 @@ export default function App() {
           </Suspense>
         </main>
         <Footer />
-        <Suspense fallback={null}>
-          <WhatsAppBubble />
-          <MobileBottomNav />
-          <CookieConsent />
-        </Suspense>
+        <WhatsAppBubble />
+        <MobileBottomNav />
+        <CookieConsent />
       </div>
     </LanguageProvider>
   );

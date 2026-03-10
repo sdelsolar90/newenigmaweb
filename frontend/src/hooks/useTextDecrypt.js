@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
 
 export default function useTextDecrypt(text, trigger = true, { interval = 40, stagger = 30 } = {}) {
-  const [displayText, setDisplayText] = useState(text);
+  const [displayText, setDisplayText] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
