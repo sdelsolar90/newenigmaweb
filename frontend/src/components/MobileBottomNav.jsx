@@ -173,6 +173,7 @@ export default function MobileBottomNav() {
                       href={waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="WhatsApp"
                       className="w-14 h-14 rounded-full bg-red shadow-lg shadow-red/30 flex items-center justify-center active:scale-95 transition-transform duration-150"
                     >
                       <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
@@ -239,7 +240,7 @@ export default function MobileBottomNav() {
                 <span className="text-line">/</span>
                 <span className={lang === "en" ? "text-red" : ""}>EN</span>
               </button>
-              <button onClick={() => setMenuOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full bg-carbon3 text-cream2">
+              <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-10 h-10 flex items-center justify-center rounded-full bg-carbon3 text-cream2">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>

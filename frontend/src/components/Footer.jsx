@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.servicesTitle")}</h4>
+            <p className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.servicesTitle")}</p>
             <ul className="space-y-3">
               {t("footer.services").map((label, i) => (
                 <li key={i}>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.companyTitle")}</h4>
+            <p className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.companyTitle")}</p>
             <ul className="space-y-3">
               {t("footer.company").map((label, i) => (
                 <li key={i}>
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.contactTitle")}</h4>
+            <p className="font-mono text-xs tracking-[0.42em] text-red uppercase mb-5">{t("footer.contactTitle")}</p>
             <ul className="space-y-4">
               <li>
                 <a href="mailto:hello@enigmasac.com" className="flex items-center gap-3 font-body text-sm text-cream2 hover:text-red transition-colors duration-200">
